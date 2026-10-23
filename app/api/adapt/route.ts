@@ -1,3 +1,4 @@
+import { resolveModel } from '@/lib/models';
 import { NextRequest, NextResponse } from 'next/server';
 import { loadBase, loadProfile, mergeResume } from '@/lib/resume';
 import { loadGroundTruth } from '@/lib/ground-truth';
@@ -68,7 +69,8 @@ export async function POST(request: NextRequest) {
     const { overrides, validation, retryCount } = await adaptResumeWithValidation(
       sourceResume,
       instruction,
-      groundTruth
+      groundTruth,
+      resolveModel(body.model)
     );
     const generationTimeMs = Date.now() - startTime;
 

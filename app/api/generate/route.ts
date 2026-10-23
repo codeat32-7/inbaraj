@@ -1,3 +1,4 @@
+import { resolveModel } from '@/lib/models';
 import { NextRequest, NextResponse } from 'next/server';
 import { loadBase } from '@/lib/resume';
 import { tailorResumeWithValidation } from '@/lib/ai';
@@ -48,7 +49,8 @@ export async function POST(request: NextRequest) {
     const { overrides, validation, retryCount } = await tailorResumeWithValidation(
       base,
       jobDescription,
-      groundTruth
+      groundTruth,
+      resolveModel(body.model)
     );
     const generationTimeMs = Date.now() - startTime;
 

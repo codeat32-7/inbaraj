@@ -1,3 +1,4 @@
+import { DEFAULT_MODEL } from './models';
 import Anthropic from '@anthropic-ai/sdk';
 import { ResumeData, ProfileOverride } from './types';
 import { GroundTruth } from './ground-truth';
@@ -133,13 +134,14 @@ function getClient(): Anthropic {
 
 async function callClaude(
   client: Anthropic,
+  model: string,
   system: string,
   userMessage: string,
   attempt = 0
 ): Promise<string> {
   try {
     const message = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model,
       max_tokens: 4096,
       system,
       messages: [{ role: 'user', content: userMessage }],
@@ -162,7 +164,7 @@ async function callClaude(
     if (isRetryable && attempt < 2) {
       const delay = (attempt + 1) * 3000;
       await new Promise((r) => setTimeout(r, delay));
-      return callClaude(client, system, userMessage, attempt + 1);
+      return callClaude(client, model, system, userMessage, attempt + 1);
     }
     throw error;
   }
@@ -170,6 +172,7 @@ async function callClaude(
 
 async function generateOverrides(
   client: Anthropic,
+  model: string,
   base: ResumeData,
   jobDescription: string,
   feedbackFromValidation?: string
@@ -180,7 +183,7 @@ async function generateOverrides(
     userMessage += `\n\n## IMPORTANT: Previous attempt had fabrication issues\nThe following violations were found. Fix them by using ONLY content from the base resume:\n${feedbackFromValidation}`;
   }
 
-  const raw = await callClaude(client, SYSTEM_PROMPT, userMessage);
+  const raw = await callClaude(client, model, SYSTEM_PROMPT, userMessage);
   const parsed = JSON.parse(raw);
 
   // Zod validation
@@ -195,12 +198,13 @@ async function generateOverrides(
 
 async function validateOverrides(
   client: Anthropic,
+  model: string,
   groundTruth: GroundTruth,
   overrides: Partial<ProfileOverride>
 ): Promise<ValidationResult> {
   const userMessage = `## Ground Truth (all verified facts)\n\`\`\`json\n${JSON.stringify(groundTruth, null, 2)}\n\`\`\`\n\n## Generated Override to Validate\n\`\`\`json\n${JSON.stringify(overrides, null, 2)}\n\`\`\`\n\nValidate the override against the ground truth and return your findings as JSON.`;
 
-  const raw = await callClaude(client, VALIDATION_SYSTEM_PROMPT, userMessage);
+  const raw = await callClaude(client, model, VALIDATION_SYSTEM_PROMPT, userMessage);
 
   try {
     const parsed = JSON.parse(raw);
@@ -223,7 +227,8 @@ function formatViolationsAsFeedback(violations: ValidationViolation[]): string {
 export async function tailorResumeWithValidation(
   base: ResumeData,
   jobDescription: string,
-  groundTruth: GroundTruth
+  groundTruth: GroundTruth,
+  model: string = DEFAULT_MODEL
 ): Promise<GenerationPipelineResult> {
   const client = getClient();
   const maxRetries = 2;
@@ -232,11 +237,11 @@ export async function tailorResumeWithValidation(
   let validation: ValidationResult;
 
   // Initial generation
-  overrides = await generateOverrides(client, base, jobDescription);
+  overrides = await generateOverrides(client, model, base, jobDescription);
 
   // Validation loop
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    validation = await validateOverrides(client, groundTruth, overrides);
+    validation = await validateOverrides(client, model, groundTruth, overrides);
 
     if (validation.valid || attempt === maxRetries) {
       return { overrides, validation, retryCount };
@@ -245,7 +250,7 @@ export async function tailorResumeWithValidation(
     // Re-generate with feedback
     retryCount++;
     const feedback = formatViolationsAsFeedback(validation.violations);
-    overrides = await generateOverrides(client, base, jobDescription, feedback);
+    overrides = await generateOverrides(client, model, base, jobDescription, feedback);
   }
 
   // Should not reach here, but TypeScript needs it
@@ -254,6 +259,7 @@ export async function tailorResumeWithValidation(
 
 async function generateAdaptOverrides(
   client: Anthropic,
+  model: string,
   sourceResume: ResumeData,
   instruction: string,
   feedbackFromValidation?: string
@@ -264,7 +270,7 @@ async function generateAdaptOverrides(
     userMessage += `\n\n## IMPORTANT: Previous attempt had fabrication issues\nThe following violations were found. Fix them by using ONLY content from the source resume:\n${feedbackFromValidation}`;
   }
 
-  const raw = await callClaude(client, ADAPT_SYSTEM_PROMPT, userMessage);
+  const raw = await callClaude(client, model, ADAPT_SYSTEM_PROMPT, userMessage);
   const parsed = JSON.parse(raw);
 
   const result = ProfileOverrideSchema.safeParse(parsed);
@@ -279,7 +285,8 @@ async function generateAdaptOverrides(
 export async function adaptResumeWithValidation(
   sourceResume: ResumeData,
   instruction: string,
-  groundTruth: GroundTruth
+  groundTruth: GroundTruth,
+  model: string = DEFAULT_MODEL
 ): Promise<GenerationPipelineResult> {
   const client = getClient();
   const maxRetries = 2;
@@ -288,11 +295,11 @@ export async function adaptResumeWithValidation(
   let validation: ValidationResult;
 
   // Initial generation
-  overrides = await generateAdaptOverrides(client, sourceResume, instruction);
+  overrides = await generateAdaptOverrides(client, model, sourceResume, instruction);
 
   // Validation loop
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    validation = await validateOverrides(client, groundTruth, overrides);
+    validation = await validateOverrides(client, model, groundTruth, overrides);
 
     if (validation.valid || attempt === maxRetries) {
       return { overrides, validation, retryCount };
@@ -301,7 +308,7 @@ export async function adaptResumeWithValidation(
     // Re-generate with feedback
     retryCount++;
     const feedback = formatViolationsAsFeedback(validation.violations);
-    overrides = await generateAdaptOverrides(client, sourceResume, instruction, feedback);
+    overrides = await generateAdaptOverrides(client, model, sourceResume, instruction, feedback);
   }
 
   return { overrides, validation: { valid: false, violations: [] }, retryCount };

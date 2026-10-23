@@ -1,5 +1,7 @@
 'use client';
 
+import { CLAUDE_MODELS } from '@/lib/models';
+
 interface RegistryEntry {
   company: string;
   created: string;
@@ -33,13 +35,40 @@ interface JDFormProps {
   adaptInstruction: string;
   onAdaptInstructionChange: (val: string) => void;
   onStartAdapt: () => void;
+  model: string;
+  onModelChange: (id: string) => void;
 }
 
 export default function JDForm({
   step, data, onDataChange, onNext, onBack, onStartTailoring,
   onEnterManually, onAdaptExisting, scrapeState, scrapeError, scrapeUrl, onScrapeUrlChange, onScrapeSubmit,
   registry, adaptSource, onAdaptSourceChange, adaptInstruction, onAdaptInstructionChange, onStartAdapt,
+  model, onModelChange,
 }: JDFormProps) {
+  const modelPicker = (
+    <select
+      value={model}
+      onChange={(e) => onModelChange(e.target.value)}
+      aria-label="AI model"
+      title="AI model"
+      style={{
+        padding: '0.7rem 0.9rem',
+        background: 'transparent',
+        color: 'inherit',
+        border: '1px solid rgba(255,255,255,0.15)',
+        borderRadius: 6,
+        fontSize: '0.85rem',
+        fontFamily: "'DM Sans', sans-serif",
+        cursor: 'pointer',
+      }}
+    >
+      {CLAUDE_MODELS.map((m) => (
+        <option key={m.id} value={m.id} style={{ color: '#000' }}>
+          {m.label} — {m.hint}
+        </option>
+      ))}
+    </select>
+  );
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -191,6 +220,7 @@ export default function JDForm({
             />
             <p style={styles.hint}>I&apos;ll analyze this and tailor your resume to match.</p>
           </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
           <button
             onClick={onStartTailoring}
             disabled={!data.jobDescription.trim()}
@@ -201,6 +231,9 @@ export default function JDForm({
           >
             Start Tailoring
           </button>
+          {modelPicker}
+
+          </div>
         </div>
       )}
 
@@ -330,6 +363,7 @@ export default function JDForm({
               </div>
             </div>
 
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
             <button
               onClick={onStartAdapt}
               disabled={!canStart}
@@ -340,6 +374,9 @@ export default function JDForm({
             >
               Start Adapting
             </button>
+          {modelPicker}
+
+          </div>
           </div>
         );
       })()}
@@ -390,6 +427,7 @@ export default function JDForm({
             </div>
           </div>
 
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
           <button
             onClick={onStartTailoring}
             disabled={!data.companyName.trim() || !data.jobDescription.trim()}
@@ -400,6 +438,9 @@ export default function JDForm({
           >
             Start Tailoring
           </button>
+          {modelPicker}
+
+          </div>
         </div>
       )}
     </div>
