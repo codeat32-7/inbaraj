@@ -659,10 +659,8 @@ export default function AdminPage() {
   return (
     <div style={styles.container}>
       <header style={styles.header}>
-        <div>
-          <h1 style={styles.title}>Resume Studio</h1>
-          <p style={styles.subtitle}>Create tailored resumes for specific companies</p>
-        </div>
+        <h1 style={styles.title}>Resume Studio</h1>
+        <p style={styles.subtitle}>Create tailored resumes for specific companies</p>
       </header>
 
       {message && (
@@ -1116,29 +1114,34 @@ const styles: Record<string, React.CSSProperties> = {
     background: '#0a0a0b',
     color: '#e8e8ec',
     fontFamily: "'DM Sans', sans-serif",
-    padding: '1.5rem 2.5rem',
+    padding: '1rem 2rem',
   },
   header: {
-    marginBottom: '2rem',
-    paddingBottom: '1.5rem',
+    display: 'flex',
+    alignItems: 'baseline',
+    gap: '1rem',
+    flexWrap: 'wrap',
+    marginBottom: '1rem',
+    paddingBottom: '0.75rem',
     borderBottom: '1px solid #2a2a30',
   },
   title: {
     fontFamily: "'Spectral', serif",
-    fontSize: '1.8rem',
+    fontSize: '1.35rem',
     fontWeight: 300,
     color: '#e8e8ec',
-    marginBottom: '0.3rem',
+    margin: 0,
   },
   subtitle: {
-    fontSize: '0.85rem',
+    fontSize: '0.8rem',
     color: '#70708a',
+    margin: 0,
   },
   toast: {
-    padding: '0.75rem 1rem',
+    padding: '0.5rem 0.9rem',
     borderRadius: 8,
     border: '1px solid',
-    marginBottom: '1.5rem',
+    marginBottom: '0.75rem',
     fontSize: '0.85rem',
     fontFamily: "'DM Mono', monospace",
   },
