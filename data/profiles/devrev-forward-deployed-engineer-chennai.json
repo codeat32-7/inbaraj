@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "company": "DevRev",
+    "created": "2026-10-23",
+    "active": true
+  },
+  "hero": {
+    "headline": "Implementation <em>lead</em> who builds and ships what he deploys",
+    "description": "20 enterprise SaaS rollouts across the UK, US, and Middle East, working directly with customers on-site and remote. 5 years of integration scoping (SSO, REST APIs, webhooks), SaaS configuration, and customer-facing delivery. Now building AI-native products with LLMs, RAG, and prompt engineering."
+  },
+  "experience": [
+    {
+      "period": "Nov 2021 — Present",
+      "company": "Facilio",
+      "badge": "CMMS · SaaS",
+      "title": "Lead, Product Implementation",
+      "bullets": [
+        "Spearheaded 20 end-to-end enterprise CMMS/SaaS rollouts for mid-to-large clients, owning the full lifecycle from scoping through post-go-live support.",
+        "Engineered and tested SaaS configurations tailored to each client, driving adoption and smooth maintenance operations.",
+        "Acted as the internal voice of the customer, bridging clients with product, engineering, and design to drive continuous improvements.",
+        "Facilitated client workshops with executives and operational teams; translated requirements into BRDs, solution designs, and WBS-based project plans."
+      ],
+      "highlights": [
+        {
+          "label": "Integration & Configuration",
+          "text": "Scoped and defined integration requirements across SSO (SAML/SCIM) and third-party platforms including Xero, CorrigoPro, Equiem, Wooqer, Bill.com, SiteFotos, and SFG20. Validated API feasibility via Postman and vendor documentation, determined integration patterns (polling vs webhook), and authored integration requirement documents for the engineering team.",
+          "color": "purple"
+        },
+        {
+          "label": "Global delivery",
+          "text": "Travelled on-site to Saudi Arabia for a half-million dollar engagement and to the UK for MHA, covering field requirement gathering, stakeholder workshops, and go-live training across UK, US, and Middle East.",
+          "color": "purple"
+        },
+        {
+          "label": "Pilot → Enterprise conversions",
+          "text": "4 of 5 pilots converted to full-scale enterprise rollouts through structured discovery, early value demonstration, and deep stakeholder alignment during the pilot phase, driving $350K+ in expansion value.",
+          "color": "green"
+        },
+        {
+          "label": "Key initiative",
+          "text": "Conceptualized a use-case-driven implementation framework with complexity scoring and effort models, enabling pre-sales to scope accurately, auto-calculate timelines, and cut BRD/UAT ambiguity.",
+          "color": "purple"
+        },
+        {
+          "label": "Business Analysis",
+          "text": "Owned the end-to-end requirements lifecycle, from scoping workshops with client stakeholders to BRDs with solution designs. Worked cross-functionally with integration, product, and engineering teams to tailor configurations to each client's operational workflow.",
+          "color": "teal"
+        },
+        {
+          "label": "Revenue impact",
+          "text": "Identified unaccounted scope-change efforts and built a tracking mechanism. Collaborated with Sales to introduce pre-purchased Professional Services credits, converting informal changes into billable units.",
+          "color": "green"
+        }
+      ]
+    },
+    {
+      "period": "May 2016 — Oct 2021",
+      "company": "Amazon",
+      "badge": "E-Commerce · Ops",
+      "title": "Senior Catalog Specialist",
+      "bullets": [
+        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views, yielding an estimated $230K in monthly savings.",
+        "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day.",
+        "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now, directly improving operational efficiency."
+      ],
+      "highlights": []
+    }
+  ],
+  "projects": [
+    {
+      "name": "AI Config Assistant",
+      "icon": "AI",
+      "variant": "v3",
+      "type": "Enterprise Support Tool",
+      "description": "AI-powered assistant using RAG and NLP over XML platform configurations, letting support teams query enterprise configurations in natural language and removing dependency on implementation engineers post go-live.",
+      "tags": [
+        "XML",
+        "RAG",
+        "NLP",
+        "Internal tooling"
+      ],
+      "url": null
+    },
+    {
+      "name": "FM Engine",
+      "icon": "FM",
+      "variant": "v1",
+      "type": "WhatsApp-First CMMS",
+      "description": "Zero-training facility management platform. Residents report maintenance issues via WhatsApp, and an LLM (Gemini Flash) triages informal chat messages into structured service requests via Twilio integration. Multi-tenant architecture on Supabase and Vercel Edge.",
+      "tags": [
+        "React 19",
+        "Supabase",
+        "Gemini Flash",
+        "Twilio",
+        "Vercel Edge"
+      ],
+      "url": "https://codeat32-7.github.io/FM-Engine-Summary/"
+    },
+    {
+      "name": "Parabls",
+      "icon": "PB",
+      "variant": "v2",
+      "type": "Conversational AI Job Platform",
+      "description": "AI-driven conversation-first job search built with React, Node.js, TypeScript, and OpenAI. Zero-form onboarding via AI chat generates profiles and ATS-optimised resumes, with Adzuna API integration, narrative-based fit scores, and transparent application tracking.",
+      "tags": [
+        "React",
+        "Node.js",
+        "OpenAI",
+        "Adzuna API",
+        "TypeScript"
+      ],
+      "url": "https://www.parabls.com/"
+    },
+    {
+      "name": "FAAX",
+      "icon": "FX",
+      "variant": "v4",
+      "type": "AI-Assisted Options Trading Platform",
+      "description": "Users define structured trading blueprints, and real-time AI monitors conditions, generates setups, and drafts trades for human approval, bridging raw trading interfaces and disciplined strategy-driven execution.",
+      "tags": [
+        "Strategy blueprinting",
+        "Real-time AI",
+        "Risk management",
+        "Human-in-loop"
+      ],
+      "url": null
+    }
+  ],
+  "skills": [
+    {
+      "title": "Technical",
+      "color": "accent",
+      "items": [
+        "API integrations",
+        "SaaS configuration & system integration",
+        "Prompt engineering & LLM tooling",
+        "JavaScript-like UI scripting",
+        "Supabase · React · Tailwind"
+      ]
+    },
+    {
+      "title": "Tools & Workflow",
+      "color": "teal",
+      "items": [
+        "Postman · Primitive",
+        "System integration & API tooling",
+        "Vercel · GitHub · CLI tools",
+        "Notion / Jira / project tracking",
+        "AI-enhanced documentation workflows"
+      ]
+    },
+    {
+      "title": "Implementation & Delivery",
+      "color": "accent",
+      "items": [
+        "End-to-end SaaS implementation",
+        "UAT design & go-live support",
+        "Project planning & WBS",
+        "SOP development & standardisation",
+        "CMMS / facility tech expertise"
+      ]
+    },
+    {
+      "title": "Business Analysis",
+      "color": "teal",
+      "items": [
+        "Requirements gathering (BRD)",
+        "Solution design & scoping",
+        "Stakeholder workshop facilitation",
+        "Process improvement & gap analysis",
+        "Complexity scoring & effort models"
+      ]
+    },
+    {
+      "title": "Client & Account Management",
+      "color": "amber",
+      "items": [
+        "Executive stakeholder engagement",
+        "Cross-functional team leadership",
+        "Post-go-live relationship management",
+        "Change management & adoption",
+        "Revenue tracking & PS billing"
+      ]
+    }
+  ],
+  "summary": "Implementation lead with 5+ years delivering 20 enterprise SaaS/CMMS rollouts across the UK, US, and Middle East, owning the full lifecycle from scoping through post-go-live. Hands-on with SaaS configuration, API integrations (polling vs webhook patterns, Postman validation), and SSO. Builds AI-native tools using LLMs, RAG, and prompt engineering, and translates technical concepts for engineers, product teams, and executives."
+}
