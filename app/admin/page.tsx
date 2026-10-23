@@ -1,5 +1,6 @@
 'use client';
 
+import { CLAUDE_MODELS } from '@/lib/models';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import ProfileTabs from './_components/ProfileTabs';
 import JDForm from './_components/JDForm';
@@ -214,6 +215,7 @@ function PublishedView({ url, isLive, onViewPage, onCreateAnother, onViewProfile
 
 export default function AdminPage() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [model, setModel] = useState<string>(CLAUDE_MODELS[0].id);
   const [password, setPassword] = useState('');
   const [storedPassword, setStoredPassword] = useState('');
   const [registry, setRegistry] = useState<Record<string, RegistryEntry>>({});
@@ -344,6 +346,18 @@ export default function AdminPage() {
     }
   };
 
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('resume-model');
+      if (saved && CLAUDE_MODELS.some((m) => m.id === saved)) setModel(saved);
+    } catch {}
+  }, []);
+
+  const handleModelChange = (id: string) => {
+    setModel(id);
+    try { localStorage.setItem('resume-model', id); } catch {}
+  };
+
   // --- Wizard handlers ---
 
   const handleStartTailoring = async () => {
@@ -362,6 +376,7 @@ export default function AdminPage() {
           companyName: intakeData.companyName,
           jobDescription: intakeData.jobDescription,
           roleLabel: intakeData.roleLabel || undefined,
+          model,
         }),
         signal: controller.signal,
       });
@@ -404,6 +419,7 @@ export default function AdminPage() {
           companyName: intakeData.companyName,
           roleLabel: intakeData.roleLabel || undefined,
           instruction: adaptInstruction,
+          model,
         }),
         signal: controller.signal,
       });
@@ -756,6 +772,8 @@ export default function AdminPage() {
                       setWizardPhase({ phase: 'intake', step: 'url' });
                     }
                   }}
+                  model={model}
+                  onModelChange={handleModelChange}
                   onStartTailoring={handleStartTailoring}
                   onEnterManually={() => setWizardPhase({ phase: 'intake', step: 'company' })}
                   onAdaptExisting={() => setWizardPhase({ phase: 'intake', step: 'select-source' })}

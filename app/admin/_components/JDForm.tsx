@@ -1,5 +1,7 @@
 'use client';
 
+import { CLAUDE_MODELS } from '@/lib/models';
+
 interface RegistryEntry {
   company: string;
   created: string;
@@ -33,13 +35,30 @@ interface JDFormProps {
   adaptInstruction: string;
   onAdaptInstructionChange: (val: string) => void;
   onStartAdapt: () => void;
+  model: string;
+  onModelChange: (id: string) => void;
 }
 
 export default function JDForm({
   step, data, onDataChange, onNext, onBack, onStartTailoring,
   onEnterManually, onAdaptExisting, scrapeState, scrapeError, scrapeUrl, onScrapeUrlChange, onScrapeSubmit,
   registry, adaptSource, onAdaptSourceChange, adaptInstruction, onAdaptInstructionChange, onStartAdapt,
+  model, onModelChange,
 }: JDFormProps) {
+  const modelPicker = (
+    <div style={styles.field}>
+      <label style={{ ...styles.hint, display: 'block', marginBottom: 6 }}>AI model</label>
+      <select
+        value={model}
+        onChange={(e) => onModelChange(e.target.value)}
+        style={{ ...styles.textarea, padding: '10px 12px', width: '100%', resize: 'none' }}
+      >
+        {CLAUDE_MODELS.map((m) => (
+          <option key={m.id} value={m.id}>{m.label} — {m.hint}</option>
+        ))}
+      </select>
+    </div>
+  );
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -191,6 +210,7 @@ export default function JDForm({
             />
             <p style={styles.hint}>I&apos;ll analyze this and tailor your resume to match.</p>
           </div>
+          {modelPicker}
           <button
             onClick={onStartTailoring}
             disabled={!data.jobDescription.trim()}
@@ -330,6 +350,7 @@ export default function JDForm({
               </div>
             </div>
 
+            {modelPicker}
             <button
               onClick={onStartAdapt}
               disabled={!canStart}
@@ -390,6 +411,7 @@ export default function JDForm({
             </div>
           </div>
 
+          {modelPicker}
           <button
             onClick={onStartTailoring}
             disabled={!data.companyName.trim() || !data.jobDescription.trim()}
