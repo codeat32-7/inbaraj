@@ -29,12 +29,13 @@
     "Enterprise onboarding & go-live",
     "Integration design (ADP, Salesforce, ServiceNow)",
     "AI agent design & knowledge bases",
-    "Solution architecture"
+    "Solution architecture",
+    "Integrations: Salesforce · ServiceNow · ADP · iPaaS",
+    "AI agents & knowledge bases (Supermemory)"
   ],
   "metrics": [
     "$4.1M+",
     "Nearly $1M",
-    "$230K",
     "4",
     "20",
     "~50 per day",
@@ -42,12 +43,14 @@
     "$350K+",
     "5 years",
     "5+",
-    "~$450K",
-    "~$300K",
     "10",
     "30",
     "95%",
-    "10 integrations"
+    "10 integrations",
+    "5",
+    "Facilio 20",
+    "Rocketlane 10",
+    "$230K"
   ],
   "companies": [
     "Rocketlane",
@@ -107,7 +110,7 @@
   ],
   "bullets": [
     "Led end-to-end onboarding for enterprise customers on Rocketlane's professional services automation platform — discovery, solution design, configuration, integrations, and go-live.",
-    "Delivered 10 customer implementations (~$450K combined ARR), acting as implementation manager, solution architect, and engagement manager on nine of them.",
+    "Delivered 10 customer implementations, acting as implementation manager, solution architect, and engagement manager on nine of them.",
     "Built Atlas, an AI knowledge agent that turns customer calls and tickets into reusable, approved implementation solutions the whole team can search.",
     "Part of the internal Customer Zero team for Rocketlane's Nitro AI agent platform — beta-testing agents, giving product feedback, and driving adoption across Professional Services.",
     "Spearheaded 20 end-to-end enterprise CMMS/SaaS rollouts for mid-to-large clients — full lifecycle ownership from scoping through post-go-live support.",
@@ -133,7 +136,7 @@
     "Implementation managers solved problems in silos with no shared record of how use cases were solved. Built Atlas (Lovable app + Anthropic-hosted agent) that ingests customer call transcripts, Freshdesk tickets, Slack, Notion, and Rocketlane project data, and drafts use cases and solutions grounded in a Supermemory knowledge base of docs.",
     "Managers approve or revise generated use cases; approved solutions are saved back to Supermemory and re-validated against current docs and internal channels at query time, so retired features are flagged and replaced with the current approach.",
     "Thumbs-up answers feed a cache served at 95%+ relevance; thumbs-down answers are classified (data miss vs. context miss) by a validator agent and queued for admin review to add or remove channels or tune skills.",
-    "Solution architect and implementation manager for a 10-integration phase: ADP (time off, time entries), SatMetrix (surveys and scores), ServiceNow ticketing, and Salesforce (risk management and partner resource requests), plus custom applications surfacing ServiceNow tickets against projects and customers. ~$300K ARR account.",
+    "Solution architect and implementation manager for a 10-integration phase: ADP (time off, time entries), SatMetrix (surveys and scores), ServiceNow ticketing, and Salesforce (risk management and partner resource requests), plus custom applications surfacing ServiceNow tickets against projects and customers.",
     "Built Nitro agents across implementation stages to generate sales-to-implementation handover documents, kickoff decks, solution documents, workshop schedules, and implementation-to-CS handoffs.",
     "Conceptualized a use-case-driven implementation framework with complexity scoring and effort models — enabling pre-sales to scope accurately, auto-calculate timelines, and cut BRD/UAT ambiguity.",
     "Identified unaccounted scope-change efforts and built a tracking mechanism. Collaborated with Sales to introduce pre-purchased Professional Services credits — converting informal changes into billable units.",

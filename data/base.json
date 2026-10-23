@@ -1,7 +1,7 @@
 {
   "personal": {
     "name": "Inbaraj B",
-    "title": "Implementation Lead",
+    "title": "AI Implementation Manager",
     "location": "Chennai, India",
     "email": "inbarajb91@gmail.com",
     "phone": "+91 7200108575",
@@ -16,7 +16,7 @@
   "hero": {
     "tag": "Open to opportunities \u00b7 Chennai, India",
     "headline": "Implementation <em>lead</em> who builds what he deploys",
-    "description": "30 enterprise SaaS rollouts across the UK, US, and Middle East. 5 years bridging business requirements and technical execution \u2014 on-site and remote. Now building AI-native tools that solve the problems I\u2019ve lived through.",
+    "description": "30 SaaS implementations across the UK, US, and Middle East. 5 years bridging business requirements and technical execution — on-site and remote. Now building AI agents that make implementation faster and repeatable.",
     "badges": [
       { "text": "Business Analysis", "variant": "ba" },
       { "text": "Implementation", "variant": "impl" },
@@ -25,10 +25,10 @@
     ]
   },
   "stats": [
-    { "value": "$4.1M+", "label": "Total contract value delivered", "sub": "UK \u00b7 US \u00b7 Middle East", "color": "purple" },
-    { "value": "Nearly $1M", "label": "Implementation & expansion value", "sub": "Core rollouts + pilot conversions + CRs", "color": "cs" },
-    { "value": "$230K", "label": "Monthly savings driven", "sub": "Amazon \u00b7 defect prioritisation framework", "color": "teal" },
-    { "value": "4", "label": "AI-powered products built & shipped", "sub": "FM Engine \u00b7 Parabls \u00b7 AI Config Assistant \u00b7 FAAX", "color": "teal" }
+    { "value": "$4.1M+", "label": "Total contract value delivered", "sub": "Facilio \u00b7 UK \u00b7 US \u00b7 Middle East", "color": "purple" },
+    { "value": "Nearly $1M", "label": "Implementation & expansion value", "sub": "Facilio \u00b7 core rollouts + pilot conversions + CRs", "color": "cs" },
+    { "value": "30", "label": "Customer implementations delivered", "sub": "Facilio 20 \u00b7 Rocketlane 10", "color": "teal" },
+    { "value": "5", "label": "AI-powered products built & shipped", "sub": "Atlas \u00b7 FM Engine \u00b7 Parabls \u00b7 AI Config Assistant \u00b7 FAAX", "color": "teal" }
   ],
   "experience": [
     {
@@ -38,7 +38,7 @@
       "title": "AI Implementation Manager",
       "bullets": [
         "Led end-to-end onboarding for enterprise customers on Rocketlane's professional services automation platform — discovery, solution design, configuration, integrations, and go-live.",
-        "Delivered 10 customer implementations (~$450K combined ARR), acting as implementation manager, solution architect, and engagement manager on nine of them.",
+        "Delivered 10 customer implementations, acting as implementation manager, solution architect, and engagement manager on nine of them.",
         "Built Atlas, an AI knowledge agent that turns customer calls and tickets into reusable, approved implementation solutions the whole team can search.",
         "Part of the internal Customer Zero team for Rocketlane's Nitro AI agent platform — beta-testing agents, giving product feedback, and driving adoption across Professional Services."
       ],
@@ -60,7 +60,7 @@
         },
         {
           "label": "NICE (Phase 2)",
-          "text": "Solution architect and implementation manager for a 10-integration phase: ADP (time off, time entries), SatMetrix (surveys and scores), ServiceNow ticketing, and Salesforce (risk management and partner resource requests), plus custom applications surfacing ServiceNow tickets against projects and customers. ~$300K ARR account.",
+          "text": "Solution architect and implementation manager for a 10-integration phase: ADP (time off, time entries), SatMetrix (surveys and scores), ServiceNow ticketing, and Salesforce (risk management and partner resource requests), plus custom applications surfacing ServiceNow tickets against projects and customers.",
           "color": "green"
         },
         {
@@ -183,7 +183,9 @@
         "JavaScript-like UI scripting",
         "API integrations",
         "Supabase \u00b7 React \u00b7 Tailwind",
-        "Prompt engineering & LLM tooling"
+        "Prompt engineering & LLM tooling",
+        "Integrations: Salesforce · ServiceNow · ADP · iPaaS",
+        "AI agents & knowledge bases (Supermemory)"
       ]
     },
     {
@@ -219,9 +221,9 @@
   },
   "contact": {
     "heading": "I\u2019m looking for my <em>next challenge</em>",
-    "description": "Targeting roles in implementation leadership, business analysis, or account management \u2014 ideally at a company where enterprise depth meets product thinking.",
+    "description": "Targeting roles in AI-enabled implementation, solutions consulting, business analysis, or account management — ideally at a company where enterprise depth meets product thinking.",
     "subtext": "Based in Chennai. Available for hybrid or remote roles."
   },
-  "summary": "Implementation lead with 5+ years delivering 30 enterprise SaaS rollouts across the UK, US, and Middle East \u2014 full lifecycle ownership from scoping through post-go-live. Expert at translating complex business requirements into working SaaS configurations and measurable outcomes. Now building AI-native tools that solve the operational problems I\u2019ve lived through firsthand.",
+  "summary": "Implementation leader with 5+ years delivering 30 SaaS implementations across the UK, US, and Middle East — 20 as Implementation Lead at Facilio and 10 as AI Implementation Manager at Rocketlane. Owns the full lifecycle from discovery and solution design through integrations and go-live. Hands-on with REST APIs, webhooks, SSO, and enterprise integrations (Salesforce, ServiceNow, ADP), and builds AI agents (Atlas, Nitro agents) that turn implementation knowledge into reusable, searchable solutions.",
   "footer": "Inbaraj B \u00b7 Chennai, India \u00b7 inbarajb91@gmail.com \u00b7 +91 7200108575"
 }

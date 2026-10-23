@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Inbaraj B — Implementation Lead & Builder',
+  title: 'Inbaraj B — AI Implementation Manager & Builder',
   description:
-    "20 enterprise SaaS rollouts across the UK, US, and Middle East. 5 years bridging business requirements and technical execution — on-site and remote. Now building AI-native tools that solve the problems I've lived through.",
+    "30 SaaS implementations across the UK, US, and Middle East. 5 years bridging business requirements and technical execution — on-site and remote. Now building AI agents that make implementation faster and repeatable.",
 };
 
 export default function RootLayout({
