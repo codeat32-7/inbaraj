@@ -727,7 +727,7 @@ export default function AdminPage() {
         {/* Base resume tab */}
         {activeTab === 'base' && (
           <div>
-            <ProfilePreview slug={null} password={storedPassword} />
+            <ProfilePreview slug={null} password={storedPassword} offset={32} />
           </div>
         )}
 
