@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 interface RegistryEntry {
   company: string;
   created: string;
@@ -18,11 +20,78 @@ export default function ProfileSidebar({ registry, activeTab, onTabChange }: Pro
     ([, a], [, b]) => (b.created || '').localeCompare(a.created || '')
   );
 
+  const [collapsed, setCollapsed] = useState(true);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem('studio-sidebar') === 'open') setCollapsed(false);
+    } catch {}
+  }, []);
+
+  const toggle = () => {
+    setCollapsed((c) => {
+      try { localStorage.setItem('studio-sidebar', c ? 'open' : 'closed'); } catch {}
+      return !c;
+    });
+  };
+
+  if (collapsed) {
+    return (
+      <aside
+        className="studio-sidebar"
+        style={{ ...styles.sidebar, width: 56, alignItems: 'center', padding: '1rem 0.4rem' }}
+      >
+        <button onClick={toggle} title="Expand sidebar" aria-label="Expand sidebar" style={styles.iconBtn}>
+          »
+        </button>
+        <button
+          onClick={() => onTabChange('create')}
+          title="New resume"
+          aria-label="New resume"
+          style={{
+            ...styles.iconBtn,
+            color: activeTab === 'create' ? '#0a0a0b' : '#2dd4a8',
+            background: activeTab === 'create' ? '#2dd4a8' : 'transparent',
+            border: '1px solid #2dd4a8',
+          }}
+        >
+          +
+        </button>
+        <button
+          onClick={() => onTabChange('base')}
+          title="Base Resume"
+          aria-label="Base Resume"
+          style={{ ...styles.iconBtn, ...(activeTab === 'base' ? styles.iconActive : {}) }}
+        >
+          B
+        </button>
+        <div style={styles.stripList}>
+          {profileEntries.map(([slug, entry]) => (
+            <button
+              key={slug}
+              onClick={() => onTabChange(slug)}
+              title={entry.company}
+              aria-label={entry.company}
+              style={{ ...styles.iconBtn, ...(activeTab === slug ? styles.iconActive : {}) }}
+            >
+              {(entry.company || '?').charAt(0).toUpperCase()}
+            </button>
+          ))}
+        </div>
+      </aside>
+    );
+  }
+
   return (
     <aside className="studio-sidebar" style={styles.sidebar}>
-      <div style={styles.brand}>
-        <div style={styles.brandName}>Resume Studio</div>
-        <div style={styles.brandSub}>Tailored resumes</div>
+      <div style={{ ...styles.brand, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <div style={styles.brandName}>Resume Studio</div>
+          <div style={styles.brandSub}>Tailored resumes</div>
+        </div>
+        <button onClick={toggle} title="Collapse sidebar" aria-label="Collapse sidebar" style={styles.collapseBtn}>
+          «
+        </button>
       </div>
 
       <button
@@ -82,6 +151,42 @@ const styles: Record<string, React.CSSProperties> = {
     boxSizing: 'border-box',
   },
   brand: { padding: '0 0.4rem' },
+  collapseBtn: {
+    background: 'transparent',
+    border: 'none',
+    color: '#70708a',
+    fontSize: '1.1rem',
+    cursor: 'pointer',
+    padding: '0 0.3rem',
+  },
+  iconBtn: {
+    width: 36,
+    height: 36,
+    flexShrink: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'transparent',
+    border: '1px solid transparent',
+    borderRadius: 8,
+    color: '#b0b0c0',
+    fontSize: '0.9rem',
+    fontFamily: "'DM Mono', monospace",
+    cursor: 'pointer',
+  },
+  iconActive: { background: '#1a1a1f', borderColor: '#7c6cfa', color: '#e8e8ec' },
+  stripList: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 6,
+    overflowY: 'auto',
+    minHeight: 0,
+    width: '100%',
+    marginTop: 6,
+    paddingTop: 10,
+    borderTop: '1px solid #2a2a30',
+  },
   brandName: {
     fontFamily: "'Spectral', serif",
     fontSize: '1.2rem',

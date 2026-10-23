@@ -727,12 +727,6 @@ export default function AdminPage() {
         {/* Base resume tab */}
         {activeTab === 'base' && (
           <div>
-            <div style={styles.sectionHeader}>
-              <h2 style={styles.sectionTitle}>Base Resume</h2>
-              <a href="/" target="_blank" rel="noopener" style={styles.linkBtn}>
-                View page ↗
-              </a>
-            </div>
             <ProfilePreview slug={null} password={storedPassword} />
           </div>
         )}
