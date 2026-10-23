@@ -56,7 +56,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily: "'DM Mono', monospace",
   },
   iframeWrap: {
-    height: 'calc(100vh - 260px)',
+    height: 'calc(100vh - 110px)',
     minHeight: 500,
     overflow: 'auto',
   },
