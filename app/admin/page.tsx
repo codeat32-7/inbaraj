@@ -2,7 +2,7 @@
 
 import { CLAUDE_MODELS } from '@/lib/models';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import ProfileTabs from './_components/ProfileTabs';
+import ProfileSidebar from './_components/ProfileSidebar';
 import JDForm from './_components/JDForm';
 import ProfilePreview from './_components/ProfilePreview';
 import GeneratedPreview from './_components/GeneratedPreview';
@@ -657,12 +657,20 @@ export default function AdminPage() {
   const inWizardPublished = activeTab === 'create' && wizardPhase.phase === 'published';
 
   return (
-    <div style={styles.container}>
-      <header style={styles.header}>
-        <h1 style={styles.title}>Resume Studio</h1>
-        <p style={styles.subtitle}>Create tailored resumes for specific companies</p>
-      </header>
+    <div className="studio-shell" style={styles.shell}>
+      <style>{`
+        @media (max-width: 800px) {
+          .studio-shell { flex-direction: column !important; }
+          .studio-sidebar { width: 100% !important; height: auto !important; max-height: 40vh; position: static !important; border-right: none !important; border-bottom: 1px solid #2a2a30; }
+        }
+      `}</style>
+      <ProfileSidebar
+        registry={registry}
+        activeTab={activeTab}
+        onTabChange={handleTabChange}
+      />
 
+      <main style={styles.main}>
       {message && (
         <div
           style={{
@@ -714,11 +722,6 @@ export default function AdminPage() {
         </div>
       )}
 
-      <ProfileTabs
-        registry={registry}
-        activeTab={activeTab}
-        onTabChange={handleTabChange}
-      />
 
       <div style={styles.content}>
         {/* Base resume tab */}
@@ -992,6 +995,7 @@ export default function AdminPage() {
           </div>
         )}
       </div>
+      </main>
     </div>
   );
 }
@@ -1109,33 +1113,17 @@ const styles: Record<string, React.CSSProperties> = {
     cursor: 'pointer',
     fontFamily: "'DM Sans', sans-serif",
   },
-  container: {
+  shell: {
+    display: 'flex',
     minHeight: '100vh',
     background: '#0a0a0b',
     color: '#e8e8ec',
     fontFamily: "'DM Sans', sans-serif",
-    padding: '1rem 2rem',
   },
-  header: {
-    display: 'flex',
-    alignItems: 'baseline',
-    gap: '1rem',
-    flexWrap: 'wrap',
-    marginBottom: '1rem',
-    paddingBottom: '0.75rem',
-    borderBottom: '1px solid #2a2a30',
-  },
-  title: {
-    fontFamily: "'Spectral', serif",
-    fontSize: '1.35rem',
-    fontWeight: 300,
-    color: '#e8e8ec',
-    margin: 0,
-  },
-  subtitle: {
-    fontSize: '0.8rem',
-    color: '#70708a',
-    margin: 0,
+  main: {
+    flex: 1,
+    minWidth: 0,
+    padding: '1rem 1.75rem',
   },
   toast: {
     padding: '0.5rem 0.9rem',
@@ -1146,13 +1134,13 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily: "'DM Mono', monospace",
   },
   content: {
-    marginTop: '1.5rem',
+    marginTop: 0,
   },
   sectionHeader: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: '1.5rem',
+    marginBottom: '0.75rem',
   },
   sectionTitle: {
     fontFamily: "'Spectral', serif",

@@ -32,7 +32,7 @@ app/
 ├── admin/
 │   ├── page.tsx                   # Admin dashboard (client component)
 │   └── _components/               # Admin sub-components
-│       ├── ProfileTabs.tsx        # Tab bar with profile dropdown
+│       ├── ProfileSidebar.tsx     # Left sidebar: new resume, base, tailored list
 │       ├── JDForm.tsx             # Job description input form
 │       ├── GeneratedPreview.tsx   # Formatted preview of AI output
 │       ├── EditablePreview.tsx    # Click-to-edit preview with AI assist
