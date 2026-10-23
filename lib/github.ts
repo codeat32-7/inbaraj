@@ -1,5 +1,5 @@
-const OWNER = 'inbarajb91-cloud';
-const REPO = 'inbaraj';
+const OWNER = process.env.GITHUB_OWNER || 'codeat32-7';
+const REPO = process.env.GITHUB_REPO || 'inbaraj';
 
 interface GitHubFileResponse {
   sha: string;
