@@ -15,8 +15,8 @@
   },
   "hero": {
     "tag": "Open to opportunities · Chennai, India",
-    "headline": "Implementation <em>lead</em> who builds what he deploys",
-    "description": "Five years running SaaS implementations end to end — enterprise CMMS rollouts across the UK, US, and Middle East at Facilio, and AI-first customer onboarding at Rocketlane. I turn messy requirements into working systems, and build the AI agents that make the next implementation faster.",
+    "headline": "Implementations that ship. <em>Agents</em> that scale them.",
+    "description": "I run SaaS implementations from discovery to go-live and solve the problems in between — $4.1M+ in contract value delivered across the UK, US, and Middle East at Facilio. At Rocketlane, I implement the platform and its Nitro AI for customers, integrate it with Salesforce, ServiceNow, and ADP, and build the AI agents our implementation team runs on.",
     "badges": [
       {
         "text": "AI Implementation",
@@ -38,12 +38,6 @@
   },
   "stats": [
     {
-      "value": "Atlas",
-      "label": "AI knowledge agent for implementation teams",
-      "sub": "Rocketlane · Claude agents · Supermemory",
-      "color": "teal"
-    },
-    {
       "value": "$4.1M+",
       "label": "Total contract value delivered",
       "sub": "Facilio · UK · US · Middle East",
@@ -56,10 +50,16 @@
       "color": "cs"
     },
     {
-      "value": "4",
-      "label": "AI products built & shipped on the side",
-      "sub": "FM Engine · Parabls · AI Config Assistant · FAAX",
+      "value": "Atlas",
+      "label": "AI knowledge agent for implementation teams",
+      "sub": "Rocketlane · Claude agents · Supermemory",
       "color": "teal"
+    },
+    {
+      "value": "Nitro",
+      "label": "AI agents across the implementation lifecycle",
+      "sub": "Handover · kickoff · workshops · design · UAT",
+      "color": "purple"
     }
   ],
   "experience": [
@@ -69,41 +69,42 @@
       "badge": "PSA · SaaS",
       "title": "AI Implementation Manager",
       "bullets": [
-        "Owned customer onboarding end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
-        "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
+        "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
+        "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
+        "Built the Nitro agents Rocketlane’s implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
         "Built Atlas, an AI agent that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
-        "Customer Zero for Nitro, Rocketlane’s agentic AI platform — built agents for implementation documents, tested them on live projects, fed findings back to product, and drove adoption across Professional Services."
+        "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce."
       ],
       "highlights": [
         {
-          "label": "Atlas · Why I built it",
+          "label": "Nitro · Agents the team runs on",
           "color": "purple",
-          "text": "Implementation managers solved customer use cases in isolation — how a problem had been solved lived in people’s heads and scattered documents. Atlas makes that knowledge searchable. Built as a Lovable app with Claude agents and custom skills, using Supermemory to index product docs, internal docs, and approved solutions so the agent retrieves only what is relevant."
+          "text": "Sales-to-implementation handover. Kickoff deck generation. Workshop planner that prepares each session and recaps it afterwards. Solution design document for every customer. UAT agent that writes test scripts and test cases from the design document, scope document, emails, and call transcripts. Form-to-Sheets agent that moves form responses into Rocketlane Sheets, so they can be reported on."
         },
         {
-          "label": "Atlas · Capture",
+          "label": "Nitro · Configuration agent (POC)",
           "color": "green",
-          "text": "After a customer call or ticket, an agent reads the call transcript, Freshdesk tickets, Slack threads, and project documents, lists the use cases discussed, and records the solution agreed — or proposes one from Rocketlane’s product docs when none was. The implementation manager approves or revises each one, and approved solutions are saved to the knowledge base."
+          "text": "Proof of concept, since validated by the product team. After every design document, native settings, notifications, and automations were configured by hand. Built a Nitro Workforce agent that reads the design document, works out the configuration needed, and uses Browserbase to open Rocketlane in a browser and enable settings and create automations itself."
         },
         {
-          "label": "Atlas · Answer",
+          "label": "Atlas · Why & how",
           "color": "purple",
-          "text": "When someone asks how a use case was solved, Atlas finds the approved solution and checks it against live sources — Notion, Slack, the Rocketlane instance, and current API docs — before answering. If a feature has since been retired, it explains how it was done then and how to do it now."
+          "text": "Implementation managers solved customer use cases in isolation — how a problem had been solved lived in people’s heads and scattered documents. Atlas makes that knowledge searchable: a Lovable app with Claude agents and custom skills, using Supermemory to index product docs, internal docs, and approved solutions so the agent retrieves only what is relevant."
         },
         {
-          "label": "Atlas · Learn",
+          "label": "Atlas · Capture & answer",
           "color": "green",
+          "text": "After a customer call or ticket, an agent reads the transcript, Freshdesk tickets, Slack threads, and project documents, and records the use cases and the solution agreed — or proposes one from product docs. The implementation manager approves or revises each one. When someone later asks how a use case was solved, Atlas checks the approved answer against live sources and flags features that have since been retired."
+        },
+        {
+          "label": "Atlas · Learns from feedback",
+          "color": "purple",
           "text": "Answers marked helpful are cached and returned for near-identical questions (95%+ match) without a new search. Answers marked wrong capture a reason; a validator agent classifies the failure, such as a data miss or a context miss, and queues it for an admin to fix the sources or the agent’s skills."
         },
         {
           "label": "NICE · Phase 2 integrations",
-          "color": "purple",
-          "text": "ADP for time off and time entries; SatMetrix to trigger customer surveys and write scores back to Rocketlane; ServiceNow for support tickets; Salesforce for two-way risk management and partner resource requests. Also built custom apps that show ServiceNow tickets against each project and customer."
-        },
-        {
-          "label": "Nitro · Implementation agents",
           "color": "green",
-          "text": "Mapped what could be automated at each implementation stage, then built Nitro agents to draft sales-to-implementation handovers, kickoff decks, solution documents, workshop schedules, and implementation-to-CS handoffs."
+          "text": "ADP for time off and time entries; SatMetrix to trigger customer surveys and write scores back to Rocketlane; ServiceNow for support tickets; Salesforce for two-way risk management and partner resource requests. Also built custom apps that show ServiceNow tickets against each project and customer."
         }
       ]
     },
@@ -113,41 +114,30 @@
       "badge": "CMMS · SaaS",
       "title": "Lead, Product Implementation",
       "bullets": [
-        "Spearheaded 20 end-to-end enterprise CMMS/SaaS rollouts for mid-to-large clients — full lifecycle ownership from scoping through post-go-live support.",
-        "Facilitated client workshops with executives and operational teams; translated requirements into BRDs, solution designs, and WBS-based project plans.",
-        "Engineered and tested SaaS configurations tailored to each client, driving adoption and smooth maintenance operations.",
-        "Acted as the internal voice of the customer — bridging clients with product, engineering, and design to drive continuous improvements."
+        "Led enterprise CMMS implementations for mid-to-large clients across the UK, US, and Middle East — $4.1M+ in total contract value and nearly $1M in implementation and expansion value.",
+        "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live.",
+        "Built a use-case-driven implementation framework with complexity scoring and effort models, so pre-sales could scope accurately and auto-calculate timelines."
       ],
       "highlights": [
         {
-          "label": "Key initiative",
-          "text": "Conceptualized a use-case-driven implementation framework with complexity scoring and effort models — enabling pre-sales to scope accurately, auto-calculate timelines, and cut BRD/UAT ambiguity.",
-          "color": "purple"
+          "label": "Global delivery",
+          "color": "purple",
+          "text": "On-site in Saudi Arabia for a half-million-dollar engagement and in the UK for MHA — requirement gathering, stakeholder workshops, and go-live training."
+        },
+        {
+          "label": "Pilot → enterprise",
+          "color": "green",
+          "text": "Converted pilots into full-scale enterprise rollouts through structured discovery and early value demonstration — $350K+ in expansion value."
         },
         {
           "label": "Revenue impact",
-          "text": "Identified unaccounted scope-change efforts and built a tracking mechanism. Collaborated with Sales to introduce pre-purchased Professional Services credits — converting informal changes into billable units.",
-          "color": "green"
+          "color": "purple",
+          "text": "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work."
         },
         {
-          "label": "Global delivery",
-          "text": "Travelled on-site to Saudi Arabia for a half-million dollar engagement and to the UK for MHA — field requirement gathering, stakeholder workshops, and go-live training across UK, US, and Middle East.",
-          "color": "purple"
-        },
-        {
-          "label": "Pilot → Enterprise conversions",
-          "text": "4 of 5 pilots converted to full-scale enterprise rollouts — through structured discovery, early value demonstration, and deep stakeholder alignment during the pilot phase, driving $350K+ in expansion value.",
-          "color": "green"
-        },
-        {
-          "label": "Business Analysis",
-          "text": "Owned the end-to-end requirements lifecycle — from scoping workshops with client stakeholders to documenting BRDs with solution designs. Worked cross-functionally with integration, product, and engineering teams to tailor configurations that best fit each client’s operational workflow.",
-          "color": "purple"
-        },
-        {
-          "label": "Integration & Configuration",
-          "text": "Scoped and defined integration requirements across SSO (SAML/SCIM) and third-party platforms including Xero, CorrigoPro, Equiem, Wooqer, Bill.com, SiteFotos, and SFG20. Validated API feasibility via Postman and vendor documentation, determined integration patterns (polling vs webhook), and authored integration requirement documents for the engineering team.",
-          "color": "purple"
+          "label": "Integrations",
+          "color": "green",
+          "text": "Scoped SSO (SAML/SCIM) and integrations with Xero, CorrigoPro, Equiem, Wooqer, Bill.com, SiteFotos, and SFG20 — validated APIs in Postman, chose polling vs webhook patterns, and wrote the specs for engineering."
         }
       ]
     },
@@ -166,34 +156,19 @@
   ],
   "projects": [
     {
-      "name": "FM Engine",
-      "icon": "FM",
+      "name": "Atlas",
+      "icon": "AT",
       "variant": "v1",
-      "type": "WhatsApp-First CMMS",
-      "description": "Zero-training facility management platform. Residents report maintenance issues via WhatsApp — informal chat messages triaged into structured professional service requests. Multi-tenant architecture.",
+      "type": "AI Knowledge Agent",
+      "description": "Captures how every customer use case was solved — from call transcripts, tickets, Slack, and project docs — with a human approving each answer. Answers are checked against live sources so retired features don’t resurface, and user feedback trains the cache and a validator agent.",
       "tags": [
-        "React 19",
-        "Supabase",
-        "Gemini Flash",
-        "Twilio",
-        "Vercel Edge"
+        "Claude agents",
+        "Supermemory",
+        "Lovable",
+        "RAG",
+        "Human-in-loop"
       ],
-      "url": "https://codeat32-7.github.io/FM-Engine-Summary/"
-    },
-    {
-      "name": "Parabls",
-      "icon": "PB",
-      "variant": "v2",
-      "type": "Conversational AI Job Platform",
-      "description": "AI-driven “conversation-first” job search. Zero-form onboarding via AI chat generates profiles and ATS-optimised resumes. Narrative-based fit scores and transparent application tracking.",
-      "tags": [
-        "React",
-        "Node.js",
-        "OpenAI",
-        "Adzuna API",
-        "TypeScript"
-      ],
-      "url": "https://www.parabls.com/"
+      "url": null
     },
     {
       "name": "AI Config Assistant",
@@ -273,11 +248,11 @@
       "title": "AI & Tooling",
       "color": "teal",
       "items": [
-        "AI agents & skills (Claude)",
+        "AI agents & skills (Claude, Nitro)",
         "Knowledge bases & RAG (Supermemory)",
+        "Browser automation (Browserbase)",
         "Prompt engineering",
-        "Lovable · Vercel · GitHub",
-        "Notion / Jira / project tracking"
+        "Lovable · Vercel · GitHub"
       ]
     }
   ],
@@ -314,6 +289,6 @@
     "description": "Targeting roles in AI-enabled implementation, solutions consulting, business analysis, or account management — ideally at a company where enterprise depth meets product thinking.",
     "subtext": "Based in Chennai. Available for hybrid or remote roles."
   },
-  "summary": "Implementation leader with 5+ years owning SaaS implementations end to end — as AI Implementation Manager at Rocketlane and Implementation Lead at Facilio, for customers across the UK, US, and Middle East. Runs discovery, solution design, configuration, integrations, and go-live. Hands-on with REST APIs, webhooks, SSO, and integrations with Salesforce, ServiceNow, and ADP. Builds AI agents, like Atlas, that capture how each implementation problem was solved and make that knowledge reusable across the team.",
+  "summary": "Implementation leader who owns SaaS implementations from discovery to go-live and builds the AI agents that make them repeatable. At Rocketlane, implements the platform and its Nitro agentic AI for customers, leads enterprise integrations with Salesforce, ServiceNow, and ADP, and built Atlas and the Nitro agents the implementation team runs on. At Facilio, led enterprise CMMS rollouts across the UK, US, and Middle East — $4.1M+ in total contract value and nearly $1M in implementation and expansion value.",
   "footer": "Inbaraj B · Chennai, India · inbarajb91@gmail.com · +91 7200108575"
 }
