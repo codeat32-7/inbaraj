@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "company": "DevRev",
+    "created": "2026-10-26",
+    "active": true
+  },
+  "hero": {
+    "headline": "Enterprise Solution Architecture and<br><em>Agent-Based AI Transformation</em>",
+    "description": "Customer-embedded implementation leader who runs discovery, designs solutions, and architects integrations for enterprise SaaS customers, then builds the AI agents that make delivery repeatable. Experienced in turning customer requirements into actionable designs, designing agents and skills around each customer's use cases, and delivering on-site workshops and go-lives across the UK, US, and Middle East."
+  },
+  "experience": [
+    {
+      "period": "May 2026 — Present",
+      "company": "Rocketlane",
+      "badge": "PSA · SaaS",
+      "title": "AI Implementation Manager",
+      "bullets": [
+        "Implement Nitro, Rocketlane's agentic AI platform, for customers, designing and deploying agents around each customer's own use cases.",
+        "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
+        "Built the Nitro agents Rocketlane's implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
+        "Built Atlas, an AI knowledge system that records how each customer's use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
+        "Own customer implementations end to end on Rocketlane's professional services automation platform (discovery, solution design, configuration, integrations, and go-live) as implementation manager, solution architect, and engagement manager."
+      ],
+      "highlights": [
+        {
+          "label": "Nitro · Agents the team runs on",
+          "text": "Sales-to-Implementation Handover: Streamlines the transition from sales to implementation.\nKickoff Deck Generator: Generates customer kickoff presentations.\nWorkshop Planner: Prepares workshop sessions and generates post-session recaps.\nSolution Design Agent: Generates solution design documents for each customer.\nUAT Agent: Creates test scripts and test cases from design documents, scope documents, emails, and call transcripts.\nForm-to-Sheets Agent: Transfers form responses into Rocketlane Sheets for reporting.",
+          "color": "purple"
+        },
+        {
+          "label": "Atlas · AI Implementation Knowledge System",
+          "text": "Knowledge Capture: Extracts customer use cases, requirements, and discussed solutions from Avoma call transcripts and Freshdesk tickets.\nAI-Powered Solution Generation: Uses product documentation and relevant knowledge to propose solutions when none were discussed, keeping proposed approaches distinct from agreed solutions.\nHuman-in-the-Loop Approval: Implementation Managers review, approve, or revise generated use cases and solutions before they become reusable knowledge.\nSearchable Knowledge Base: Built with Lovable, Anthropic-hosted and backend agents, and Supermemory to retrieve relevant approved solutions without loading the entire documentation corpus into the LLM.\nCurrent-State Validation: Checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\nFeedback & Continuous Improvement: Caches repeat answers when relevance is 95% or higher, captures user ratings, and uses a validator agent to classify incorrect answers and route them to an admin review queue.",
+          "color": "purple",
+          "wide": true
+        },
+        {
+          "label": "Nitro · Configuration agent (POC)",
+          "text": "Problem: Native settings, notifications, and automations were configured manually after every design document.\nSolution: Built a Nitro Workforce agent that reads design documents and determines the required configuration.\nBrowser Automation: Uses Browserbase to navigate Rocketlane, configure settings, and create automations.\nValidation: Proof of concept subsequently validated by the product team.",
+          "color": "green"
+        }
+      ]
+    },
+    {
+      "period": "Nov 2021 — May 2026",
+      "company": "Facilio",
+      "badge": "CMMS · SaaS",
+      "title": "Lead, Product Implementation",
+      "bullets": [
+        "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live.",
+        "Led enterprise CMMS implementations for mid-to-large clients across the UK, US, and Middle East, with $4.1M+ in total contract value and nearly $1M in implementation and expansion value."
+      ],
+      "highlights": [
+        {
+          "label": "Key initiative",
+          "text": "Built a use-case-driven implementation framework with complexity scoring and effort models — so pre-sales could scope accurately, auto-calculate timelines, and cut BRD and UAT ambiguity.",
+          "color": "purple"
+        },
+        {
+          "label": "Global delivery",
+          "text": "On-site in Saudi Arabia for a half-million-dollar engagement and in the UK for MHA — requirement gathering, stakeholder workshops, and go-live training.",
+          "color": "purple"
+        },
+        {
+          "label": "Pilot → Enterprise conversions",
+          "text": "Converted pilots into full-scale enterprise rollouts through structured discovery and early value demonstration — $350K+ in expansion value.",
+          "color": "green"
+        },
+        {
+          "label": "Revenue impact",
+          "text": "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work.",
+          "color": "green"
+        }
+      ]
+    },
+    {
+      "period": "May 2016 — Oct 2021",
+      "company": "Amazon",
+      "badge": "E-Commerce · Ops",
+      "title": "Senior Catalog Specialist",
+      "bullets": [
+        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views, yielding an estimated $230K in monthly savings.",
+        "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day.",
+        "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now, directly improving operational efficiency."
+      ],
+      "highlights": []
+    }
+  ],
+  "projects": [
+    {
+      "name": "Atlas",
+      "icon": "AT",
+      "variant": "v1",
+      "type": "AI Implementation Knowledge System",
+      "description": "Reusable AI solution knowledge built from customer calls, tickets, Slack, and project docs, with human approval of every solution. Answers are checked against current product knowledge so retired features don't resurface, and answers marked wrong are classified by a validator agent and routed to an admin review queue.",
+      "tags": [
+        "Claude agents",
+        "Supermemory",
+        "Lovable",
+        "RAG",
+        "Human-in-loop"
+      ],
+      "url": null
+    },
+    {
+      "name": "AI Config Assistant",
+      "icon": "AI",
+      "variant": "v3",
+      "type": "Enterprise Support Tool",
+      "description": "AI-powered assistant that lets support teams query enterprise platform configurations in natural language, removing the dependency on implementation engineers after go-live.",
+      "tags": [
+        "XML",
+        "RAG",
+        "NLP",
+        "Internal tooling"
+      ],
+      "url": null
+    },
+    {
+      "name": "FAAX",
+      "icon": "FX",
+      "variant": "v4",
+      "type": "AI-Assisted Options Trading Platform",
+      "description": "Agent-based platform where users define structured trading blueprints. AI monitors conditions, generates setups, and drafts trades for human approval, with risk management built in.",
+      "tags": [
+        "Strategy blueprinting",
+        "Real-time AI",
+        "Risk management",
+        "Human-in-loop"
+      ],
+      "url": null
+    }
+  ],
+  "skills": [
+    {
+      "title": "AI & Agent Solutioning",
+      "color": "teal",
+      "items": [
+        "AI agents & skills (Claude, Nitro)",
+        "Knowledge bases & RAG (Supermemory)",
+        "Browser automation (Browserbase)",
+        "Prompt engineering",
+        "Lovable · Vercel · GitHub"
+      ]
+    },
+    {
+      "title": "Integrations & Technical",
+      "color": "accent",
+      "items": [
+        "Integration Architecture: REST APIs, webhooks, and event-driven integrations",
+        "Integration Platforms: iPaaS tools such as Workato and Zapier for custom integrations and workflow automation",
+        "Enterprise SaaS Integrations: Salesforce, HubSpot, Sage, SuccessFactors, ADP, ServiceNow, SatMetrix, and Fathom",
+        "Facilities & Operations Systems: Xero, CorrigoPro, Equiem, Wooqer, Bill.com, and Facilio ecosystem integrations",
+        "SaaS Configuration & Customization: Platform configuration, JavaScript-based UI scripting, and workflow automation"
+      ]
+    },
+    {
+      "title": "Implementation & Delivery",
+      "color": "accent",
+      "items": [
+        "End-to-end SaaS implementation",
+        "Discovery & solution design",
+        "Project planning & WBS",
+        "UAT design & go-live support",
+        "SOP development & standardisation"
+      ]
+    },
+    {
+      "title": "Business Analysis",
+      "color": "teal",
+      "items": [
+        "Requirements gathering (BRD)",
+        "Stakeholder workshop facilitation",
+        "Complexity scoring & effort models",
+        "Process improvement & gap analysis",
+        "Domains: CMMS / facilities · PSA"
+      ]
+    },
+    {
+      "title": "Client & Account Management",
+      "color": "amber",
+      "items": [
+        "Executive stakeholder engagement",
+        "Cross-functional team leadership",
+        "Change management & adoption",
+        "Revenue tracking & PS billing",
+        "Post-go-live relationship management"
+      ]
+    }
+  ],
+  "summary": "Solution architect and implementation leader who owns enterprise SaaS engagements from discovery to go-live and designs the AI agents that make them reusable. At Rocketlane, implements the Nitro agentic AI platform around each customer's own use cases, architects enterprise integrations with Salesforce, ServiceNow, ADP, and SatMetrix, and built Atlas and the Nitro agents the implementation team runs on. At Facilio, led enterprise CMMS rollouts across the UK, US, and Middle East, with $4.1M+ in total contract value and nearly $1M in implementation and expansion value.",
+  "customSections": [
+    {
+      "id": "fit-ai-strategy",
+      "title": "Customer-Facing Architecture & Delivery",
+      "position": "after:skills",
+      "items": [
+        "Agent architecture: Designed and deployed Nitro agents around each customer's own use cases, and built the agents Rocketlane's implementation team runs across the project lifecycle.",
+        "Enterprise integrations: Solution architect for NICE Phase 2, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
+        "Reusability: Built Atlas to capture approved solutions for reuse across implementations, and a use-case-driven framework at Facilio with complexity scoring and effort models.",
+        "Pre-sales support: Framework let pre-sales scope accurately and auto-calculate timelines, and cut BRD and UAT ambiguity.",
+        "On-site delivery: Workshops, requirement gathering, and go-live training on-site in Saudi Arabia and the UK.",
+        "Business outcomes: $4.1M+ total contract value delivered, nearly $1M in implementation and expansion value, and $350K+ in pilot-to-enterprise expansion."
+      ]
+    }
+  ]
+}
