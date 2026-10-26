@@ -296,7 +296,14 @@ export default function ResumePrint({ data }: ResumePrintProps) {
                                   .filter((line) => line.trim())
                                   .map((line, k) => (
                                     <li key={k} style={{ marginBottom: '1px' }}>
-                                      {line.trim()}
+                                      {line.includes(': ') ? (
+                                        <>
+                                          <strong>{line.slice(0, line.indexOf(': ') + 1).trim()}</strong>
+                                          {line.slice(line.indexOf(': ') + 1)}
+                                        </>
+                                      ) : (
+                                        line.trim()
+                                      )}
                                     </li>
                                   ))}
                               </ul>

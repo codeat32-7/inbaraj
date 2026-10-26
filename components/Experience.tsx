@@ -34,7 +34,16 @@ export default function Experience({ experience }: ExperienceProps) {
                           .split('\n')
                           .filter((line) => line.trim())
                           .map((line, k) => (
-                            <li key={k}>{line.trim()}</li>
+                            <li key={k}>
+                              {line.includes(': ') ? (
+                                <>
+                                  <strong>{line.slice(0, line.indexOf(': ') + 1).trim()}</strong>
+                                  {line.slice(line.indexOf(': ') + 1)}
+                                </>
+                              ) : (
+                                line.trim()
+                              )}
+                            </li>
                           ))}
                       </ul>
                     ) : (
