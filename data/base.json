@@ -84,7 +84,7 @@
         {
           "label": "Nitro · Configuration agent (POC)",
           "color": "green",
-          "text": "Problem: native settings, notifications, and automations were configured by hand after every design document\nNitro Workforce agent reads the design document and works out the configuration needed\nUses Browserbase to open Rocketlane in a browser and apply settings and automations itself\nProof of concept, validated by the product team"
+          "text": "Problem: native settings, notifications, and automations had to be configured manually in the platform after every design document\nNitro Workforce agent reads the design document and works out the configuration needed\nUses Browserbase to open Rocketlane in a browser and apply settings and automations itself\nProof of concept, validated by the product team"
         },
         {
           "label": "Atlas · Why & how",
