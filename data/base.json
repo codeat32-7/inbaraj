@@ -179,7 +179,8 @@
         "Risk management",
         "Human-in-loop"
       ],
-      "url": null
+      "url": null,
+      "printHidden": true
     }
   ],
   "skills": [

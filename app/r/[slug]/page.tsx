@@ -47,5 +47,5 @@ export default async function ProfilePage({
   const base = loadBase();
   const data = mergeResume(base, profile);
 
-  return <ResumeLayout data={data} isolated />;
+  return <ResumeLayout data={data} isolated profileSlug={slug} />;
 }

@@ -55,6 +55,8 @@ export interface Project {
   description: string;
   tags: string[];
   url: string | null;
+  /** Omit from the PDF (still shown on the web page). */
+  printHidden?: boolean;
 }
 
 export interface SkillGroup {

@@ -15,9 +15,10 @@ import ScrollReveal from '@/components/ScrollReveal';
 interface ResumeLayoutProps {
   data: ResumeData;
   isolated?: boolean;
+  profileSlug?: string;
 }
 
-export default function ResumeLayout({ data, isolated }: ResumeLayoutProps) {
+export default function ResumeLayout({ data, isolated, profileSlug }: ResumeLayoutProps) {
   const customSections = data.customSections || [];
 
   const renderCustomSections = (position: string) =>
@@ -79,7 +80,7 @@ export default function ResumeLayout({ data, isolated }: ResumeLayoutProps) {
 
       <ScrollReveal />
       <FabDownloadButton />
-      <ResumePrint data={data} />
+      <ResumePrint data={data} profileSlug={profileSlug} />
     </>
   );
 }

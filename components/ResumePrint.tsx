@@ -3,9 +3,10 @@ import { sanitizeInlineHtml } from '@/lib/sanitize';
 
 interface ResumePrintProps {
   data: ResumeData;
+  profileSlug?: string;
 }
 
-export default function ResumePrint({ data }: ResumePrintProps) {
+export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
   const { personal, stats, summary, experience, projects, skills, education, customSections } = data;
 
   const colorMap: Record<string, string> = {
@@ -82,7 +83,12 @@ export default function ResumePrint({ data }: ResumePrintProps) {
             <span style={{ marginRight: '18px' }}>{personal.email}</span>
             <span style={{ marginRight: '18px' }}>{personal.phone}</span>
             <span style={{ marginRight: '18px' }}>{personal.linkedin}</span>
-            <span>{personal.website}</span>
+            <a
+              href={`https://www.inbaraj.info${profileSlug ? `/r/${profileSlug}` : ''}`}
+              style={{ color: 'inherit', textDecoration: 'none' }}
+            >
+              {personal.website}
+            </a>
           </div>
         </div>
 
@@ -323,7 +329,7 @@ export default function ResumePrint({ data }: ResumePrintProps) {
         )}
 
         {/* PROJECTS */}
-        {projects && (
+        {projects && projects.some((p) => !p.printHidden) && (
           <div style={{ marginBottom: '14px' }}>
             <div
               style={{
@@ -343,7 +349,7 @@ export default function ResumePrint({ data }: ResumePrintProps) {
               Projects
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {projects.map((project, i) => {
+              {projects.filter((p) => !p.printHidden).map((project, i) => {
                 const pc = projectColorMap[project.variant] || projectColorMap.v1;
                 return (
                   <div
@@ -451,35 +457,64 @@ export default function ResumePrint({ data }: ResumePrintProps) {
             >
               Core Skills
             </div>
-            <div style={{ display: 'flex', gap: '12px' }}>
-              {skills.map((group, i) => (
-                <div
-                  key={i}
-                  style={{
-                    flex: group.items.join('').length > 250 ? 2.6 : 1,
-                    breakInside: 'avoid',
-                    pageBreakInside: 'avoid',
-                  }}
-                >
+            <div style={{ border: '1px solid #dedad4', borderRadius: '4px', overflow: 'hidden' }}>
+              {skills.map((group, i) => {
+                const accent = colorMap[group.color] || '#4535d4';
+                const wide = group.items.some((s) => s.length > 48);
+                return (
                   <div
+                    key={i}
                     style={{
-                      fontFamily: "'DM Mono', monospace",
-                      fontSize: '7pt',
-                      color: '#0a7a5c',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.1em',
-                      marginBottom: '6px',
-                      fontWeight: 500,
+                      display: 'flex',
+                      borderTop: i === 0 ? 'none' : '1px solid #dedad4',
+                      background: i % 2 === 0 ? '#ffffff' : '#faf9f6',
+                      breakInside: 'avoid',
+                      pageBreakInside: 'avoid',
                     }}
                   >
-                    {group.title}
+                    <div
+                      style={{
+                        flex: '0 0 22%',
+                        padding: '7px 10px',
+                        borderRight: '1px solid #dedad4',
+                        borderLeft: `3px solid ${accent}`,
+                        fontFamily: "'DM Mono', monospace",
+                        fontSize: '7pt',
+                        color: accent,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em',
+                        fontWeight: 500,
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {group.title}
+                    </div>
+                    <div
+                      style={{
+                        flex: 1,
+                        padding: '7px 10px',
+                        display: 'grid',
+                        gridTemplateColumns: wide ? '1fr' : '1fr 1fr',
+                        columnGap: '14px',
+                        rowGap: '2px',
+                        fontSize: '8.5pt',
+                        color: '#4a4844',
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {group.items.map((item, j) => (
+                        <div
+                          key={j}
+                          style={{ display: 'flex', gap: '6px' }}
+                        >
+                          <span style={{ color: accent, flex: '0 0 auto' }}>&bull;</span>
+                          <span dangerouslySetInnerHTML={{ __html: sanitizeInlineHtml(item) }} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div
-                    style={{ fontSize: '9pt', color: '#4a4844', lineHeight: 1.9 }}
-                    dangerouslySetInnerHTML={{ __html: group.items.map((s) => sanitizeInlineHtml(s)).join('<br>') }}
-                  />
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}

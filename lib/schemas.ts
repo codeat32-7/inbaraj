@@ -43,6 +43,7 @@ const ProjectSchema = z.object({
   description: z.string(),
   tags: z.array(z.string()),
   url: z.string().nullable(),
+  printHidden: z.boolean().optional(),
 });
 
 const SkillGroupSchema = z.object({
