@@ -125,7 +125,6 @@
     "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
     "Led enterprise CMMS implementations for mid-to-large clients across the UK, US, and Middle East — $4.1M+ in total contract value and nearly $1M in implementation and expansion value.",
     "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live.",
-    "Built a use-case-driven implementation framework with complexity scoring and effort models, so pre-sales could scope accurately and auto-calculate timelines.",
     "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now — directly improving operational efficiency.",
     "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — yielding an estimated $230K in monthly savings.",
     "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day."
@@ -136,8 +135,8 @@
     "Knowledge Capture: Extracts customer use cases, requirements, and discussed solutions from Avoma call transcripts and Freshdesk tickets.\nAI-Powered Solution Generation: Uses product documentation and relevant knowledge to propose solutions when none were discussed, keeping proposed approaches distinct from agreed solutions.\nHuman-in-the-Loop Approval: Implementation Managers review, approve, or revise generated use cases and solutions before they become reusable knowledge.\nSearchable Knowledge Base: Built with Lovable, Anthropic-hosted and backend agents, and Supermemory to retrieve relevant approved solutions without loading the entire documentation corpus into the LLM.\nCurrent-State Validation: Checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\nFeedback & Continuous Improvement: Caches repeat answers when relevance is 95% or higher, captures user ratings, and uses a validator agent to classify incorrect answers and route them to an admin review queue.",
     "On-site in Saudi Arabia for a half-million-dollar engagement and in the UK for MHA — requirement gathering, stakeholder workshops, and go-live training.",
     "Converted pilots into full-scale enterprise rollouts through structured discovery and early value demonstration — $350K+ in expansion value.",
-    "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work.",
-    "Scoped SSO (SAML/SCIM) and integrations with Xero, CorrigoPro, Equiem, Wooqer, Bill.com, SiteFotos, and SFG20 — validated APIs in Postman, chose polling vs webhook patterns, and wrote the specs for engineering."
+    "Built a use-case-driven implementation framework with complexity scoring and effort models — so pre-sales could scope accurately, auto-calculate timelines, and cut BRD and UAT ambiguity.",
+    "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work."
   ],
   "projectNames": [
     "Atlas",

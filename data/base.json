@@ -101,8 +101,7 @@
       "title": "Lead, Product Implementation",
       "bullets": [
         "Led enterprise CMMS implementations for mid-to-large clients across the UK, US, and Middle East — $4.1M+ in total contract value and nearly $1M in implementation and expansion value.",
-        "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live.",
-        "Built a use-case-driven implementation framework with complexity scoring and effort models, so pre-sales could scope accurately and auto-calculate timelines."
+        "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live."
       ],
       "highlights": [
         {
@@ -111,19 +110,19 @@
           "text": "On-site in Saudi Arabia for a half-million-dollar engagement and in the UK for MHA — requirement gathering, stakeholder workshops, and go-live training."
         },
         {
-          "label": "Pilot → enterprise",
+          "label": "Pilot → Enterprise conversions",
           "color": "green",
           "text": "Converted pilots into full-scale enterprise rollouts through structured discovery and early value demonstration — $350K+ in expansion value."
         },
         {
-          "label": "Revenue impact",
+          "label": "Key initiative",
           "color": "purple",
-          "text": "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work."
+          "text": "Built a use-case-driven implementation framework with complexity scoring and effort models — so pre-sales could scope accurately, auto-calculate timelines, and cut BRD and UAT ambiguity."
         },
         {
-          "label": "Integrations",
+          "label": "Revenue impact",
           "color": "green",
-          "text": "Scoped SSO (SAML/SCIM) and integrations with Xero, CorrigoPro, Equiem, Wooqer, Bill.com, SiteFotos, and SFG20 — validated APIs in Postman, chose polling vs webhook patterns, and wrote the specs for engineering."
+          "text": "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work."
         }
       ]
     },
