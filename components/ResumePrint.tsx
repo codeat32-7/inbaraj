@@ -151,7 +151,20 @@ export default function ResumePrint({ data }: ResumePrintProps) {
               lineHeight: 1.65,
             }}
           >
-            {summary}
+            {summary.includes('\n') ? (
+              <ul style={{ margin: 0, paddingLeft: '14px' }}>
+                {summary
+                  .split('\n')
+                  .filter((line) => line.trim())
+                  .map((line, i) => (
+                    <li key={i} style={{ marginBottom: '2px' }}>
+                      {line.trim()}
+                    </li>
+                  ))}
+              </ul>
+            ) : (
+              summary
+            )}
           </div>
         </div>
 
