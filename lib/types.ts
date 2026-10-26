@@ -9,8 +9,6 @@ export interface Personal {
   website: string;
   calendly: string;
   whatsapp: string;
-  portfolio: string;
-  portfolioLabel: string;
 }
 
 export interface Badge {

@@ -5,7 +5,7 @@ interface ContactProps {
   isolated?: boolean;
 }
 
-export default function Contact({ data, isolated }: ContactProps) {
+export default function Contact({ data }: ContactProps) {
   const { contact, personal } = data;
 
   return (
@@ -60,21 +60,6 @@ export default function Contact({ data, isolated }: ContactProps) {
               <div className="contact-link-value">{personal.linkedin}</div>
             </div>
           </a>
-
-          {!isolated && (
-            <a
-              href={personal.portfolio}
-              className="contact-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="contact-link-icon icon-port">&#9654;</div>
-              <div className="contact-link-text">
-                <div className="contact-link-label">Portfolio / Resume</div>
-                <div className="contact-link-value">{personal.portfolioLabel}</div>
-              </div>
-            </a>
-          )}
         </div>
       </div>
     </section>
