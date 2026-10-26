@@ -38,28 +38,28 @@
   },
   "stats": [
     {
-      "value": "$4.1M+",
-      "label": "Total contract value delivered",
-      "sub": "Facilio · UK · US · Middle East",
-      "color": "purple"
+      "value": "~$450K",
+      "label": "Customer ARR implemented",
+      "sub": "Rocketlane · incl. NICE enterprise rollout",
+      "color": "teal"
     },
     {
-      "value": "Nearly $1M",
-      "label": "Implementation & expansion value",
-      "sub": "Facilio · rollouts, pilot conversions & change requests",
-      "color": "cs"
+      "value": "$4.1M+",
+      "label": "Total contract value delivered",
+      "sub": "Facilio · plus nearly $1M in implementation & expansion",
+      "color": "purple"
     },
     {
       "value": "Atlas",
       "label": "AI knowledge agent for implementation teams",
       "sub": "Rocketlane · Claude agents · Supermemory",
-      "color": "teal"
+      "color": "cs"
     },
     {
       "value": "Nitro",
       "label": "AI agents across the implementation lifecycle",
       "sub": "Handover · kickoff · workshops · design · UAT",
-      "color": "purple"
+      "color": "teal"
     }
   ],
   "experience": [
