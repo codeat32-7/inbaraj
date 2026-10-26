@@ -142,7 +142,7 @@ async function callClaude(
   try {
     const message = await client.messages.create({
       model,
-      max_tokens: 4096,
+      max_tokens: 16000,
       system,
       messages: [{ role: 'user', content: userMessage }],
     });
@@ -150,6 +150,9 @@ async function callClaude(
     const textBlock = message.content.find((b) => b.type === 'text');
     if (!textBlock || textBlock.type !== 'text') {
       throw new Error('No text response from Claude');
+    }
+    if (message.stop_reason === 'max_tokens') {
+      throw new Error('Claude response was cut off (output too long). Try a shorter job description.');
     }
 
     return stripCodeFences(textBlock.text);
