@@ -51,7 +51,7 @@
     },
     {
       "value": "Atlas",
-      "label": "AI knowledge agent for implementation teams",
+      "label": "AI knowledge system for implementation teams",
       "sub": "Rocketlane · Claude agents · Supermemory",
       "color": "cs"
     },
@@ -72,7 +72,7 @@
         "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
         "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
         "Built the Nitro agents Rocketlane’s implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
-        "Built Atlas, an AI agent that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
+        "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
         "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce."
       ],
       "highlights": [
@@ -159,7 +159,7 @@
       "name": "Atlas",
       "icon": "AT",
       "variant": "v1",
-      "type": "AI Knowledge Agent",
+      "type": "AI Implementation Knowledge System",
       "description": "Turns customer calls, tickets, Slack, and project docs into human-approved implementation solutions. Answers are checked against current product knowledge so retired features don’t resurface, and answers marked wrong are classified by a validator agent and routed to an admin review queue.",
       "tags": [
         "Claude agents",
