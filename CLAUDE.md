@@ -210,6 +210,9 @@ If you add a new one, wrap it: `{ __html: sanitizeInlineHtml(value) }`. Six exis
 ### Rotate `ADMIN_PASSWORD` to bcrypt with the helper script
 `node scripts/hash-password.mjs "your-password"` outputs a `$2b$12$…` hash. Paste into the Vercel env var, redeploy. Plaintext-compat path stays in place so there's no outage during rotation. Never commit a plaintext admin password to the repo or paste it into chat.
 
+### Career facts live in `docs/career/`
+`docs/career/atlas.md` is the source of truth for the Atlas project (Rocketlane). When writing or editing resume copy about Atlas in `data/base.json`, keep it consistent with that doc and update `data/ground-truth.json` to match. Do not add anything listed under "Details Not Yet Specified" (embedding model, accuracy metrics, cache technology, etc.) unless Inbaraj provides it. Also: no aggregate implementation counts or "N years" phrasing in resume copy; use dollar amounts attributed to the company they came from.
+
 ## Session handoff protocol
 
 When the user says **"session completed"** (or similar), follow this checklist before ending:

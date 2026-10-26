@@ -38,28 +38,28 @@
   },
   "stats": [
     {
+      "value": "~$450K",
+      "label": "Customer ARR implemented",
+      "sub": "Rocketlane · incl. NICE enterprise rollout",
+      "color": "teal"
+    },
+    {
       "value": "$4.1M+",
       "label": "Total contract value delivered",
-      "sub": "Facilio · UK · US · Middle East",
+      "sub": "Facilio · plus nearly $1M in implementation & expansion",
       "color": "purple"
     },
     {
-      "value": "Nearly $1M",
-      "label": "Implementation & expansion value",
-      "sub": "Facilio · rollouts, pilot conversions & change requests",
-      "color": "cs"
-    },
-    {
       "value": "Atlas",
-      "label": "AI knowledge agent for implementation teams",
+      "label": "AI knowledge system for implementation teams",
       "sub": "Rocketlane · Claude agents · Supermemory",
-      "color": "teal"
+      "color": "cs"
     },
     {
       "value": "Nitro",
       "label": "AI agents across the implementation lifecycle",
       "sub": "Handover · kickoff · workshops · design · UAT",
-      "color": "purple"
+      "color": "teal"
     }
   ],
   "experience": [
@@ -72,7 +72,7 @@
         "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
         "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
         "Built the Nitro agents Rocketlane’s implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
-        "Built Atlas, an AI agent that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
+        "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
         "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce."
       ],
       "highlights": [
@@ -89,17 +89,17 @@
         {
           "label": "Atlas · Why & how",
           "color": "purple",
-          "text": "Implementation managers solved customer use cases in isolation — how a problem had been solved lived in people’s heads and scattered documents. Atlas makes that knowledge searchable: a Lovable app with Claude agents and custom skills, using Supermemory to index product docs, internal docs, and approved solutions so the agent retrieves only what is relevant."
+          "text": "Implementation managers solved customer use cases in isolation — how a problem had been solved lived in people’s heads and scattered documents. Atlas turns that into a shared, searchable knowledge base: a Lovable app with two agents — an Anthropic-hosted agent that generates use cases and a backend agent with custom skills that answers questions — and Supermemory as the knowledge layer, so agents retrieve only what is relevant instead of loading every document."
         },
         {
           "label": "Atlas · Capture & answer",
           "color": "green",
-          "text": "After a customer call or ticket, an agent reads the transcript, Freshdesk tickets, Slack threads, and project documents, and records the use cases and the solution agreed — or proposes one from product docs. The implementation manager approves or revises each one. When someone later asks how a use case was solved, Atlas checks the approved answer against live sources and flags features that have since been retired."
+          "text": "After a customer call or ticket, an agent reads the Avoma transcript or Freshdesk ticket and records the use cases discussed, with the solution agreed — or a proposed one from product docs, kept clearly separate. The implementation manager approves or revises each one. When someone later asks how a use case was solved, Atlas checks the approved answer against Notion, Slack, the Rocketlane instance, and product and API docs, and explains if a feature has since been retired."
         },
         {
           "label": "Atlas · Learns from feedback",
           "color": "purple",
-          "text": "Answers marked helpful are cached and returned for near-identical questions (95%+ match) without a new search. Answers marked wrong capture a reason; a validator agent classifies the failure, such as a data miss or a context miss, and queues it for an admin to fix the sources or the agent’s skills."
+          "text": "Repeat questions are answered from a cache when a previous answer is a 95%+ match, with helpful and unhelpful ratings recorded against it. Answers marked wrong capture a reason; a validator agent classifies the failure, such as a data miss or a context miss, and queues it for an admin to fix sources, retrieval, or the agent’s skills."
         },
         {
           "label": "NICE · Phase 2 integrations",
@@ -159,8 +159,8 @@
       "name": "Atlas",
       "icon": "AT",
       "variant": "v1",
-      "type": "AI Knowledge Agent",
-      "description": "Captures how every customer use case was solved — from call transcripts, tickets, Slack, and project docs — with a human approving each answer. Answers are checked against live sources so retired features don’t resurface, and user feedback trains the cache and a validator agent.",
+      "type": "AI Implementation Knowledge System",
+      "description": "Turns customer calls, tickets, Slack, and project docs into human-approved implementation solutions. Answers are checked against current product knowledge so retired features don’t resurface, and answers marked wrong are classified by a validator agent and routed to an admin review queue.",
       "tags": [
         "Claude agents",
         "Supermemory",

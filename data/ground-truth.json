@@ -51,7 +51,10 @@
     "10",
     "95%",
     "10 integrations",
-    "$230K"
+    "$230K",
+    "~$450K",
+    "~$300K",
+    "~$150K"
   ],
   "companies": [
     "Rocketlane",
@@ -111,13 +114,14 @@
     "Webhooks",
     "Claude",
     "Browserbase",
-    "Rocketlane Sheets"
+    "Rocketlane Sheets",
+    "Avoma"
   ],
   "bullets": [
     "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
     "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
     "Built the Nitro agents Rocketlane’s implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
-    "Built Atlas, an AI agent that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
+    "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
     "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
     "Led enterprise CMMS implementations for mid-to-large clients across the UK, US, and Middle East — $4.1M+ in total contract value and nearly $1M in implementation and expansion value.",
     "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live.",
@@ -129,9 +133,9 @@
   "highlights": [
     "Sales-to-implementation handover. Kickoff deck generation. Workshop planner that prepares each session and recaps it afterwards. Solution design document for every customer. UAT agent that writes test scripts and test cases from the design document, scope document, emails, and call transcripts. Form-to-Sheets agent that moves form responses into Rocketlane Sheets, so they can be reported on.",
     "Proof of concept, since validated by the product team. After every design document, native settings, notifications, and automations were configured by hand. Built a Nitro Workforce agent that reads the design document, works out the configuration needed, and uses Browserbase to open Rocketlane in a browser and enable settings and create automations itself.",
-    "Implementation managers solved customer use cases in isolation — how a problem had been solved lived in people’s heads and scattered documents. Atlas makes that knowledge searchable: a Lovable app with Claude agents and custom skills, using Supermemory to index product docs, internal docs, and approved solutions so the agent retrieves only what is relevant.",
-    "After a customer call or ticket, an agent reads the transcript, Freshdesk tickets, Slack threads, and project documents, and records the use cases and the solution agreed — or proposes one from product docs. The implementation manager approves or revises each one. When someone later asks how a use case was solved, Atlas checks the approved answer against live sources and flags features that have since been retired.",
-    "Answers marked helpful are cached and returned for near-identical questions (95%+ match) without a new search. Answers marked wrong capture a reason; a validator agent classifies the failure, such as a data miss or a context miss, and queues it for an admin to fix the sources or the agent’s skills.",
+    "Implementation managers solved customer use cases in isolation — how a problem had been solved lived in people’s heads and scattered documents. Atlas turns that into a shared, searchable knowledge base: a Lovable app with two agents — an Anthropic-hosted agent that generates use cases and a backend agent with custom skills that answers questions — and Supermemory as the knowledge layer, so agents retrieve only what is relevant instead of loading every document.",
+    "After a customer call or ticket, an agent reads the Avoma transcript or Freshdesk ticket and records the use cases discussed, with the solution agreed — or a proposed one from product docs, kept clearly separate. The implementation manager approves or revises each one. When someone later asks how a use case was solved, Atlas checks the approved answer against Notion, Slack, the Rocketlane instance, and product and API docs, and explains if a feature has since been retired.",
+    "Repeat questions are answered from a cache when a previous answer is a 95%+ match, with helpful and unhelpful ratings recorded against it. Answers marked wrong capture a reason; a validator agent classifies the failure, such as a data miss or a context miss, and queues it for an admin to fix sources, retrieval, or the agent’s skills.",
     "ADP for time off and time entries; SatMetrix to trigger customer surveys and write scores back to Rocketlane; ServiceNow for support tickets; Salesforce for two-way risk management and partner resource requests. Also built custom apps that show ServiceNow tickets against each project and customer.",
     "On-site in Saudi Arabia for a half-million-dollar engagement and in the UK for MHA — requirement gathering, stakeholder workshops, and go-live training.",
     "Converted pilots into full-scale enterprise rollouts through structured discovery and early value demonstration — $350K+ in expansion value.",
@@ -144,7 +148,7 @@
     "FAAX"
   ],
   "projectDescriptions": [
-    "Captures how every customer use case was solved — from call transcripts, tickets, Slack, and project docs — with a human approving each answer. Answers are checked against live sources so retired features don’t resurface, and user feedback trains the cache and a validator agent.",
+    "Turns customer calls, tickets, Slack, and project docs into human-approved implementation solutions. Answers are checked against current product knowledge so retired features don’t resurface, and answers marked wrong are classified by a validator agent and routed to an admin review queue.",
     "AI-powered assistant that lets support teams query enterprise platform configurations in natural language — eliminating dependency on implementation engineers post go-live.",
     "Bridges the gap between raw trading interfaces and disciplined strategy-driven execution. Users define structured trading blueprints — AI monitors conditions, generates setups, and drafts trades for human approval."
   ],
