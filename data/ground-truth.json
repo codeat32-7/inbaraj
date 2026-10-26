@@ -42,7 +42,7 @@
     "AI agents & skills (Claude, Nitro)",
     "Browser automation (Browserbase)",
     "Integration Architecture: REST APIs, webhooks, and event-driven integrations",
-    "Integration Platforms: Workato for custom integrations and workflow automation",
+    "Integration Platforms: iPaaS tools such as Workato and Zapier for custom integrations and workflow automation",
     "Enterprise SaaS Integrations: Salesforce, HubSpot, Sage, SuccessFactors, ADP, ServiceNow, SatMetrix, and Fathom",
     "Facilities & Operations Systems: Xero, CorrigoPro, Equiem, Wooqer, Bill.com, and Facilio ecosystem integrations",
     "SaaS Configuration & Customization: Platform configuration, JavaScript-based UI scripting, and workflow automation"
@@ -124,7 +124,8 @@
     "HubSpot",
     "Sage",
     "SuccessFactors",
-    "Fathom"
+    "Fathom",
+    "Zapier"
   ],
   "bullets": [
     "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
