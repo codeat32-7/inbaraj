@@ -4,7 +4,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Inbaraj B — AI Implementation Manager & Builder',
   description:
-    "I run SaaS implementations from discovery to go-live and solve the problems in between — $4.1M+ in contract value delivered across the UK, US, and Middle East at Facilio. At Rocketlane, I implement the platform and its Nitro AI for customers, integrate it with Salesforce, ServiceNow, and ADP, and build the AI agents our implementation team runs on.",
+    "Experienced in leading enterprise SaaS implementations, architecting complex integrations, and building AI agents that automate workflows and turn fragmented knowledge into reusable solutions. Combines hands-on solution design and enterprise delivery with the development of agentic systems that reduce manual effort, improve consistency, and make implementation processes scalable.",
 };
 
 export default function RootLayout({
