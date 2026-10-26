@@ -23,6 +23,7 @@ const ExperienceHighlightSchema = z.object({
   label: z.string(),
   text: z.string(),
   color: z.string(),
+  wide: z.boolean().optional(),
 });
 
 const ExperienceItemSchema = z.object({

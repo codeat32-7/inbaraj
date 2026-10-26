@@ -87,24 +87,10 @@
           "text": "Problem: Native settings, notifications, and automations were configured manually after every design document.\nSolution: Built a Nitro Workforce agent that reads design documents and determines the required configuration.\nBrowser Automation: Uses Browserbase to navigate Rocketlane, configure settings, and create automations.\nValidation: Proof of concept subsequently validated by the product team."
         },
         {
-          "label": "Atlas · Why & how",
+          "label": "Atlas · AI Implementation Knowledge System",
           "color": "purple",
-          "text": "Problem: Implementation knowledge was scattered across individual team members and unstructured documents.\nSolution: Built Atlas, a centralized, searchable AI knowledge system for implementation use cases and solutions.\nAI Architecture: A Lovable application with an Anthropic-hosted agent for use-case generation and a backend agent with custom skills for answering questions.\nKnowledge Retrieval: Uses Supermemory to retrieve relevant information instead of loading the entire documentation corpus into the LLM."
-        },
-        {
-          "label": "Atlas · Capture & answer",
-          "color": "green",
-          "text": "Knowledge Capture: Extracts customer use cases and discussed solutions from Avoma call transcripts and Freshdesk tickets.\nSolution Generation: Captures agreed solutions or proposes alternatives based on product documentation when no solution was discussed.\nHuman Review: Implementation Managers approve or revise generated use cases and solutions.\nSolution Retrieval: Retrieves previously approved solutions when similar questions arise.\nCurrent-State Validation: Checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches."
-        },
-        {
-          "label": "Atlas · Learns from feedback",
-          "color": "purple",
-          "text": "Response Caching: Reuses previous answers when the relevance match is 95% or higher.\nFeedback Capture: Records positive and negative ratings for generated answers.\nFailure Classification: A validator agent analyzes incorrect answers and classifies issues, such as missing data or missing context.\nAdmin Review: Routes flagged answers to an administrative queue for investigation.\nContinuous Improvement: Helps administrators identify gaps in data sources, retrieval logic, and agent skills."
-        },
-        {
-          "label": "NICE · Phase 2 integrations",
-          "color": "green",
-          "text": "ADP: Integrates time-off and time-entry data.\nSatMetrix: Triggers customer surveys and writes survey scores back to Rocketlane.\nServiceNow: Integrates support tickets and provides custom apps to view tickets against projects and customers.\nSalesforce: Supports two-way risk management and partner resource requests.\nSolution Ownership: Served as solution architect and implementation manager for Phase 2 of the enterprise NICE account."
+          "wide": true,
+          "text": "Knowledge Capture: Extracts customer use cases, requirements, and discussed solutions from Avoma call transcripts and Freshdesk tickets.\nAI-Powered Solution Generation: Uses product documentation and relevant knowledge to propose solutions when none were discussed, keeping proposed approaches distinct from agreed solutions.\nHuman-in-the-Loop Approval: Implementation Managers review, approve, or revise generated use cases and solutions before they become reusable knowledge.\nSearchable Knowledge Base: Built with Lovable, Anthropic-hosted and backend agents, and Supermemory to retrieve relevant approved solutions without loading the entire documentation corpus into the LLM.\nCurrent-State Validation: Checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\nFeedback & Continuous Improvement: Caches repeat answers when relevance is 95% or higher, captures user ratings, and uses a validator agent to classify incorrect answers and route them to an admin review queue."
         }
       ]
     },

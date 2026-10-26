@@ -112,6 +112,7 @@ h2 em{font-style:italic;color:var(--accent2)}
 /* Highlights — 2-column grid for Facilio */
 .exp-highlights{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-top:1rem}
 .exp-highlight{border-radius:6px;padding:0.85rem 1rem}
+.exp-highlight.wide{grid-column:1/-1}
 .exp-highlight.purple{background:rgba(124,108,250,0.07);border:1px solid rgba(124,108,250,0.15)}
 .exp-highlight.green{background:rgba(45,212,168,0.05);border:1px solid rgba(45,212,168,0.15)}
 body.light .exp-highlight.purple{background:rgba(69,53,212,0.05);border-color:rgba(69,53,212,0.12)}

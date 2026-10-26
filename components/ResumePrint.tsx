@@ -272,6 +272,7 @@ export default function ResumePrint({ data }: ResumePrintProps) {
                             borderRadius: '4px',
                             padding: '8px 10px',
                             borderLeft: `3px solid ${hlColor.border}`,
+                            gridColumn: hl.wide ? '1 / -1' : undefined,
                             breakInside: 'avoid',
                             pageBreakInside: 'avoid',
                           }}
@@ -335,6 +336,8 @@ export default function ResumePrint({ data }: ResumePrintProps) {
                 fontWeight: 500,
                 paddingBottom: '5px',
                 borderBottom: '1.5px solid #dedad4',
+                breakAfter: 'avoid',
+                pageBreakAfter: 'avoid',
               }}
             >
               Projects

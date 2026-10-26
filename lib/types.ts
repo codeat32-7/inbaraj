@@ -36,6 +36,8 @@ export interface ExperienceHighlight {
   label: string;
   text: string;
   color: string;
+  /** Span both columns of the highlight grid. */
+  wide?: boolean;
 }
 
 export interface ExperienceItem {

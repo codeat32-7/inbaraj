@@ -26,7 +26,7 @@ export default function Experience({ experience }: ExperienceProps) {
             {item.highlights.length > 0 && (
               <div className="exp-highlights">
                 {item.highlights.map((hl, j) => (
-                  <div key={j} className={`exp-highlight ${hl.color}`}>
+                  <div key={j} className={`exp-highlight ${hl.color}${hl.wide ? ' wide' : ''}`}>
                     <div className="exp-highlight-label">{hl.label}</div>
                     {hl.text.includes('\n') ? (
                       <ul>
