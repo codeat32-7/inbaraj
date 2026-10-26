@@ -453,7 +453,14 @@ export default function ResumePrint({ data }: ResumePrintProps) {
             </div>
             <div style={{ display: 'flex', gap: '12px' }}>
               {skills.map((group, i) => (
-                <div key={i} style={{ flex: 1, breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+                <div
+                  key={i}
+                  style={{
+                    flex: group.items.join('').length > 250 ? 2.6 : 1,
+                    breakInside: 'avoid',
+                    pageBreakInside: 'avoid',
+                  }}
+                >
                   <div
                     style={{
                       fontFamily: "'DM Mono', monospace",

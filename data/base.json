@@ -222,11 +222,11 @@
       "title": "Integrations & Technical",
       "color": "accent",
       "items": [
-        "REST APIs · webhooks · SSO (SAML/SCIM)",
-        "Salesforce · ServiceNow · ADP integrations",
-        "Postman · Primitive",
-        "SaaS configuration & UI scripting",
-        "Supabase · React · Tailwind"
+        "Integration Architecture: REST APIs, webhooks, and event-driven integrations",
+        "Integration Platforms: Workato for custom integrations and workflow automation",
+        "Enterprise SaaS Integrations: Salesforce, HubSpot, Sage, SuccessFactors, ADP, ServiceNow, SatMetrix, and Fathom",
+        "Facilities & Operations Systems: Xero, CorrigoPro, Equiem, Wooqer, Bill.com, and Facilio ecosystem integrations",
+        "SaaS Configuration & Customization: Platform configuration, JavaScript-based UI scripting, and workflow automation"
       ]
     },
     {
