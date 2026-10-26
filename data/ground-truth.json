@@ -33,7 +33,6 @@
     "AI agents & knowledge bases (Supermemory)",
     "Discovery & solution design",
     "Domains: CMMS / facilities · PSA",
-    "REST APIs · webhooks · SSO (SAML/SCIM)",
     "Salesforce · ServiceNow · ADP integrations",
     "SaaS configuration & UI scripting",
     "AI agents & skills (Claude)",
@@ -41,7 +40,12 @@
     "Prompt engineering",
     "Lovable · Vercel · GitHub",
     "AI agents & skills (Claude, Nitro)",
-    "Browser automation (Browserbase)"
+    "Browser automation (Browserbase)",
+    "Integration Architecture: REST APIs, webhooks, and event-driven integrations",
+    "Integration Platforms: Workato for custom integrations and workflow automation",
+    "Enterprise SaaS Integrations: Salesforce, HubSpot, Sage, SuccessFactors, ADP, ServiceNow, SatMetrix, and Fathom",
+    "Facilities & Operations Systems: Xero, CorrigoPro, Equiem, Wooqer, Bill.com, and Facilio ecosystem integrations",
+    "SaaS Configuration & Customization: Platform configuration, JavaScript-based UI scripting, and workflow automation"
   ],
   "metrics": [
     "$4.1M+",
@@ -115,7 +119,12 @@
     "Claude",
     "Browserbase",
     "Rocketlane Sheets",
-    "Avoma"
+    "Avoma",
+    "Workato",
+    "HubSpot",
+    "Sage",
+    "SuccessFactors",
+    "Fathom"
   ],
   "bullets": [
     "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
@@ -125,22 +134,18 @@
     "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
     "Led enterprise CMMS implementations for mid-to-large clients across the UK, US, and Middle East — $4.1M+ in total contract value and nearly $1M in implementation and expansion value.",
     "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live.",
-    "Built a use-case-driven implementation framework with complexity scoring and effort models, so pre-sales could scope accurately and auto-calculate timelines.",
     "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now — directly improving operational efficiency.",
     "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — yielding an estimated $230K in monthly savings.",
     "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day."
   ],
   "highlights": [
-    "Sales-to-implementation handover. Kickoff deck generation. Workshop planner that prepares each session and recaps it afterwards. Solution design document for every customer. UAT agent that writes test scripts and test cases from the design document, scope document, emails, and call transcripts. Form-to-Sheets agent that moves form responses into Rocketlane Sheets, so they can be reported on.",
-    "Proof of concept, since validated by the product team. After every design document, native settings, notifications, and automations were configured by hand. Built a Nitro Workforce agent that reads the design document, works out the configuration needed, and uses Browserbase to open Rocketlane in a browser and enable settings and create automations itself.",
-    "Implementation managers solved customer use cases in isolation — how a problem had been solved lived in people’s heads and scattered documents. Atlas turns that into a shared, searchable knowledge base: a Lovable app with two agents — an Anthropic-hosted agent that generates use cases and a backend agent with custom skills that answers questions — and Supermemory as the knowledge layer, so agents retrieve only what is relevant instead of loading every document.",
-    "After a customer call or ticket, an agent reads the Avoma transcript or Freshdesk ticket and records the use cases discussed, with the solution agreed — or a proposed one from product docs, kept clearly separate. The implementation manager approves or revises each one. When someone later asks how a use case was solved, Atlas checks the approved answer against Notion, Slack, the Rocketlane instance, and product and API docs, and explains if a feature has since been retired.",
-    "Repeat questions are answered from a cache when a previous answer is a 95%+ match, with helpful and unhelpful ratings recorded against it. Answers marked wrong capture a reason; a validator agent classifies the failure, such as a data miss or a context miss, and queues it for an admin to fix sources, retrieval, or the agent’s skills.",
-    "ADP for time off and time entries; SatMetrix to trigger customer surveys and write scores back to Rocketlane; ServiceNow for support tickets; Salesforce for two-way risk management and partner resource requests. Also built custom apps that show ServiceNow tickets against each project and customer.",
+    "Sales-to-Implementation Handover: Streamlines the transition from sales to implementation.\nKickoff Deck Generator: Generates customer kickoff presentations.\nWorkshop Planner: Prepares workshop sessions and generates post-session recaps.\nSolution Design Agent: Generates solution design documents for each customer.\nUAT Agent: Creates test scripts and test cases from design documents, scope documents, emails, and call transcripts.\nForm-to-Sheets Agent: Transfers form responses into Rocketlane Sheets for reporting.",
+    "Problem: Native settings, notifications, and automations were configured manually after every design document.\nSolution: Built a Nitro Workforce agent that reads design documents and determines the required configuration.\nBrowser Automation: Uses Browserbase to navigate Rocketlane, configure settings, and create automations.\nValidation: Proof of concept subsequently validated by the product team.",
+    "Knowledge Capture: Extracts customer use cases, requirements, and discussed solutions from Avoma call transcripts and Freshdesk tickets.\nAI-Powered Solution Generation: Uses product documentation and relevant knowledge to propose solutions when none were discussed, keeping proposed approaches distinct from agreed solutions.\nHuman-in-the-Loop Approval: Implementation Managers review, approve, or revise generated use cases and solutions before they become reusable knowledge.\nSearchable Knowledge Base: Built with Lovable, Anthropic-hosted and backend agents, and Supermemory to retrieve relevant approved solutions without loading the entire documentation corpus into the LLM.\nCurrent-State Validation: Checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\nFeedback & Continuous Improvement: Caches repeat answers when relevance is 95% or higher, captures user ratings, and uses a validator agent to classify incorrect answers and route them to an admin review queue.",
     "On-site in Saudi Arabia for a half-million-dollar engagement and in the UK for MHA — requirement gathering, stakeholder workshops, and go-live training.",
     "Converted pilots into full-scale enterprise rollouts through structured discovery and early value demonstration — $350K+ in expansion value.",
-    "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work.",
-    "Scoped SSO (SAML/SCIM) and integrations with Xero, CorrigoPro, Equiem, Wooqer, Bill.com, SiteFotos, and SFG20 — validated APIs in Postman, chose polling vs webhook patterns, and wrote the specs for engineering."
+    "Built a use-case-driven implementation framework with complexity scoring and effort models — so pre-sales could scope accurately, auto-calculate timelines, and cut BRD and UAT ambiguity.",
+    "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work."
   ],
   "projectNames": [
     "Atlas",

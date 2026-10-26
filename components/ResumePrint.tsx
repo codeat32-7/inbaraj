@@ -272,6 +272,7 @@ export default function ResumePrint({ data }: ResumePrintProps) {
                             borderRadius: '4px',
                             padding: '8px 10px',
                             borderLeft: `3px solid ${hlColor.border}`,
+                            gridColumn: hl.wide ? '1 / -1' : undefined,
                             breakInside: 'avoid',
                             pageBreakInside: 'avoid',
                           }}
@@ -289,7 +290,27 @@ export default function ResumePrint({ data }: ResumePrintProps) {
                             {hl.label}
                           </div>
                           <div style={{ fontSize: '9pt', color: '#4a4844', lineHeight: 1.55 }}>
-                            {hl.text}
+                            {hl.text.includes('\n') ? (
+                              <ul style={{ margin: 0, paddingLeft: '12px' }}>
+                                {hl.text
+                                  .split('\n')
+                                  .filter((line) => line.trim())
+                                  .map((line, k) => (
+                                    <li key={k} style={{ marginBottom: '1px' }}>
+                                      {line.includes(': ') ? (
+                                        <>
+                                          <strong>{line.slice(0, line.indexOf(': ') + 1).trim()}</strong>
+                                          {line.slice(line.indexOf(': ') + 1)}
+                                        </>
+                                      ) : (
+                                        line.trim()
+                                      )}
+                                    </li>
+                                  ))}
+                              </ul>
+                            ) : (
+                              hl.text
+                            )}
                           </div>
                         </div>
                       );
@@ -315,6 +336,8 @@ export default function ResumePrint({ data }: ResumePrintProps) {
                 fontWeight: 500,
                 paddingBottom: '5px',
                 borderBottom: '1.5px solid #dedad4',
+                breakAfter: 'avoid',
+                pageBreakAfter: 'avoid',
               }}
             >
               Projects
@@ -430,7 +453,14 @@ export default function ResumePrint({ data }: ResumePrintProps) {
             </div>
             <div style={{ display: 'flex', gap: '12px' }}>
               {skills.map((group, i) => (
-                <div key={i} style={{ flex: 1, breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+                <div
+                  key={i}
+                  style={{
+                    flex: group.items.join('').length > 250 ? 2.6 : 1,
+                    breakInside: 'avoid',
+                    pageBreakInside: 'avoid',
+                  }}
+                >
                   <div
                     style={{
                       fontFamily: "'DM Mono', monospace",
