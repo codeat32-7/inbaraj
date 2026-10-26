@@ -257,7 +257,7 @@ export default function ResumePrint({ data }: ResumePrintProps) {
                       marginTop: '10px',
                     }}
                   >
-                    {item.highlights.map((hl, j) => {
+                    {[...item.highlights.filter((h) => !h.wide), ...item.highlights.filter((h) => h.wide)].map((hl, j) => {
                       const hlColor =
                         hl.color === 'green' || hl.color === 'teal'
                           ? { bg: '#e8f8f4', border: '#0a7a5c', text: '#0a7a5c' }
