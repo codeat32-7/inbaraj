@@ -79,32 +79,32 @@
         {
           "label": "Nitro · Agents the team runs on",
           "color": "purple",
-          "text": "Sales-to-implementation handover. Kickoff deck generation. Workshop planner that prepares each session and recaps it afterwards. Solution design document for every customer. UAT agent that writes test scripts and test cases from the design document, scope document, emails, and call transcripts. Form-to-Sheets agent that moves form responses into Rocketlane Sheets, so they can be reported on."
+          "text": "Sales-to-implementation handover\nKickoff deck generation\nWorkshop planner: prep before each session, recap after\nSolution design document for every customer\nUAT test scripts and cases from design, scope, emails, and call transcripts\nForm responses moved into Rocketlane Sheets for reporting"
         },
         {
           "label": "Nitro · Configuration agent (POC)",
           "color": "green",
-          "text": "Proof of concept, since validated by the product team. After every design document, native settings, notifications, and automations were configured by hand. Built a Nitro Workforce agent that reads the design document, works out the configuration needed, and uses Browserbase to open Rocketlane in a browser and enable settings and create automations itself."
+          "text": "Problem: native settings, notifications, and automations were configured by hand after every design document\nNitro Workforce agent reads the design document and works out the configuration needed\nUses Browserbase to open Rocketlane in a browser and apply settings and automations itself\nProof of concept, validated by the product team"
         },
         {
           "label": "Atlas · Why & how",
           "color": "purple",
-          "text": "Implementation managers solved customer use cases in isolation — how a problem had been solved lived in people’s heads and scattered documents. Atlas turns that into a shared, searchable knowledge base: a Lovable app with two agents — an Anthropic-hosted agent that generates use cases and a backend agent with custom skills that answers questions — and Supermemory as the knowledge layer, so agents retrieve only what is relevant instead of loading every document."
+          "text": "Problem: how use cases were solved lived in people’s heads and scattered documents\nShared, searchable knowledge base, built as a Lovable app\nTwo agents: an Anthropic-hosted agent generates use cases; a backend agent with custom skills answers questions\nSupermemory as the knowledge layer, so agents retrieve only what is relevant"
         },
         {
           "label": "Atlas · Capture & answer",
           "color": "green",
-          "text": "After a customer call or ticket, an agent reads the Avoma transcript or Freshdesk ticket and records the use cases discussed, with the solution agreed — or a proposed one from product docs, kept clearly separate. The implementation manager approves or revises each one. When someone later asks how a use case was solved, Atlas checks the approved answer against Notion, Slack, the Rocketlane instance, and product and API docs, and explains if a feature has since been retired."
+          "text": "Reads Avoma call transcripts and Freshdesk tickets\nRecords use cases with the agreed solution; proposed solutions kept separate\nImplementation manager approves or revises each one\nAnswers checked against Notion, Slack, Rocketlane, and product and API docs; retired features flagged"
         },
         {
           "label": "Atlas · Learns from feedback",
           "color": "purple",
-          "text": "Repeat questions are answered from a cache when a previous answer is a 95%+ match, with helpful and unhelpful ratings recorded against it. Answers marked wrong capture a reason; a validator agent classifies the failure, such as a data miss or a context miss, and queues it for an admin to fix sources, retrieval, or the agent’s skills."
+          "text": "Cached answer returned for 95%+ matches, with ratings recorded\nAnswers marked wrong capture a reason\nValidator agent classifies the failure, e.g. data miss or context miss\nAdmin queue to fix sources, retrieval, or the agent’s skills"
         },
         {
           "label": "NICE · Phase 2 integrations",
           "color": "green",
-          "text": "ADP for time off and time entries; SatMetrix to trigger customer surveys and write scores back to Rocketlane; ServiceNow for support tickets; Salesforce for two-way risk management and partner resource requests. Also built custom apps that show ServiceNow tickets against each project and customer."
+          "text": "ADP: time off and time entries\nSatMetrix: trigger customer surveys, write scores back\nServiceNow: support tickets\nSalesforce: two-way risk management and partner resource requests\nCustom apps showing ServiceNow tickets per project and customer"
         }
       ]
     },

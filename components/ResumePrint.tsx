@@ -289,7 +289,20 @@ export default function ResumePrint({ data }: ResumePrintProps) {
                             {hl.label}
                           </div>
                           <div style={{ fontSize: '9pt', color: '#4a4844', lineHeight: 1.55 }}>
-                            {hl.text}
+                            {hl.text.includes('\n') ? (
+                              <ul style={{ margin: 0, paddingLeft: '12px' }}>
+                                {hl.text
+                                  .split('\n')
+                                  .filter((line) => line.trim())
+                                  .map((line, k) => (
+                                    <li key={k} style={{ marginBottom: '1px' }}>
+                                      {line.trim()}
+                                    </li>
+                                  ))}
+                              </ul>
+                            ) : (
+                              hl.text
+                            )}
                           </div>
                         </div>
                       );

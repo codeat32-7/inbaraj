@@ -120,6 +120,10 @@ body.light .exp-highlight.green{background:rgba(10,122,92,0.05);border-color:rgb
 .exp-highlight.purple .exp-highlight-label{color:var(--accent2)}
 .exp-highlight.green .exp-highlight-label{color:var(--teal)}
 .exp-highlight p{font-size:0.82rem;color:var(--text2);line-height:1.55}
+.exp-highlight ul{list-style:none;margin:0;padding:0;font-size:0.82rem;color:var(--text2);line-height:1.5}
+.exp-highlight li{position:relative;padding-left:0.9rem;margin-bottom:0.25rem}
+.exp-highlight li:last-child{margin-bottom:0}
+.exp-highlight li::before{content:'\2013';position:absolute;left:0;color:var(--text3)}
 
 /* ─── PROJECTS ─── */
 .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem}
@@ -243,7 +247,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;font-
   .exp-period{margin-top:0.4rem}
   .exp-title{font-size:1.05rem}
   .exp-bullets li{font-size:0.84rem}
-  .exp-highlight p{font-size:0.79rem}
+  .exp-highlight p,.exp-highlight ul{font-size:0.79rem}
   .exp-highlights{grid-template-columns:1fr;gap:0.5rem}
 
   .projects-grid{grid-template-columns:1fr;gap:0.85rem}

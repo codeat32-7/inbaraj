@@ -28,7 +28,18 @@ export default function Experience({ experience }: ExperienceProps) {
                 {item.highlights.map((hl, j) => (
                   <div key={j} className={`exp-highlight ${hl.color}`}>
                     <div className="exp-highlight-label">{hl.label}</div>
-                    <p>{hl.text}</p>
+                    {hl.text.includes('\n') ? (
+                      <ul>
+                        {hl.text
+                          .split('\n')
+                          .filter((line) => line.trim())
+                          .map((line, k) => (
+                            <li key={k}>{line.trim()}</li>
+                          ))}
+                      </ul>
+                    ) : (
+                      <p>{hl.text}</p>
+                    )}
                   </div>
                 ))}
               </div>
