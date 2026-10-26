@@ -38,5 +38,10 @@
     "company": "Everstage",
     "created": "2026-04-17",
     "active": true
+  },
+  "devrev-forward-deployed-ai-strategist": {
+    "company": "DevRev",
+    "created": "2026-10-26",
+    "active": true
   }
 }
