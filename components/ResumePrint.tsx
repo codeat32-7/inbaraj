@@ -7,7 +7,7 @@ interface ResumePrintProps {
 }
 
 export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
-  const { personal, stats, summary, experience, projects, skills, education, customSections } = data;
+  const { personal, stats, experience, projects, skills, education, customSections } = data;
 
   const colorMap: Record<string, string> = {
     purple: '#4535d4',
@@ -157,7 +157,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
               lineHeight: 1.65,
             }}
           >
-            {summary}
+            {data.hero.description}
           </div>
         </div>
 
