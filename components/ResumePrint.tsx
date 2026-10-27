@@ -39,7 +39,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
           fontFamily: "'DM Sans', Arial, sans-serif",
           color: '#1c1a18',
           fontSize: '10pt',
-          lineHeight: 1.55,
+          lineHeight: 1.42,
           background: '#fff',
         }}
       >
@@ -154,7 +154,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
               paddingLeft: '12px',
               fontSize: '10pt',
               color: '#4a4844',
-              lineHeight: 1.65,
+              lineHeight: 1.42,
             }}
           >
             {data.hero.description}
@@ -243,7 +243,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                     style={{
                       fontSize: '10pt',
                       color: '#4a4844',
-                      lineHeight: 1.65,
+                      lineHeight: 1.42,
                       paddingLeft: '12px',
                       position: 'relative',
                       marginBottom: j < item.bullets.length - 1 ? '3px' : 0,
@@ -295,7 +295,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                           >
                             {hl.label}
                           </div>
-                          <div style={{ fontSize: '9pt', color: '#4a4844', lineHeight: 1.55 }}>
+                          <div style={{ fontSize: '9pt', color: '#4a4844', lineHeight: 1.42 }}>
                             {hl.text.includes('\n') ? (
                               <ul style={{ margin: 0, paddingLeft: '12px' }}>
                                 {hl.text
@@ -409,7 +409,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                       style={{
                         fontSize: '9pt',
                         color: '#4a4844',
-                        lineHeight: 1.55,
+                        lineHeight: 1.42,
                         marginBottom: '6px',
                       }}
                     >
@@ -484,7 +484,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                         textTransform: 'uppercase',
                         letterSpacing: '0.1em',
                         fontWeight: 500,
-                        lineHeight: 1.5,
+                        lineHeight: 1.42,
                       }}
                     >
                       {group.title}
@@ -498,7 +498,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                         rowGap: '2px',
                         fontSize: '8.5pt',
                         color: '#4a4844',
-                        lineHeight: 1.5,
+                        lineHeight: 1.42,
                       }}
                     >
                       {wide
@@ -547,7 +547,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                   style={{
                     fontSize: '10pt',
                     color: '#4a4844',
-                    lineHeight: 1.65,
+                    lineHeight: 1.42,
                     paddingLeft: '12px',
                     position: 'relative',
                     marginBottom: j < section.items.length - 1 ? '3px' : 0,
