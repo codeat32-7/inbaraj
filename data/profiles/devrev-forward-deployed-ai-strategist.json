@@ -15,11 +15,11 @@
       "badge": "PSA · SaaS",
       "title": "AI Implementation Manager",
       "bullets": [
+        "Own customer implementations end to end on Rocketlane's professional services automation platform (discovery, solution design, configuration, integrations, and go-live) as implementation manager, solution architect, and engagement manager.",
         "Implement Nitro, Rocketlane's agentic AI platform, for customers, designing and deploying agents around each customer's own use cases.",
-        "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
         "Built the Nitro agents Rocketlane's implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
         "Built Atlas, an AI knowledge system that records how each customer's use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
-        "Own customer implementations end to end on Rocketlane's professional services automation platform (discovery, solution design, configuration, integrations, and go-live) as implementation manager, solution architect, and engagement manager."
+        "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce."
       ],
       "highlights": [
         {
@@ -29,7 +29,7 @@
         },
         {
           "label": "Atlas · AI Implementation Knowledge System",
-          "text": "Problem: Implementation knowledge was scattered across individual team members and unstructured documents, so the same problems were solved repeatedly.\nSolution – Capture: Extracts customer use cases and discussed solutions from Avoma call transcripts and Freshdesk tickets, or proposes one from product documentation when none was discussed.\nSolution – Review: Implementation Managers review, approve, or revise each one before it becomes reusable knowledge.\nSolution – Retrieval: Supermemory, an Anthropic-hosted agent, and a backend agent with custom skills retrieve approved solutions without loading the entire documentation corpus into the LLM.\nSolution – Validation: Checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to flag retired features.\nSolution – Feedback loop: Caches repeat answers at 95%+ relevance, captures ratings, and routes incorrect answers through a validator agent to an admin review queue.\nImpact: 60–65% of the PS team uses it, about 10 queries per person per week, with 70–80% reported useful. People find answers themselves instead of tracking down colleagues.",
+          "text": "Problem: Implementation knowledge was scattered across team members, call transcripts, and unstructured documents, resulting in repeated problem-solving and limited reuse of previously developed solutions.\nSolution:\n- Use-Case Extraction & Solution Generation: An Anthropic-hosted agent analyzes Avoma call transcripts and Freshdesk tickets to identify customer use cases and capture solutions discussed. When no solution was discussed, it proposes one using product documentation.\n- Human Review: Implementation Managers review, approve, or revise generated use cases and solutions before they are added to the reusable knowledge base.\n- Intelligent Retrieval: A backend agent built in Lovable, powered by custom skills, uses Supermemory to retrieve relevant approved solutions and answer implementation questions without loading the entire documentation corpus into the LLM.\n- Current-State Validation: Cross-checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\n- Feedback & Continuous Improvement: Caches repeat answers at 95%+ relevance, captures user ratings, and routes incorrect answers through a validator agent for classification and admin review.\nImpact: Reached 60–65% adoption across the Professional Services team, with approximately 10 queries per user per week and 70–80% reported usefulness. Helps Implementation Managers find answers independently rather than spending time tracking down colleagues.",
           "color": "purple",
           "wide": true
         },

@@ -301,18 +301,25 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                                 {hl.text
                                   .split('\n')
                                   .filter((line) => line.trim())
-                                  .map((line, k) => (
-                                    <li key={k} style={{ marginBottom: '1px' }}>
-                                      {line.includes(': ') ? (
-                                        <>
-                                          <strong>{line.slice(0, line.indexOf(': ') + 1).trim()}</strong>
-                                          {line.slice(line.indexOf(': ') + 1)}
-                                        </>
-                                      ) : (
-                                        line.trim()
-                                      )}
-                                    </li>
-                                  ))}
+                                  .map((raw, k) => {
+                                    // "- " marks a nested pointer; a line ending in ":" is a label-only heading
+                                    const isSub = raw.trim().startsWith('- ');
+                                    const line = isSub ? raw.trim().slice(2) : raw.trim();
+                                    return (
+                                      <li key={k} style={{ marginBottom: '1px', marginLeft: isSub ? '14px' : 0 }}>
+                                        {line.endsWith(':') ? (
+                                          <strong>{line}</strong>
+                                        ) : line.includes(': ') ? (
+                                          <>
+                                            <strong>{line.slice(0, line.indexOf(': ') + 1).trim()}</strong>
+                                            {line.slice(line.indexOf(': ') + 1)}
+                                          </>
+                                        ) : (
+                                          line
+                                        )}
+                                      </li>
+                                    );
+                                  })}
                               </ul>
                             ) : (
                               hl.text
