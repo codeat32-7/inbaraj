@@ -279,8 +279,8 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                             padding: '8px 10px',
                             borderLeft: `3px solid ${hlColor.border}`,
                             gridColumn: hl.wide ? '1 / -1' : undefined,
-                            breakInside: 'avoid',
-                            pageBreakInside: 'avoid',
+                            breakInside: hl.wide ? 'auto' : 'avoid',
+                            pageBreakInside: hl.wide ? 'auto' : 'avoid',
                           }}
                         >
                           <div
@@ -349,13 +349,13 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
               Projects
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {projects.filter((p) => !p.printHidden).map((project, i) => {
+              {projects.filter((p) => !p.printHidden).map((project, i, shown) => {
                 const pc = projectColorMap[project.variant] || projectColorMap.v1;
                 return (
                   <div
                     key={i}
                     style={{
-                      flex: '0 0 calc(50% - 4px)',
+                      flex: shown.length === 1 ? '0 0 100%' : '0 0 calc(50% - 4px)',
                       background: pc.bg,
                       borderRadius: '5px',
                       padding: '10px 12px',
@@ -493,24 +493,27 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                       style={{
                         flex: 1,
                         padding: '7px 10px',
-                        display: 'grid',
-                        gridTemplateColumns: wide ? '1fr' : '1fr 1fr',
-                        columnGap: '14px',
+                        display: wide ? 'grid' : 'block',
+                        gridTemplateColumns: '1fr',
                         rowGap: '2px',
                         fontSize: '8.5pt',
                         color: '#4a4844',
                         lineHeight: 1.5,
                       }}
                     >
-                      {group.items.map((item, j) => (
-                        <div
-                          key={j}
-                          style={{ display: 'flex', gap: '6px' }}
-                        >
-                          <span style={{ color: accent, flex: '0 0 auto' }}>&bull;</span>
-                          <span dangerouslySetInnerHTML={{ __html: sanitizeInlineHtml(item) }} />
-                        </div>
-                      ))}
+                      {wide
+                        ? group.items.map((item, j) => (
+                            <div key={j} style={{ display: 'flex', gap: '6px' }}>
+                              <span style={{ color: accent, flex: '0 0 auto' }}>&bull;</span>
+                              <span dangerouslySetInnerHTML={{ __html: sanitizeInlineHtml(item) }} />
+                            </div>
+                          ))
+                        : group.items.map((item, j) => (
+                            <span key={j}>
+                              {j > 0 && <span style={{ color: accent, margin: '0 6px' }}>&bull;</span>}
+                              <span dangerouslySetInnerHTML={{ __html: sanitizeInlineHtml(item) }} />
+                            </span>
+                          ))}
                     </div>
                   </div>
                 );

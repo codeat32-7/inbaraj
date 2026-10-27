@@ -151,7 +151,8 @@
         "RAG",
         "Human-in-loop"
       ],
-      "url": null
+      "url": null,
+      "printHidden": true
     },
     {
       "name": "AI Config Assistant",

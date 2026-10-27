@@ -99,7 +99,8 @@
         "RAG",
         "Human-in-loop"
       ],
-      "url": null
+      "url": null,
+      "printHidden": true
     },
     {
       "name": "AI Config Assistant",
@@ -188,20 +189,5 @@
       ]
     }
   ],
-  "summary": "Solution architect and implementation leader who owns enterprise SaaS engagements from discovery to go-live and designs the AI agents that make them reusable. At Rocketlane, implements the Nitro agentic AI platform around each customer's own use cases, architects enterprise integrations with Salesforce, ServiceNow, ADP, and SatMetrix, and built Atlas and the Nitro agents the implementation team runs on. At Facilio, led enterprise CMMS rollouts across the UK, US, and Middle East, with $4.1M+ in total contract value and nearly $1M in implementation and expansion value.",
-  "customSections": [
-    {
-      "id": "fit-ai-strategy",
-      "title": "Customer-Facing Architecture & Delivery",
-      "position": "after:skills",
-      "items": [
-        "Agent architecture: Designed and deployed Nitro agents around each customer's own use cases, and built the agents Rocketlane's implementation team runs across the project lifecycle.",
-        "Enterprise integrations: Solution architect for NICE Phase 2, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
-        "Reusability: Built Atlas to capture approved solutions for reuse across implementations, and a use-case-driven framework at Facilio with complexity scoring and effort models.",
-        "Pre-sales support: Framework let pre-sales scope accurately and auto-calculate timelines, and cut BRD and UAT ambiguity.",
-        "On-site delivery: Workshops, requirement gathering, and go-live training on-site in Saudi Arabia and the UK.",
-        "Business outcomes: $4.1M+ total contract value delivered, nearly $1M in implementation and expansion value, and $350K+ in pilot-to-enterprise expansion."
-      ]
-    }
-  ]
+  "summary": "Solution architect and implementation leader who owns enterprise SaaS engagements from discovery to go-live and designs the AI agents that make them reusable. At Rocketlane, implements the Nitro agentic AI platform around each customer's own use cases, architects enterprise integrations with Salesforce, ServiceNow, ADP, and SatMetrix, and built Atlas and the Nitro agents the implementation team runs on. At Facilio, led enterprise CMMS rollouts across the UK, US, and Middle East, with $4.1M+ in total contract value and nearly $1M in implementation and expansion value."
 }
