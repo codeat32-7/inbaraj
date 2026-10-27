@@ -280,10 +280,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;font-
 /* ─── PRINT / DOWNLOAD CV ─── */
 @media print{
   @page{size:A4 portrait;margin:0}
-  html,body{background:#fff!important}
   body>*{display:none!important}
   #resume-content{display:block!important;position:static!important}
-  #resume-content>div{width:100%!important;zoom:.94;padding:8mm 12mm!important;box-sizing:border-box!important}
+  #resume-content>div{width:100%!important;zoom:.88;padding:8mm 12mm!important;box-sizing:border-box!important}
 }
 
 /* ─── DOWNLOAD CV ─── */
