@@ -50,13 +50,13 @@
     {
       "value": "Atlas",
       "label": "AI knowledge system for implementation teams",
-      "sub": "Rocketlane · Claude agents · Supermemory",
+      "sub": "60–65% PS team adoption · 70–80% of queries reported useful",
       "color": "cs"
     },
     {
       "value": "Nitro",
       "label": "AI agents across the implementation lifecycle",
-      "sub": "Handover · kickoff · workshops · design · UAT",
+      "sub": "Est. 20–30% less time per deliverable · standardised outputs",
       "color": "teal"
     }
   ],
@@ -77,7 +77,7 @@
         {
           "label": "Nitro · Agents the team runs on",
           "color": "purple",
-          "text": "Sales-to-Implementation Handover: Streamlines the transition from sales to implementation.\nKickoff Deck Generator: Generates customer kickoff presentations.\nWorkshop Planner: Prepares workshop sessions and generates post-session recaps.\nSolution Design Agent: Generates solution design documents for each customer.\nUAT Agent: Creates test scripts and test cases from design documents, scope documents, emails, and call transcripts.\nForm-to-Sheets Agent: Transfers form responses into Rocketlane Sheets for reporting."
+          "text": "Agents: sales-to-implementation handover, kickoff decks, workshop planner (prep and recap), solution design documents, UAT scripts and cases, and form-to-Sheets reporting.\nContext built in: they run inside the Rocketlane project where documents, meetings and transcripts already live, so there’s less pulling from Avoma and other sources.\nEstimated 20–30% less time per deliverable.\nConsistent output: standardised formats replace individual templates, so results are clearer and repeatable."
         },
         {
           "label": "Nitro · Configuration agent (POC)",
@@ -88,7 +88,7 @@
           "label": "Atlas · AI Implementation Knowledge System",
           "color": "purple",
           "wide": true,
-          "text": "Knowledge Capture: Extracts customer use cases, requirements, and discussed solutions from Avoma call transcripts and Freshdesk tickets.\nAI-Powered Solution Generation: Uses product documentation and relevant knowledge to propose solutions when none were discussed, keeping proposed approaches distinct from agreed solutions.\nHuman-in-the-Loop Approval: Implementation Managers review, approve, or revise generated use cases and solutions before they become reusable knowledge.\nSearchable Knowledge Base: Built with Lovable, Anthropic-hosted and backend agents, and Supermemory to retrieve relevant approved solutions without loading the entire documentation corpus into the LLM.\nCurrent-State Validation: Checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\nFeedback & Continuous Improvement: Caches repeat answers when relevance is 95% or higher, captures user ratings, and uses a validator agent to classify incorrect answers and route them to an admin review queue."
+          "text": "Knowledge Capture: Extracts customer use cases, requirements, and discussed solutions from Avoma call transcripts and Freshdesk tickets.\nAI-Powered Solution Generation: Uses product documentation and relevant knowledge to propose solutions when none were discussed, keeping proposed approaches distinct from agreed solutions.\nHuman-in-the-Loop Approval: Implementation Managers review, approve, or revise generated use cases and solutions before they become reusable knowledge.\nSearchable Knowledge Base: Built with Lovable, Anthropic-hosted and backend agents, and Supermemory to retrieve relevant approved solutions without loading the entire documentation corpus into the LLM.\nCurrent-State Validation: Checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\nFeedback & Continuous Improvement: Caches repeat answers when relevance is 95% or higher, captures user ratings, and uses a validator agent to classify incorrect answers and route them to an admin review queue.\nAdoption & Impact: 60–65% of the PS team, about 10 queries per person per week, 70–80% reported useful. People find answers themselves instead of tracking down colleagues."
         }
       ]
     },
