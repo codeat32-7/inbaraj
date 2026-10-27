@@ -121,6 +121,12 @@
           "label": "Revenue impact",
           "color": "green",
           "text": "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work."
+        },
+        {
+          "label": "AI Config Assistant · Enterprise support tool",
+          "color": "purple",
+          "wide": true,
+          "text": "Problem: Implementation engineers spent about 3 hours a week each (2–6 hours) supporting the support team on issues, even with a solution document in place. The platform is fully customizable and implementations run 6 months to a year, so configurations change constantly.\nSolution: An AI assistant using RAG and NLP over XML platform configurations, so support teams can ask configuration questions in natural language.\nImpact: Support teams get configuration answers themselves, removing their dependency on implementation engineers after go-live – aimed at the roughly 3 hours a week (2–6) each implementation resource spent."
         }
       ]
     },
@@ -166,7 +172,8 @@
         "NLP",
         "Internal tooling"
       ],
-      "url": null
+      "url": null,
+      "printHidden": true
     },
     {
       "name": "FAAX",
