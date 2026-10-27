@@ -124,6 +124,8 @@ body.light .exp-highlight.green{background:rgba(10,122,92,0.05);border-color:rgb
 .exp-highlight ul{list-style:none;margin:0;padding:0;font-size:0.82rem;color:var(--text2);line-height:1.5}
 .exp-highlight li{position:relative;padding-left:0.9rem;margin-bottom:0.25rem}
 .exp-highlight li:last-child{margin-bottom:0}
+.exp-highlight li.sub{padding-left:1.9rem}
+.exp-highlight li.sub::before{left:0.95rem}
 .exp-highlight li strong{font-weight:600;color:var(--text)}
 .exp-highlight li::before{content:'\2013';position:absolute;left:0;color:var(--text3)}
 
@@ -282,7 +284,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;font-
   @page{size:A4 portrait;margin:0}
   body>*{display:none!important}
   #resume-content{display:block!important;position:static!important}
-  #resume-content>div{width:100%!important;padding:14mm 16mm!important;box-sizing:border-box!important}
+  #resume-content>div{width:100%!important;zoom:.88;padding:8mm 12mm!important;box-sizing:border-box!important}
 }
 
 /* ─── DOWNLOAD CV ─── */

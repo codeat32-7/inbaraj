@@ -88,7 +88,7 @@
           "label": "Atlas · AI Implementation Knowledge System",
           "color": "purple",
           "wide": true,
-          "text": "Knowledge Capture: Extracts customer use cases, requirements, and discussed solutions from Avoma call transcripts and Freshdesk tickets.\nAI-Powered Solution Generation: Uses product documentation and relevant knowledge to propose solutions when none were discussed, keeping proposed approaches distinct from agreed solutions.\nHuman-in-the-Loop Approval: Implementation Managers review, approve, or revise generated use cases and solutions before they become reusable knowledge.\nSearchable Knowledge Base: Built with Lovable, Anthropic-hosted and backend agents, and Supermemory to retrieve relevant approved solutions without loading the entire documentation corpus into the LLM.\nCurrent-State Validation: Checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\nFeedback & Continuous Improvement: Caches repeat answers when relevance is 95% or higher, captures user ratings, and uses a validator agent to classify incorrect answers and route them to an admin review queue.\nAdoption & Impact: 60–65% of the PS team, about 10 queries per person per week, 70–80% reported useful. People find answers themselves instead of tracking down colleagues."
+          "text": "Problem: Implementation knowledge was scattered across team members, call transcripts, and unstructured documents, resulting in repeated problem-solving and limited reuse of previously developed solutions.\nSolution:\n- Use-Case Extraction & Solution Generation: An Anthropic-hosted agent analyzes Avoma call transcripts and Freshdesk tickets to identify customer use cases and capture solutions discussed. When no solution was discussed, it proposes one using product documentation.\n- Human Review: Implementation Managers review, approve, or revise generated use cases and solutions before they are added to the reusable knowledge base.\n- Intelligent Retrieval: A backend agent built in Lovable, powered by custom skills, uses Supermemory to retrieve relevant approved solutions and answer implementation questions without loading the entire documentation corpus into the LLM.\n- Current-State Validation: Cross-checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\n- Feedback & Continuous Improvement: Caches repeat answers at 95%+ relevance, captures user ratings, and routes incorrect answers through a validator agent for classification and admin review.\nImpact: Reached 60–65% adoption across the Professional Services team, with approximately 10 queries per user per week and 70–80% reported usefulness. Helps Implementation Managers find answers independently rather than spending time tracking down colleagues."
         }
       ]
     },
@@ -151,7 +151,8 @@
         "RAG",
         "Human-in-loop"
       ],
-      "url": null
+      "url": null,
+      "printHidden": true
     },
     {
       "name": "AI Config Assistant",
