@@ -7,6 +7,7 @@ import JDForm from './_components/JDForm';
 import ProfilePreview from './_components/ProfilePreview';
 import GeneratedPreview from './_components/GeneratedPreview';
 import EditablePreview from './_components/EditablePreview';
+import AtsScore from './_components/AtsScore';
 
 interface RegistryEntry {
   company: string;
@@ -863,6 +864,13 @@ export default function AdminPage() {
                       </button>
                     </div>
                   </div>
+                  {adaptSource === null && intakeData.jobDescription.trim() && (
+                    <AtsScore
+                      jobDescription={intakeData.jobDescription}
+                      overrides={generated.overrides}
+                      password={storedPassword}
+                    />
+                  )}
                   {editMode ? (
                     <EditablePreview
                       overrides={generated.overrides}
