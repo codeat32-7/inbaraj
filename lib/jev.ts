@@ -9,7 +9,16 @@
  *   TYPESAFE_API_KEY – TypeSafe console key (Vercel project env, never committed).
  *                      Must be enabled for Preview as well as Production.
  */
-import { choice, TypeSafeClient, type ContentValue } from '@typesafe-ai/sdk';
+import {
+  choice,
+  TypeSafeClient,
+  APIConnectionError,
+  APIError,
+  APITimeoutError,
+  AuthenticationError,
+  RateLimitError,
+  type ContentValue,
+} from '@typesafe-ai/sdk';
 
 const QUESTION_ID = 'answer';
 
@@ -63,9 +72,14 @@ export async function jevClassify<C extends string>(
     return { choice: answer.choice as C, probabilities };
   } catch (e) {
     if (e instanceof JevError) throw e;
-    // Never surface SDK error text: it can include request details. Name + status only.
-    const status = (e as { status?: number })?.status;
-    const name = e instanceof Error ? e.constructor.name : 'Error';
-    throw new JevError(`Jev request failed (${name}${status ? ` ${status}` : ''})`);
+    // Never surface SDK error text (it can include request details); map to a short reason.
+    // Check order matters: timeouts are a kind of connection error.
+    let reason = 'unexpected error';
+    if (e instanceof APITimeoutError) reason = 'timed out';
+    else if (e instanceof APIConnectionError) reason = 'could not reach TypeSafe';
+    else if (e instanceof AuthenticationError) reason = 'authentication failed — check TYPESAFE_API_KEY';
+    else if (e instanceof RateLimitError) reason = 'rate limited';
+    else if (e instanceof APIError) reason = `HTTP ${(e as { status?: number }).status ?? 'error'}`;
+    throw new JevError(`Jev request failed: ${reason}`);
   }
 }

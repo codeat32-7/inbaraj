@@ -65,6 +65,9 @@ export default function ProfileSidebar({ registry, activeTab, onTabChange }: Pro
         >
           B
         </button>
+        <a href="/admin/ats" title="ATS validator" aria-label="ATS validator" style={{ ...styles.iconBtn, textDecoration: 'none' }}>
+          A
+        </a>
         <div style={styles.stripList}>
           {profileEntries.map(([slug, entry]) => (
             <button
@@ -112,6 +115,12 @@ export default function ProfileSidebar({ registry, activeTab, onTabChange }: Pro
         >
           <span style={styles.itemName}>Base Resume</span>
         </button>
+
+        <div style={{ ...styles.sectionLabel, marginTop: '1rem' }}>Tools</div>
+        <a href="/admin/ats" style={{ ...styles.item, textDecoration: 'none' }}>
+          <span style={styles.itemName}>ATS validator</span>
+          <span style={styles.itemDate}>Jev vs Claude</span>
+        </a>
 
         <div style={{ ...styles.sectionLabel, marginTop: '1rem' }}>
           Tailored ({profileEntries.length})

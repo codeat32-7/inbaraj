@@ -1,20 +1,41 @@
 import { ResumeData, ProfileOverride } from './types';
 import { mergeResume } from './resume';
 import { jevAvailable, jevClassify } from './jev';
+import { claudeJudge } from './claude-judge';
+import { DEFAULT_MODEL } from './models';
 
 export type Verdict = 'covered' | 'partial' | 'missing';
 const VERDICT_VALUE: Record<Verdict, number> = { covered: 1, partial: 0.5, missing: 0 };
 
 export interface RequirementResult {
   requirement: string;
-  verdict: Verdict;
-  confidence: number;
+  /** null when this judge call failed (see `error`). */
+  verdict: Verdict | null;
+  /** Probability of the chosen verdict (Jev) or overlap ratio (heuristic); null for Claude. */
+  confidence: number | null;
   evidence: string | null;
+  /** One-line rationale (Claude only). */
+  reason?: string;
+  /** Wall time of this judge call in ms; absent when no call was made. */
+  ms?: number;
+  error?: string;
 }
 
 export interface FormatCheck {
   label: string;
   passed: boolean;
+}
+
+export type JudgeKind = 'auto' | 'jev' | 'claude' | 'heuristic';
+
+export interface AtsTiming {
+  /** Wall time of the whole judging phase, in ms (calls run 5 at a time). */
+  judgeMs: number;
+  /** Number of real judge calls made. */
+  calls: number;
+  avgMs: number;
+  p50Ms: number;
+  maxMs: number;
 }
 
 export interface AtsReport {
@@ -23,9 +44,19 @@ export interface AtsReport {
   keywords: { matched: string[]; missing: string[] };
   requirements: RequirementResult[];
   checks: FormatCheck[];
-  /** 'jev' if the requirement judge ran on Jev, else the keyword-overlap fallback. */
-  method: 'jev' | 'heuristic';
+  /** Which judge actually produced the verdicts. */
+  method: 'jev' | 'claude' | 'heuristic';
+  /** Model id when method is 'claude'. */
+  model?: string;
+  timing: AtsTiming;
+  /** Judge calls that failed (forced jev/claude only). */
+  errors: number;
   jevError?: string;
+}
+
+export interface ScoreOptions {
+  judge?: JudgeKind;
+  model?: string;
 }
 
 const WEIGHTS = { keywords: 0.35, requirements: 0.5, format: 0.15 };
@@ -223,15 +254,12 @@ const JEV_CRITERIA: Record<Verdict, string> = {
   missing: 'The evidence does not demonstrate this requirement',
 };
 
-async function judge(requirement: string, evidence: string[], useJev: boolean) {
-  if (!evidence.length) return { verdict: 'missing' as Verdict, confidence: 1, jev: false };
-  if (useJev) {
-    const clip = (t: string) => (t.length > 400 ? `${t.slice(0, 400)}…` : t);
-    const state = { jobRequirement: requirement, resumeEvidence: evidence.map(clip) };
-    const r = await jevClassify(JEV_INSTRUCTIONS, state, JEV_CRITERIA);
-    return { verdict: r.choice, confidence: r.probabilities[r.choice] ?? 0, jev: true };
-  }
-  return { ...heuristicJudge(requirement, evidence), jev: false };
+const clip = (t: string) => (t.length > 400 ? `${t.slice(0, 400)}…` : t);
+
+async function judgeWithJev(requirement: string, evidence: string[]) {
+  const state = { jobRequirement: requirement, resumeEvidence: evidence.map(clip) };
+  const r = await jevClassify(JEV_INSTRUCTIONS, state, JEV_CRITERIA);
+  return { verdict: r.choice as Verdict, confidence: r.probabilities[r.choice] ?? 0 };
 }
 
 function formatChecks(r: ResumeData): FormatCheck[] {
@@ -265,7 +293,8 @@ async function mapLimit<T, R>(items: T[], limit: number, fn: (t: T) => Promise<R
 export async function scoreAts(
   base: ResumeData,
   overrides: Record<string, unknown>,
-  jobDescription: string
+  jobDescription: string,
+  { judge = 'auto', model }: ScoreOptions = {}
 ): Promise<AtsReport> {
   const merged = mergeResume(base, { meta: { company: '', created: '', active: true }, ...overrides } as ProfileOverride);
   const snippets = resumeSnippets(merged);
@@ -276,27 +305,73 @@ export async function scoreAts(
   const formatScore = checks.filter((c) => c.passed).length / checks.length;
 
   const reqs = extractRequirements(jobDescription);
-  let useJev = jevAvailable();
+  const claudeModel = model || DEFAULT_MODEL;
+
+  // 'auto' prefers Jev and quietly degrades to the heuristic; forced modes never degrade.
+  const forced = judge === 'jev' || judge === 'claude';
+  let useJev = judge === 'jev' || (judge === 'auto' && jevAvailable());
+  let method: AtsReport['method'] = judge === 'claude' ? 'claude' : useJev ? 'jev' : 'heuristic';
   let jevError: string | undefined;
-  let jevRan = false;
+  let successes = 0;
+  let failures = 0;
+
+  const latencies: number[] = [];
+  const startedAt = performance.now();
 
   const results = await mapLimit(reqs, 5, async (requirement): Promise<RequirementResult> => {
     const evidence = topEvidence(requirement, snippets);
-    let j;
-    try {
-      j = await judge(requirement, evidence, useJev);
-    } catch (e) {
-      // First Jev failure disables it for the remaining requirements.
-      useJev = false;
-      jevError = e instanceof Error ? e.message : 'Jev failed';
-      j = await judge(requirement, evidence, false);
+    const base: RequirementResult = { requirement, verdict: null, confidence: null, evidence: evidence[0] ?? null };
+    if (!evidence.length) return { ...base, verdict: 'missing', confidence: 1 };
+
+    // Stop hammering a broken judge: forced mode with repeated failures and no successes.
+    if (forced && failures >= 3 && successes === 0) {
+      return { ...base, error: 'Skipped after repeated failures' };
     }
-    if (j.jev) jevRan = true;
-    return { requirement, verdict: j.verdict, confidence: Number(j.confidence.toFixed(2)), evidence: evidence[0] ?? null };
+
+    const t0 = performance.now();
+    try {
+      if (judge === 'claude') {
+        const r = await claudeJudge(claudeModel, requirement, evidence.map(clip));
+        successes += 1;
+        const ms = Math.round(performance.now() - t0);
+        latencies.push(ms);
+        return { ...base, verdict: r.verdict, reason: r.reason, ms };
+      }
+      if (useJev) {
+        const r = await judgeWithJev(requirement, evidence);
+        successes += 1;
+        const ms = Math.round(performance.now() - t0);
+        latencies.push(ms);
+        return { ...base, verdict: r.verdict, confidence: Number(r.confidence.toFixed(2)), ms };
+      }
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : 'Judge failed';
+      if (forced) {
+        failures += 1;
+        return { ...base, error: msg, ms: Math.round(performance.now() - t0) };
+      }
+      // auto: first Jev failure disables Jev for the rest and uses the heuristic.
+      useJev = false;
+      method = 'heuristic';
+      jevError = msg;
+    }
+    const h = heuristicJudge(requirement, evidence);
+    return { ...base, verdict: h.verdict, confidence: Number(h.confidence.toFixed(2)) };
   });
 
-  const reqScore = results.length
-    ? results.reduce((sum, r) => sum + VERDICT_VALUE[r.verdict], 0) / results.length
+  const judgeMs = Math.round(performance.now() - startedAt);
+  const sorted = [...latencies].sort((a, b) => a - b);
+  const timing: AtsTiming = {
+    judgeMs,
+    calls: latencies.length + results.filter((r) => r.error && r.ms !== undefined).length,
+    avgMs: sorted.length ? Math.round(sorted.reduce((a, b) => a + b, 0) / sorted.length) : 0,
+    p50Ms: sorted.length ? sorted[Math.floor(sorted.length / 2)] : 0,
+    maxMs: sorted.length ? sorted[sorted.length - 1] : 0,
+  };
+
+  const judged = results.filter((r) => r.verdict !== null);
+  const reqScore = judged.length
+    ? judged.reduce((sum, r) => sum + VERDICT_VALUE[r.verdict as Verdict], 0) / judged.length
     : 1;
 
   const score = Math.round(
@@ -313,7 +388,10 @@ export async function scoreAts(
     keywords: { matched: kw.matched, missing: kw.missing },
     requirements: results,
     checks,
-    method: jevRan ? 'jev' : 'heuristic',
+    method,
+    ...(method === 'claude' ? { model: claudeModel } : {}),
+    timing,
+    errors: results.filter((r) => r.error).length,
     ...(jevError ? { jevError } : {}),
   };
 }

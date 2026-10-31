@@ -37,6 +37,7 @@ app/
 │       ├── GeneratedPreview.tsx   # Formatted preview of AI output
 │       ├── EditablePreview.tsx    # Click-to-edit preview with AI assist
 │       └── ProfilePreview.tsx     # Iframe preview of resume pages
+│   └── ats/page.tsx               # ATS validator: Jev vs Claude side by side
 └── api/
     ├── adapt/route.ts             # POST: Adapt existing resume with instructions
     ├── ai-edit/route.ts           # POST: AI-assisted single-field editing
@@ -215,7 +216,7 @@ If you add a new one, wrap it: `{ __html: sanitizeInlineHtml(value) }`. Six exis
 `docs/career/atlas.md` is the source of truth for the Atlas project (Rocketlane). When writing or editing resume copy about Atlas in `data/base.json`, keep it consistent with that doc and update `data/ground-truth.json` to match. Do not add anything listed under "Details Not Yet Specified" (embedding model, accuracy metrics, cache technology, etc.) unless Inbaraj provides it. Also: no aggregate implementation counts or "N years" phrasing in resume copy; use dollar amounts attributed to the company they came from.
 
 ### ATS scorer (`lib/ats.ts`, `/api/ats-score`)
-Scores a tailored page against its JD: 35% keyword coverage, 50% requirement match, 15% parse-ability checks. Requirement match uses Jev (`lib/jev.ts`) as a covered/partial/missing classifier, with a keyword-overlap fallback; the response's `method` field says which ran. `lib/jev.ts` wraps the official `@typesafe-ai/sdk` (`TypeSafeClient` reads `TYPESAFE_API_KEY`, model `jev-latest`); it has only been tested against a mock server, so after setting the key confirm the card says "judged by Jev". It is an estimate, not a real ATS result, and it is not run for the adapt flow (no JD). Never auto-add missing keywords to a resume: that bypasses the fabrication validation.
+Scores a tailored page against its JD: 35% keyword coverage, 50% requirement match, 15% parse-ability checks. Requirement match uses Jev (`lib/jev.ts`) as a covered/partial/missing classifier, with a keyword-overlap fallback; the response's `method` field says which ran. `lib/jev.ts` wraps the official `@typesafe-ai/sdk` (`TypeSafeClient` reads `TYPESAFE_API_KEY`, model `jev-latest`); it has only been tested against a mock server, so after setting the key confirm the card says "judged by Jev". **ATS validator page** (`/admin/ats`, linked from the studio sidebar) fires two parallel `POST /api/ats-score` calls, `judge: 'jev'` and `judge: 'claude'` (`lib/claude-judge.ts`), on the same resume (`slug`: `base` or a published profile) and JD, and shows per-block timing plus where the two disagree. Forced judges never fall back silently: failed calls are reported per requirement and excluded from the score. Only the default `judge: 'auto'` (review step) degrades to the keyword heuristic. Timings are measured server-side per call (`performance.now()`), so the first run includes cold start. It is an estimate, not a real ATS result, and it is not run for the adapt flow (no JD). Never auto-add missing keywords to a resume: that bypasses the fabrication validation.
 
 ## Session handoff protocol
 
