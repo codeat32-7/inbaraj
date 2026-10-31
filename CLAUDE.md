@@ -99,8 +99,7 @@ Required in Vercel project settings (not team settings):
 | `APIFY_API_KEY` | Apify API token for URL-based JD scraping |
 | `GITHUB_TOKEN` | Fine-grained GitHub PAT with Contents read/write on this repo |
 | `GITHUB_BRANCH` | Target branch for profile commits (should be `main`) |
-| `TYPESAFE_API_KEY` | Jev (TypeSafe AI) API key, used by the ATS scorer. Optional — scorer falls back to a keyword heuristic without it |
-| `TYPESAFE_API_URL` | Full Jev classify endpoint URL. Jev is only used when both this and the key are set |
+| `AI_GATEWAY_API_KEY` | Vercel AI Gateway key, used to call Jev (`typesafe-ai/jev`) for the ATS scorer. Optional — scorer falls back to a keyword heuristic without it. This is a Vercel key, not a TypeSafe console key |
 
 ## Development conventions
 
@@ -216,7 +215,7 @@ If you add a new one, wrap it: `{ __html: sanitizeInlineHtml(value) }`. Six exis
 `docs/career/atlas.md` is the source of truth for the Atlas project (Rocketlane). When writing or editing resume copy about Atlas in `data/base.json`, keep it consistent with that doc and update `data/ground-truth.json` to match. Do not add anything listed under "Details Not Yet Specified" (embedding model, accuracy metrics, cache technology, etc.) unless Inbaraj provides it. Also: no aggregate implementation counts or "N years" phrasing in resume copy; use dollar amounts attributed to the company they came from.
 
 ### ATS scorer (`lib/ats.ts`, `/api/ats-score`)
-Scores a tailored page against its JD: 35% keyword coverage, 50% requirement match, 15% parse-ability checks. Requirement match uses Jev (`lib/jev.ts`) as a covered/partial/missing classifier, with a keyword-overlap fallback; the response's `method` field says which ran. The Jev request/response shape in `lib/jev.ts` was written WITHOUT the TypeSafe docs — verify `buildBody`/`parseResponse` against the console example before trusting `method: 'jev'`. It is an estimate, not a real ATS result, and it is not run for the adapt flow (no JD). Never auto-add missing keywords to a resume: that bypasses the fabrication validation.
+Scores a tailored page against its JD: 35% keyword coverage, 50% requirement match, 15% parse-ability checks. Requirement match uses Jev (`lib/jev.ts`) as a covered/partial/missing classifier, with a keyword-overlap fallback; the response's `method` field says which ran. `lib/jev.ts` follows the documented AI Gateway `/v1/evaluate` shape (https://vercel.com/docs/ai-gateway/modalities/decision); it has not been run against the live API from CI, so check the card says "judged by Jev" after setting `AI_GATEWAY_API_KEY`. It is an estimate, not a real ATS result, and it is not run for the adapt flow (no JD). Never auto-add missing keywords to a resume: that bypasses the fabrication validation.
 
 ## Session handoff protocol
 

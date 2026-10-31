@@ -3,7 +3,6 @@ import { mergeResume } from './resume';
 import { jevAvailable, jevClassify } from './jev';
 
 export type Verdict = 'covered' | 'partial' | 'missing';
-const VERDICTS = ['covered', 'partial', 'missing'] as const;
 const VERDICT_VALUE: Record<Verdict, number> = { covered: 1, partial: 0.5, missing: 0 };
 
 export interface RequirementResult {
@@ -216,15 +215,20 @@ function heuristicJudge(requirement: string, evidence: string[]): { verdict: Ver
   return { verdict: 'missing', confidence: 1 - ratio };
 }
 
-const JEV_QUESTION =
-  'Does the resume evidence demonstrate the job requirement? "covered" = clearly demonstrated, ' +
-  '"partial" = related but not the same, "missing" = not demonstrated.';
+const JEV_INSTRUCTIONS =
+  'Does the resume evidence demonstrate the job requirement?';
+const JEV_CRITERIA: Record<Verdict, string> = {
+  covered: 'The evidence clearly demonstrates this requirement',
+  partial: 'The evidence is related or adjacent but does not fully demonstrate the requirement',
+  missing: 'The evidence does not demonstrate this requirement',
+};
 
 async function judge(requirement: string, evidence: string[], useJev: boolean) {
   if (!evidence.length) return { verdict: 'missing' as Verdict, confidence: 1, jev: false };
   if (useJev) {
-    const ctx = `Job requirement: ${requirement}\n\nResume evidence:\n- ${evidence.join('\n- ')}`;
-    const r = await jevClassify(JEV_QUESTION, ctx, VERDICTS);
+    const clip = (t: string) => (t.length > 400 ? `${t.slice(0, 400)}…` : t);
+    const state = `Job requirement: ${requirement}\n\nResume evidence:\n- ${evidence.map(clip).join('\n- ')}`;
+    const r = await jevClassify(JEV_INSTRUCTIONS, state, JEV_CRITERIA);
     return { verdict: r.choice, confidence: r.probabilities[r.choice] ?? 0, jev: true };
   }
   return { ...heuristicJudge(requirement, evidence), jev: false };
