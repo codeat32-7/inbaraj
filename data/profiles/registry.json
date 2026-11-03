@@ -43,5 +43,10 @@
     "company": "DevRev",
     "created": "2026-10-26",
     "active": true
+  },
+  "level-ai-forward-deployed-engineer-agents-remote": {
+    "company": "Level AI",
+    "created": "2026-11-03",
+    "active": true
   }
 }
