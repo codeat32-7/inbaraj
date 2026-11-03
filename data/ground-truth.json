@@ -156,12 +156,14 @@
   "projectNames": [
     "Atlas",
     "AI Config Assistant",
-    "FAAX"
+    "FAAX",
+    "Resume Studio"
   ],
   "projectDescriptions": [
     "Turns customer calls, tickets, Slack, and project docs into human-approved implementation solutions. Answers are checked against current product knowledge so retired features don’t resurface, and answers marked wrong are classified by a validator agent and routed to an admin review queue.",
     "AI-powered assistant that lets support teams query enterprise platform configurations in natural language — eliminating dependency on implementation engineers post go-live.",
-    "Bridges the gap between raw trading interfaces and disciplined strategy-driven execution. Users define structured trading blueprints — AI monitors conditions, generates setups, and drafts trades for human approval."
+    "Bridges the gap between raw trading interfaces and disciplined strategy-driven execution. Users define structured trading blueprints — AI monitors conditions, generates setups, and drafts trades for human approval.",
+    "AI studio behind this site. Paste a job description or a link and it tailors the resume to the role, checks every line against a record of my verified career facts so nothing is invented, and lets me review and edit before publishing a company-specific page and PDF. An ATS-style scorer shows how well the resume covers the job's requirements."
   ],
   "education": [
     "M.Tech — Embedded Systems",

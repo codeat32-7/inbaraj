@@ -189,6 +189,22 @@
       ],
       "url": null,
       "printHidden": true
+    },
+    {
+      "name": "Resume Studio",
+      "icon": "RS",
+      "variant": "v2",
+      "type": "AI Resume Tailoring Platform",
+      "description": "AI studio behind this site. Paste a job description or a link and it tailors the resume to the role, checks every line against a record of my verified career facts so nothing is invented, and lets me review and edit before publishing a company-specific page and PDF. An ATS-style scorer shows how well the resume covers the job's requirements.",
+      "tags": [
+        "Claude API",
+        "Next.js",
+        "Fact validation",
+        "ATS scoring",
+        "Human-in-loop"
+      ],
+      "url": null,
+      "printHidden": true
     }
   ],
   "skills": [
