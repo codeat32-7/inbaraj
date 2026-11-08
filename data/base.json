@@ -195,10 +195,11 @@
       "icon": "RS",
       "variant": "v2",
       "type": "AI Resume Tailoring Platform",
-      "description": "AI studio behind this site. Paste a job description or a link and it tailors the resume to the role, checks every line against a record of my verified career facts so nothing is invented, and lets me review and edit before publishing a company-specific page and PDF. An ATS-style scorer shows how well the resume covers the job's requirements.",
+      "description": "AI studio behind this site. Paste a job description or a link and it tailors the resume to the role, checks every line against a record of my verified career facts so nothing is invented, and lets me review and edit before publishing a company-specific page and PDF. An ATS-style scorer, powered by Jev (TypeSafe AI's classifier model), judges how well the resume covers each requirement, and can be compared side by side with Claude.",
       "tags": [
         "Claude API",
         "Next.js",
+        "Jev (TypeSafe AI)",
         "Fact validation",
         "ATS scoring",
         "Human-in-loop"
