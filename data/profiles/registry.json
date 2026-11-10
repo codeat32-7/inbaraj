@@ -48,5 +48,10 @@
     "company": "Level AI",
     "created": "2026-11-03",
     "active": true
+  },
+  "dehazelabs-deployment-strategist": {
+    "company": "DehazeLabs",
+    "created": "2026-11-10",
+    "active": true
   }
 }
