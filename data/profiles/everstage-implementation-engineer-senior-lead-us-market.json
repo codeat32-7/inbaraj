@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "company": "Everstage",
+    "created": "2026-11-22",
+    "active": true
+  },
+  "hero": {
+    "headline": "Enterprise SaaS Implementation Lead —<br><em>Discovery, Integrations & Configuration</em>",
+    "description": "Implementation lead who owns enterprise SaaS rollouts independently, from discovery workshops and process mapping through solution design, configuration, integrations, UAT, and go-live training. Has delivered for mid-to-large clients across the UK, US, and Middle East, including $4.1M+ in total contract value at Facilio and an enterprise integration rollout (ADP, SatMetrix, ServiceNow, Salesforce) at Rocketlane."
+  },
+  "experience": [
+    {
+      "period": "May 2026 — Present",
+      "company": "Rocketlane",
+      "badge": "PSA · SaaS",
+      "title": "AI Implementation Manager",
+      "bullets": [
+        "Own customer implementations end to end on Rocketlane’s professional services automation platform as implementation manager, solution architect, and engagement manager, covering discovery, solution design, configuration, integrations, and go-live.",
+        "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
+        "Implement Nitro, Rocketlane’s agentic AI platform, for customers by designing and deploying agents around each customer’s own use cases.",
+        "Built the Nitro agents Rocketlane’s implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
+        "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current."
+      ],
+      "highlights": [
+        {
+          "label": "Nitro · Agents the team runs on",
+          "text": "Agents: sales-to-implementation handover, kickoff decks, workshop planner (prep and recap), solution design documents, UAT scripts and cases, and form-to-Sheets reporting.\nContext built in: they run inside the Rocketlane project where documents, meetings and transcripts already live, so there’s less pulling from Avoma and other sources.\nEstimated 20–30% less time per deliverable.\nConsistent output: standardised formats replace individual templates, so results are clearer and repeatable.",
+          "color": "purple"
+        },
+        {
+          "label": "Nitro · Configuration agent (POC)",
+          "text": "Problem: Native settings, notifications, and automations were configured manually after every design document.\nSolution: Built a Nitro Workforce agent that reads design documents and determines the required configuration.\nBrowser Automation: Uses Browserbase to navigate Rocketlane, configure settings, and create automations.\nValidation: Proof of concept subsequently validated by the product team.",
+          "color": "green"
+        },
+        {
+          "label": "Atlas · AI Implementation Knowledge System",
+          "text": "Problem: Implementation knowledge was scattered across team members, call transcripts, and unstructured documents, resulting in repeated problem-solving and limited reuse of previously developed solutions.\nSolution:\n- Use-Case Extraction & Solution Generation: An Anthropic-hosted agent analyzes Avoma call transcripts and Freshdesk tickets to identify customer use cases and capture solutions discussed. When no solution was discussed, it proposes one using product documentation.\n- Human Review: Implementation Managers review, approve, or revise generated use cases and solutions before they are added to the reusable knowledge base.\n- Intelligent Retrieval: A backend agent built in Lovable, powered by custom skills, uses Supermemory to retrieve relevant approved solutions and answer implementation questions without loading the entire documentation corpus into the LLM.\n- Current-State Validation: Cross-checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\n- Feedback & Continuous Improvement: Caches repeat answers at 95%+ relevance, captures user ratings, and routes incorrect answers through a validator agent for classification and admin review.\nImpact: Reached 60–65% adoption across the Professional Services team, with approximately 10 queries per user per week and 70–80% reported usefulness. Helps Implementation Managers find answers independently rather than spending time tracking down colleagues.",
+          "color": "purple",
+          "wide": true
+        }
+      ]
+    },
+    {
+      "period": "Nov 2021 — May 2026",
+      "company": "Facilio",
+      "badge": "CMMS · SaaS",
+      "title": "Lead, Product Implementation",
+      "bullets": [
+        "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live.",
+        "Led enterprise CMMS implementations for mid-to-large clients across the UK, US, and Middle East, with $4.1M+ in total contract value and nearly $1M in implementation and expansion value."
+      ],
+      "highlights": [
+        {
+          "label": "Key initiative",
+          "text": "Built a use-case-driven implementation framework with complexity scoring and effort models, so pre-sales could scope accurately, auto-calculate timelines, and cut BRD and UAT ambiguity.",
+          "color": "purple"
+        },
+        {
+          "label": "Global delivery",
+          "text": "On-site in Saudi Arabia for a half-million-dollar engagement and in the UK for MHA, covering requirement gathering, stakeholder workshops, and go-live training.",
+          "color": "purple"
+        },
+        {
+          "label": "Pilot → Enterprise conversions",
+          "text": "Converted pilots into full-scale enterprise rollouts through structured discovery and early value demonstration, worth $350K+ in expansion value.",
+          "color": "green"
+        },
+        {
+          "label": "Revenue impact",
+          "text": "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits, turning informal changes into billable work.",
+          "color": "green"
+        },
+        {
+          "label": "AI Config Assistant · Enterprise support tool",
+          "text": "Problem: Implementation engineers spent about 3 hours a week each (2–6 hours) supporting the support team on issues, even with a solution document in place. The platform is fully customizable and implementations run 6 months to a year, so configurations change constantly.\nSolution: An AI assistant using RAG and NLP over XML platform configurations, so support teams can ask configuration questions in natural language.\nImpact: Support teams get configuration answers themselves, removing their dependency on implementation engineers after go-live. This targets the roughly 3 hours a week (2–6) each implementation resource spent.",
+          "color": "purple",
+          "wide": true
+        }
+      ]
+    },
+    {
+      "period": "May 2016 — Oct 2021",
+      "company": "Amazon",
+      "badge": "E-Commerce · Ops",
+      "title": "Senior Catalog Specialist",
+      "bullets": [
+        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views, yielding an estimated $230K in monthly savings.",
+        "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day.",
+        "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now, directly improving operational efficiency."
+      ],
+      "highlights": []
+    }
+  ],
+  "projects": [
+    {
+      "name": "AI Config Assistant",
+      "icon": "AI",
+      "variant": "v3",
+      "type": "Enterprise Support Tool",
+      "description": "AI-powered assistant that lets support teams query enterprise platform configurations in natural language, removing their dependency on implementation engineers after go-live.",
+      "tags": [
+        "XML",
+        "RAG",
+        "NLP",
+        "Internal tooling"
+      ],
+      "url": null,
+      "printHidden": true
+    },
+    {
+      "name": "Atlas",
+      "icon": "AT",
+      "variant": "v1",
+      "type": "AI Implementation Knowledge System",
+      "description": "Turns customer calls, tickets, Slack, and project docs into human-approved implementation solutions, so implementation managers can find answers independently. Answers are checked against current product knowledge so retired features don’t resurface.",
+      "tags": [
+        "Claude agents",
+        "Supermemory",
+        "Lovable",
+        "RAG",
+        "Human-in-loop"
+      ],
+      "url": null,
+      "printHidden": true
+    }
+  ],
+  "skills": [
+    {
+      "title": "Integrations & Technical",
+      "color": "accent",
+      "items": [
+        "Integration Architecture: REST APIs, webhooks, and event-driven integrations",
+        "Enterprise SaaS Integrations: Salesforce, HubSpot, Sage, SuccessFactors, ADP, ServiceNow, SatMetrix, and Fathom",
+        "Integration Platforms: iPaaS tools such as Workato and Zapier for custom integrations and workflow automation",
+        "SaaS Configuration & Customization: Platform configuration, JavaScript-based UI scripting, and workflow automation",
+        "Facilities & Operations Systems: Xero, CorrigoPro, Equiem, Wooqer, Bill.com, and Facilio ecosystem integrations"
+      ]
+    },
+    {
+      "title": "Implementation & Delivery",
+      "color": "accent",
+      "items": [
+        "End-to-end enterprise SaaS implementation",
+        "Discovery & solution design",
+        "Project planning, timelines & WBS",
+        "UAT design & go-live support",
+        "SOP development & standardisation"
+      ]
+    },
+    {
+      "title": "Business Analysis",
+      "color": "teal",
+      "items": [
+        "Process mapping & gap analysis",
+        "Requirements gathering (BRD)",
+        "Stakeholder workshop facilitation",
+        "Complexity scoring & effort models",
+        "Domains: CMMS / facilities · PSA"
+      ]
+    },
+    {
+      "title": "Client & Account Management",
+      "color": "amber",
+      "items": [
+        "Executive stakeholder engagement",
+        "Enterprise customers across the UK, US & Middle East",
+        "Go-live training & change management",
+        "Cross-functional team leadership",
+        "Revenue tracking & PS billing"
+      ]
+    },
+    {
+      "title": "AI & Tooling",
+      "color": "teal",
+      "items": [
+        "AI agents & skills (Claude, Nitro)",
+        "Knowledge bases & RAG (Supermemory)",
+        "Browser automation (Browserbase)",
+        "Prompt engineering",
+        "Lovable · Vercel · GitHub"
+      ]
+    }
+  ],
+  "summary": "Implementation lead who owns enterprise SaaS implementations independently, from discovery and process mapping to configuration, integrations, and go-live. At Rocketlane, is solution architect and implementation manager for an enterprise account (NICE), integrating the platform with ADP, SatMetrix, ServiceNow, and Salesforce. At Facilio, led enterprise CMMS rollouts for mid-to-large clients across the UK, US, and Middle East, with $4.1M+ in total contract value and nearly $1M in implementation and expansion value. Also built a use-case-driven implementation framework with complexity scoring and effort models, and AI agents that standardise implementation deliverables.",
+  "customSections": [
+    {
+      "id": "enterprise-implementation-fit",
+      "title": "Enterprise Implementation Experience",
+      "position": "after:skills",
+      "items": [
+        "Discovery & process mapping: ran discovery workshops with executives and operations teams and turned requirements into BRDs, solution designs, and WBS-based plans.",
+        "Integrations: solution architect for the NICE enterprise rollout, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
+        "Scoping & effort models: built a use-case-driven framework with complexity scoring and effort models to auto-calculate timelines and cut BRD and UAT ambiguity.",
+        "Training & onboarding: delivered go-live training on-site in the UK (MHA) and Saudi Arabia, and led stakeholder workshops.",
+        "Independent delivery: owns implementations end to end as implementation manager, solution architect, and engagement manager."
+      ]
+    }
+  ]
+}
