@@ -14,7 +14,7 @@ The site serves two purposes:
 
 - **Framework**: Next.js 16.2.2 (App Router, React 19)
 - **Language**: TypeScript
-- **Styling**: Vanilla CSS (globals.css) — no Tailwind utilities used despite the dependency existing
+- **Styling**: Vanilla CSS (globals.css) — no Tailwind utilities used despite the dependency existing; light default + opt-in dark (see Gotchas)
 - **Fonts**: Google Fonts (DM Mono, Spectral, DM Sans) loaded via `next/font/google`
 - **AI**: Anthropic Claude API (`@anthropic-ai/sdk`) for resume tailoring
 - **Deployment**: Vercel (auto-deploys from `main`)
@@ -113,6 +113,9 @@ Required in Vercel project settings (not team settings):
 - **Git workflow** — Always push changes to a feature branch, never directly to main. Do not squash commits unless there is an error to fix. Wait for user to test before merging to main.
 
 ## Gotchas
+
+### Theme: light is the default, dark is opt-in
+`app/globals.css` defines the light tokens on `:root` and the dark tokens on `[data-theme="dark"]` (no more `body.light`). `ThemeToggle` sets `html[data-theme="dark"]` and stores `localStorage.theme`; a `beforeInteractive` script in `app/layout.tsx` applies it before first paint. The admin Studio is built with hard-coded dark inline colours, so `app/admin/layout.tsx` wraps it in `data-theme="dark"` — keep that wrapper, or admin turns unreadable. Screen fonts are Fraunces / Inter / JetBrains Mono (CSS vars `--font-display/body/mono`); DM Mono, Spectral and DM Sans must stay in the font `<link>` because `ResumePrint.tsx` names them directly. The print block forces a white background and hides `body::before` — keep both or the PDF picks up the screen glow/dark background.
 
 ### Cookie redirect in admin
 The middleware sets a `profile_lock` cookie when visiting `/r/[slug]`. This redirects `/` to the profile page. The admin's base resume iframe uses `/?view=base` to bypass this. If you change the middleware, make sure this bypass still works.
