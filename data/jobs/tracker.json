@@ -301,6 +301,21 @@
       "url": "https://in.linkedin.com/jobs/view/forward-deployed-engineer-at-refold-ai-4492458568",
       "note": "Python/Node integration engineering",
       "source": "apify-linkedin"
+    },
+    {
+      "id": "everstage-impl-eng-sr-lead-us",
+      "company": "Everstage",
+      "title": "Implementation Engineer (Senior/Lead, US Market)",
+      "location": "Chennai/Hyderabad on-site, 4pm-1am IST",
+      "surfaced": "2026-11-22",
+      "posted": "2026-10-14",
+      "status": "profile-drafted",
+      "slug": "everstage-implementation-engineer-senior-lead-us-market",
+      "atsScore": null,
+      "url": "https://www.linkedin.com/jobs/view/4478445401/",
+      "applyUrl": "https://ats.rippling.com/everstage/jobs/81087ce5-8949-4a11-8db7-795cf78b84f4?jobSite=LinkedIn",
+      "note": "Gaps: SQL/Excel/data transformation, variable-comp domain. Earlier Everstage page (Apr 2026) exists; confirm whether already applied.",
+      "source": "user-provided"
     }
   ]
 }
