@@ -115,6 +115,7 @@ Required in Vercel project settings (not team settings):
 ## Gotchas
 
 ### Resume writing rules live in `.claude/skills/resume-craft/SKILL.md`
+Rules are evidence-tagged (OFFICIAL / STUDY / CONSENSUS / HOUSE); sources and unverified claims are in `.claude/skills/resume-craft/references/`. After rendering a PDF also run `node scripts/resume-parse-check.mjs <pdf> <slug>` (machine-readability: reading-order integrity, contact in body, headings, titles, dates, file size). Neither script proves a real ATS will pass the file; never promise that.
 The PDF's "Professional Summary" is `hero.description` (not `summary`): keep it to ≤340 characters / 3 lines, numbers-first, never mention the application or role. Run `node scripts/resume-lint.mjs <slug|base>` before shipping any page; it fails on summary length, banned phrasing, over-long bullets, "N years", and numbers not in the base resume.
 
 ### Theme: light is the default, dark is opt-in

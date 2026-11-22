@@ -1,56 +1,72 @@
 ---
 name: resume-craft
-description: How to write and edit Inbaraj B's resume content (data/base.json and data/profiles/*.json). Use whenever drafting, tailoring, or reviewing resume copy — summary, bullets, skills — or before shipping any tailored page/PDF. Covers the writing rules, the fact rules, the 2-page PDF budget, and the lint command.
+description: Evidence-based method for writing, tailoring and checking Inbaraj B's resume (data/base.json, data/profiles/*.json, the PDF) so it reads fast for humans and parses cleanly in applicant tracking systems. Use before drafting or editing any resume copy, when asked about ATS, and before shipping any tailored page or PDF. Every rule is tagged with its evidence; sources are in references/evidence.md.
 ---
 
 # Resume craft
 
-A resume is read in ~10 seconds by someone who is screening, not reading. Every line must earn its space: **scope, numbers, outcome.** No narration, no filler, no repetition.
+Two readers, in order: **(1) software that parses the file into fields, (2) a person who skims for ~6–8 seconds.** Write for both, never for a score.
 
-## Where the text actually shows up
-- The PDF's **"Professional Summary" is `hero.description`** (not the `summary` field). On the web page it is also the hero paragraph. Keep `summary` identical in meaning; it feeds the ATS scorer.
-- `experience[].bullets` = headline bullets; `highlights` = cards (Problem / Solution / Impact).
-- `skills[]` = the skills table. `customSections` render only if they earn their space (a section that adds 0 ATS score and repeats other sections gets deleted).
-- The PDF is **2 pages** (`components/ResumePrint.tsx`). A third page with only Education on it is a failure. Trim in this order: repeated custom sections → card detail sentences → bullet tails → summary.
+Rules carry a tag so you know how much weight they have:
+- **[OFFICIAL]** — stated in an ATS vendor's or university career office's own documentation.
+- **[STUDY]** — measured in a study (sample and caveats in `references/evidence.md`).
+- **[CONSENSUS]** — repeated across many guides; no primary source found.
+- **[HOUSE]** — Inbaraj's own preference. Follow it, but don't present it as industry fact.
 
-## The summary (hero.description) — hard rules
-- **2–3 lines on the PDF: ≤ 340 characters, ≤ 55 words.**
-- Lead with *who + scope + numbers*: the kind of customers (e.g. mid-market to enterprise), the figures, the regions, the signature work. Numbers are attributed to the company they came from.
-- **Never** say what the resume is for: no "Applying for…", no role title, no company name, no "seeking/looking for". The reader already knows.
-- No location (the contact line has it), no "passionate / results-driven / proven / dynamic", no years-of-experience counts, no list of adjectives.
-- One differentiator at the end (e.g. builds the AI agents that make implementations repeatable). Stop.
+Full source notes, what was *not* verified, and the ATS mechanics: `references/evidence.md`, `references/ats-parsing.md`.
 
-## Bullets
-- Verb first. One idea per bullet. **≤ 2 lines (~250 characters).**
-- Pattern: *did what → at what scale → with what result.* Put the number in the bullet, not in a separate sentence.
-- 4–5 bullets for the current role, 3–4 for older ones. Cut the weakest, don't shrink the font.
-- Do not restate a card's content in a bullet.
+## What ATS software actually does (so you don't chase myths)
+- An ATS is mainly a database and workflow tool. It parses the file into fields (name, employers, titles, dates, skills) and makes them searchable and filterable. [CONSENSUS; Greenhouse and Lever docs describe parsing/auto-fill, not scoring]
+- Automatic rejection is mostly **knockout questions** the employer configures on the application form (work authorisation, location, etc.), not hidden resume scoring. Some employers can enable ranking or score thresholds; there is no universal "78% match". [CONSENSUS, partly vendor blogs]
+- Therefore the real risks are: (a) the parser **garbles or drops** your data, so you don't appear in searches/filters; (b) a recruiter searching keywords/titles/years of experience doesn't find you; (c) a knockout question. A resume can fix (a) and (b) only.
+- No tool can certify "passes ATS". Third-party scores (Jobscan etc.) are vendor estimates. Our `lib/ats.ts` is a coverage estimate. Never tell Inbaraj a resume "will pass".
 
-## Skills table
-- Group by what a screener looks for. Each line says **what was done**, not just tool names.
-- Specific work gets its own lines (e.g. data transformation: what comes in, what it becomes, where it goes). Don't bury it in a tool list.
-- **Mention each tool once** where it is strongest (e.g. SQL once in Data & Analysis, once in the Amazon bullet it belongs to). If a term shows up 3+ times across summary, bullets and skills, cut the extras.
+## Parse-safety rules (make the file machine-readable)
+1. **Single reading order, no tables, no multi-column body, no text boxes.** Greenhouse lists "complex resumes with tables, headers, and footers" and "resumes that have a columned layout" as causes of unsuccessful parsing. [OFFICIAL]
+2. **Name and contact details in the body**, not in a header, footer or text box. [OFFICIAL]
+3. **No graphics, photos, word art, or image-only/scanned PDFs.** [OFFICIAL]
+4. **Clear section headings and consistent format within each section.** Use plain headings: Summary, Experience, Skills, Education. [OFFICIAL; CONSENSUS for heading names]
+5. **Full job titles** ("Senior Account Executive", not "Sr. Account Exec") and **company names that include identifying words** (Inc., Co., Ltd, LLC) where that is the legal name. [OFFICIAL]
+6. **No letter-spaced text** (S K I L L S). The parser sees separate letters. [OFFICIAL]
+7. **File ≤ 2.5 MB** (Greenhouse can't parse larger), text-based **PDF or .docx**. Greenhouse also accepts .doc, .rtf, .txt. [OFFICIAL]
+8. **Consistent, complete dates (Mon YYYY — Mon YYYY | Present)** for every role. Lever derives years of experience from parsed dates for search filters. [OFFICIAL-ish: Lever API docs via search summary; verify]
+9. **Ship two files when the design is rich:** the designed PDF for humans/email, and a plain single-column version for ATS upload forms. (Our designed PDF has stat cards, a skills table and two-column cards.) [HOUSE recommendation from the Greenhouse list above]
 
-## Language
-- Mirror the job description's terms **only where they are true** of Inbaraj. Reuse its nouns (process mapping, implementation plans, go-live, onboarding) rather than inventing synonyms.
-- Customer segment: "mid-market to enterprise" (Inbaraj's wording), not "mid-to-large".
-- No "N years" phrasing anywhere. No revenue figures for other companies. Dollar amounts stay with the company they came from.
+## Human-skim rules (make the first screen work)
+10. Recruiters spent ~6 s on the first fit/no-fit pass (2012; 7.4 s in a 2018 follow-up) and **~80% of that time on: name, current title/company, previous title/company, start/end dates, education.** Beyond that they scan for keywords. So those items must be **instantly findable, in the usual place, in a clean hierarchy.** [STUDY: TheLadders eye-tracking, 30 recruiters; commercial sponsor, small sample]
+11. Clear visual hierarchy and even formatting were rated easier to read (6.2 vs 3.9 on a 7-point scale) and produced calmer gaze paths. [STUDY, same caveats]
+12. Language: **specific not general, active not passive, fact-based (quantify and qualify), written to express not impress, scannable.** No personal pronouns, no narrative style, no slang, no photo, no age/gender, no references. List headings in order of importance; reverse-chronological inside; no unexplained gaps; check it still looks right as a PDF. Top mistakes: typos, missing contact info, passive wording, hard to skim, no results shown. [OFFICIAL: Harvard College Mignone Center guide]
+13. Bullets: start with a strong action verb; show the result. Use the **X-Y-Z shape: "Accomplished [X], as measured by [Y], by doing [Z]"** (Laszlo Bock, then Google's head of People Operations). Not every bullet needs a percentage: scale, frequency, time saved and outcomes count as the measure. [CONSENSUS; the formula is Bock's, reported by Inc./Business Insider; original LinkedIn post not read]
+14. Keep punctuation consistent across all bullets (periods on all or none). [OFFICIAL: Harvard SPH guide, via search summary]
 
-## Facts — non-negotiable
-- Source of truth: `data/base.json`, `data/ground-truth.json`, `docs/career/*.md` (esp. `metrics.md`, `skills-and-regions.md`). Inbaraj is the authority on his own career: if he gives a new fact, record it in all three places first, then use it.
-- Reword, reorder, re-emphasise. Never invent a skill, metric, tool, region, or client. Every number in a tailored page must exist in the base resume.
-- A requirement he does not meet stays a gap. Report it; never paper over it to lift a score. Known gaps: variable-compensation *framework* knowledge/comp-plan design, Python, certifications.
-- **Never** put his own variable-pay plan, pay structure, or salary on a resume or cover note.
+## Summary
+15. A short, specific, quantified, job-aligned summary is common advice (2–5 sentences, often ≤100 words); generic ones get skipped. No rigorous study compares resumes with vs without one. [CONSENSUS]
+16. **[HOUSE]** Inbaraj's rule is stricter: **≤3 lines on the PDF (≤340 characters, ≤55 words); numbers-first; never mention the application, role or company; no location (contact line has it); no year counts.** In our PDF the "Professional Summary" is `hero.description`, not `summary`.
 
-## Process
-1. Read the JD. List each requirement as covered / partial / gap against the facts.
-2. Draft: summary → bullets → skills. Use the JD's words where true.
-3. `node scripts/resume-lint.mjs <slug>` — fix every FAIL; read the WARNs.
-4. Render the PDF (print CSS) and confirm **2 pages**; look at both pages.
-5. Score with the repo's ATS scorer (`lib/ats.ts`); report the number and the remaining gaps plainly. Never promise a score.
+## Keywords and ATS matching
+17. **Mirror the posting's own terms where they are true** — recruiters search and filters match on exact strings; synonyms are not reliably matched. Write acronyms with the full term once, e.g. "professional services automation (PSA)". [CONSENSUS]
+18. **Put keywords in bullets that show the work, not in a stuffed list or the summary.** Pick the 8–12 most important true terms from the posting. [CONSENSUS]
+19. A requirement Inbaraj doesn't meet stays a gap. Report it; never add it to raise a score. (Known gaps: variable-compensation framework knowledge, Python, certifications.)
+20. **[HOUSE]** Customer segment wording is "mid-market to enterprise". No "N years" phrasing, no other companies' revenue figures. Never put his own pay plan on a resume or cover note.
 
-## Self-review before sending
-- Could someone get the whole pitch from the first 3 lines?
-- Is any claim in the summary also repeated, word for word, below it?
-- Does every number trace to the base resume?
-- Does the page say anything the reader already knows (the role, the company, the city)? Delete it.
+## Length and layout
+21. Two pages is acceptable for an experienced candidate; ResumeGo's simulation (482 hiring pros) favoured two pages with seniority, but it is a simulation and critics dispute it. One page for early career. [STUDY, contested]
+22. Our PDF is **2 pages** (`components/ResumePrint.tsx`). A third page holding only Education is a failure. Trim order: repeated sections → card detail → bullet tails → summary.
+
+## Facts (non-negotiable)
+Source of truth: `data/base.json`, `data/ground-truth.json`, `docs/career/*.md`. Inbaraj is the authority on his own career: record a new fact in all three first, then use it. Reword, reorder, re-emphasise. Never invent a skill, metric, tool, region or client. Every number on a tailored page must exist in the base resume.
+
+## Procedure
+1. **Read the JD.** Table each requirement: covered / partial / gap, with the base-resume evidence. Note the JD's exact terms.
+2. **Draft** summary → bullets (X-Y-Z) → skills, using the JD's terms where true. Specific work (e.g. data transformation) gets its own lines.
+3. `node scripts/resume-lint.mjs <slug|base>` — fix every FAIL (these are the HOUSE and numeric-fact rules).
+4. **Render the PDF** (print CSS) → confirm 2 pages → look at both pages.
+5. `node scripts/resume-parse-check.mjs <pdf> [slug]` — the machine-readability test (reading-order integrity, contact in body, headings, titles, dates, file size, images, spaced letters). Fix every FAIL.
+6. **6-second test:** cover everything but the top third of page 1. Can you read name, current title + company + dates, previous title + company + dates, education? If not, fix the layout.
+7. **Score** with `lib/ats.ts`; report the number and the remaining gaps plainly. State that it is an estimate.
+8. Deliver the designed PDF **and** say whether an ATS-plain version is needed for the target's application form.
+
+## What not to do
+- Don't promise a pass, a score, or an interview.
+- Don't pad the summary with the JD's words to lift the score (we measured this: a 102-word summary scored 10 points higher and was worse for the reader).
+- Don't trust a single vendor blog; check `references/evidence.md` for the grade.
