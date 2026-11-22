@@ -311,12 +311,13 @@
       "posted": "2026-10-14",
       "status": "ready-to-submit",
       "slug": "everstage-implementation-engineer-senior-lead-us-market",
-      "atsScore": null,
+      "atsScore": 69,
       "url": "https://www.linkedin.com/jobs/view/4478445401/",
       "applyUrl": "https://ats.rippling.com/everstage/jobs/81087ce5-8949-4a11-8db7-795cf78b84f4?jobSite=LinkedIn",
-      "note": "Gaps: SQL/Excel/data transformation, variable-comp domain. Earlier Everstage page (Apr 2026) exists; confirm whether already applied. Re-applying by user decision (2026-11-22).",
+      "note": "Gaps: SQL/Excel/data transformation, variable-comp domain, EU/AUS regions. Re-applying by user decision (2026-11-22). Page rebuilt on corrected figures ($6M / ~$2.1M); 2-page PDF saved.",
       "source": "user-provided",
-      "resumePdf": "data/jobs/applications/Inbaraj_B_Everstage_2026-11-22.pdf"
+      "resumePdf": "data/jobs/applications/Inbaraj_B_Everstage_2026-11-22.pdf",
+      "atsMethod": "heuristic on Studio-scoped JD (base resume scored 53); Jev/Claude judges not run (no keys)"
     }
   ]
 }
