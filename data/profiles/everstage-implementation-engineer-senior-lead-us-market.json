@@ -84,7 +84,8 @@
           "wide": true,
           "text": "Problem: Implementation knowledge was scattered across team members, call transcripts, and unstructured documents, resulting in repeated problem-solving.\nSolution: An Anthropic-hosted agent analyzes Avoma call transcripts and Freshdesk tickets to identify customer use cases and capture solutions; Implementation Managers review and approve them before they enter the knowledge base; a backend agent built in Lovable uses Supermemory to retrieve relevant approved solutions and validates them against current product and API documentation.\nImpact: Reached 60–65% adoption across the Professional Services team, with approximately 10 queries per user per week and 70–80% reported usefulness."
         }
-      ]
+      ],
+      "legalName": "Rocketlane Technologies Private Limited"
     },
     {
       "period": "Nov 2021 — May 2026",
@@ -123,7 +124,8 @@
           "wide": true,
           "text": "Problem: Implementation engineers spent about 3 hours a week each (2–6 hours) supporting the support team on issues.\nSolution: An AI assistant using RAG and NLP over XML platform configurations, so support teams can ask configuration questions in natural language.\nImpact: Support teams get configuration answers themselves, removing their dependency on implementation engineers after go-live."
         }
-      ]
+      ],
+      "legalName": "Facilio Technology Solutions Private Limited"
     },
     {
       "period": "May 2016 — Oct 2021",

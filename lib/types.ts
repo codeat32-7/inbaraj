@@ -41,6 +41,8 @@ export interface ExperienceHighlight {
 export interface ExperienceItem {
   period: string;
   company: string;
+  /** Registered employer name, shown on the PDF only (ATS parsers expect Inc./Ltd/LLC-style names). */
+  legalName?: string;
   badge: string;
   title: string;
   bullets: string[];

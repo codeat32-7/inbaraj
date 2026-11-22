@@ -209,7 +209,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                       {item.title}
                     </span>
                     <span style={{ fontSize: '9.5pt', color: '#4535d4', marginLeft: '8px' }}>
-                      · {item.company}
+                      · {item.legalName ?? item.company}
                     </span>
                     <span
                       style={{

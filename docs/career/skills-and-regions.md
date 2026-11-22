@@ -24,3 +24,10 @@
 
 ## Never put on a resume or cover note
 - Inbaraj's own variable-pay plan or pay structure (his instruction, 2026-11-22). He does not have variable-compensation *framework* knowledge; do not imply it. Do not claim comp-plan or incentive-design experience.
+
+## Legal employer names (added 2026-11-22 at Inbaraj's request)
+Greenhouse lists "company names that don't include identifying words such as Inc., Co., LTD, or LLC" as a resume-parse risk, so the PDF shows the registered name; the website keeps the brand name (`experience[].legalName`, print-only).
+- **Rocketlane Technologies Private Limited** — Chennai-registered Indian company, CIN U72900TN2020PTC135352, incorporated 19 May 2020 (third-party registry: qorpiq.com). US parent appears as "Rocketlane Corp".
+- **Facilio Technology Solutions Private Limited** — Chennai-registered, CIN U72900TN2017PTC116800, incorporated 26 May 2017 (third-party registry: registrationwala.com). Parent: Facilio Inc.
+- **Amazon** — not determined. Amazon operates several Indian entities; use the exact name on Inbaraj's offer/relieving letter, then add `legalName`.
+- **Caveat:** these came from public third-party registry listings, not from Inbaraj's own employment documents. The employer of record on his offer letter/payslip is authoritative; if it differs, change `legalName` (employer verification uses that name).

@@ -79,10 +79,11 @@ const abbr = /\b(Sr|Jr|Mgr|Exec|Dir|Eng|Asst|Assoc|Admin)\b\.?/;
 const monYr = /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4}\s*[—–-]\s*((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4}|Present)$/i;
 const rawNorm = norm(raw);
 for (const e of r.experience || []) {
+  const employer = e.legalName ?? e.company;
   if (abbr.test(e.title)) fails.push(`${e.company}: title "${e.title}" contains an abbreviation; use the full words.`);
   if (!monYr.test(e.period.trim())) fails.push(`${e.company}: period "${e.period}" is not "Mon YYYY — Mon YYYY | Present".`);
   if (!rawNorm.includes(norm(e.period))) fails.push(`${e.company}: date range not found in extracted text.`);
-  if (!/\b(Inc|Co|Ltd|LTD|LLC|Corp|GmbH|Pvt|Limited|Technologies|Systems)\b\.?/.test(e.company)) {
+  if (!/\b(Inc|Co|Ltd|LTD|LLC|Corp|GmbH|Pvt|Limited)\b\.?/.test(employer)) {
     warns.push(`${e.company}: no identifying suffix (Inc./Co./Ltd/LLC). Greenhouse lists this as a parse risk; use the legal name if Inbaraj confirms it.`);
   }
 }
