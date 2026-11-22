@@ -16,3 +16,11 @@
 ## Rules
 - Do not claim SQL or Python use at Rocketlane or Facilio; SQL is attributed to Amazon only.
 - Do not claim Australia beyond the single Investa project.
+
+## Complexity and company stage (provided 2026-11-22)
+- **Complex implementations (Facilio):** enterprise implementations typically take **6 months to 1 year**, run **across multiple business units**, and involve workforces of **hundreds to thousands of employees**. *Wording follows Inbaraj's description; whether the headcount is the customer's size or the platform's user base was not specified, so the resume says "workforces of hundreds to thousands of employees".*
+- **Startup experience:** Facilio and Rocketlane are both described by Inbaraj as startups (Rocketlane is past ~$20M but still a startup in his view). **Do not put revenue figures or year counts on the resume.**
+- **Open question:** Inbaraj says ~5 years at Facilio and ~6 years across both startups, but the resume dates (Nov 2021 — May 2026, Rocketlane from May 2026) add up to about 4.5 and 5 years. Confirm the exact Facilio start month before using any duration; dates are checkable.
+
+## Never put on a resume or cover note
+- Inbaraj's own variable-pay plan or pay structure (his instruction, 2026-11-22). He does not have variable-compensation *framework* knowledge; do not imply it. Do not claim comp-plan or incentive-design experience.
