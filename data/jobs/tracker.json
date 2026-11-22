@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "updated": "2026-11-22",
+  "roles": [
+    {
+      "id": "a8148190",
+      "company": "ZakApps",
+      "surfaced": "2026-04-08",
+      "status": "profile-published",
+      "slug": "a8148190",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "trg-screen-implementation-specialist",
+      "company": "TRG Screen",
+      "surfaced": "2026-04-09",
+      "status": "profile-published",
+      "slug": "trg-screen-implementation-specialist",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "uplers-senior-implementation-lead",
+      "company": "Uplers",
+      "surfaced": "2026-04-09",
+      "status": "profile-published",
+      "slug": "uplers-senior-implementation-lead",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "d-business-analyst",
+      "company": "Business Analyst",
+      "surfaced": "2026-04-10",
+      "status": "profile-published",
+      "slug": "d-business-analyst",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "greythr-specialist-product-implementation",
+      "company": "greytHR",
+      "surfaced": "2026-04-11",
+      "status": "profile-published",
+      "slug": "greythr-specialist-product-implementation",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "open-destinations-implementation-consultant",
+      "company": "Open Destinations",
+      "surfaced": "2026-04-11",
+      "status": "profile-published",
+      "slug": "open-destinations-implementation-consultant",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "d-implementation-engineer",
+      "company": "Implementation Engineer",
+      "surfaced": "2026-04-17",
+      "status": "profile-published",
+      "slug": "d-implementation-engineer",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "everstage-implementation-engineer-senior-lead-us-region",
+      "company": "Everstage",
+      "surfaced": "2026-04-17",
+      "status": "profile-published",
+      "slug": "everstage-implementation-engineer-senior-lead-us-region",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "devrev-forward-deployed-ai-strategist",
+      "company": "DevRev",
+      "surfaced": "2026-10-26",
+      "status": "profile-published",
+      "slug": "devrev-forward-deployed-ai-strategist",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "level-ai-forward-deployed-engineer-agents-remote",
+      "company": "Level AI",
+      "surfaced": "2026-11-03",
+      "status": "profile-published",
+      "slug": "level-ai-forward-deployed-engineer-agents-remote",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    },
+    {
+      "id": "dehazelabs-deployment-strategist",
+      "company": "DehazeLabs",
+      "surfaced": "2026-11-10",
+      "status": "profile-published",
+      "slug": "dehazelabs-deployment-strategist",
+      "atsScore": null,
+      "source": "manual (pre-job-hunt-skill)"
+    }
+  ]
+}
