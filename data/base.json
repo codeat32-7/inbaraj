@@ -67,7 +67,7 @@
       "badge": "PSA · SaaS",
       "title": "AI Implementation Manager",
       "bullets": [
-        "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
+        "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager, including data transformation in Excel.",
         "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
         "Built the Nitro agents Rocketlane’s implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
         "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
@@ -98,8 +98,8 @@
       "badge": "CMMS · SaaS",
       "title": "Lead, Product Implementation",
       "bullets": [
-        "Led enterprise CMMS implementations for mid-to-large clients across the UK, US, and Middle East — $6M in total contract value and nearly $1M in implementation and expansion value.",
-        "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live."
+        "Led the EU region and delivered enterprise CMMS implementations for mid-to-large clients across the EU, UK, US, Middle East, and Australia (Investa) — $6M in total contract value and nearly $1M in implementation and expansion value.",
+        "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, handled customer data uploads and data transformation in Excel, and configured and tested each rollout through go-live."
       ],
       "highlights": [
         {
@@ -137,8 +137,9 @@
       "title": "Senior Catalog Specialist",
       "bullets": [
         "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now — directly improving operational efficiency.",
-        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — yielding an estimated $230K in monthly savings.",
-        "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day."
+        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — built as a SQL query and algorithm that ranks which tickets to work first — yielding an estimated $230K in monthly savings.",
+        "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day.",
+        "Used SQL to pull data and Excel to transform it for data analysis on catalog and procurement defects."
       ],
       "highlights": []
     }
@@ -263,6 +264,15 @@
         "Prompt engineering",
         "Lovable · Vercel · GitHub"
       ]
+    },
+    {
+      "title": "Data & Analysis",
+      "color": "teal",
+      "items": [
+        "Data transformation and customer data uploads in Excel",
+        "SQL data pulls and data analysis",
+        "Query-based prioritisation algorithms"
+      ]
     }
   ],
   "education": [
@@ -298,6 +308,6 @@
     "description": "Targeting roles in AI-enabled implementation, solutions consulting, business analysis, or account management — ideally at a company where enterprise depth meets product thinking.",
     "subtext": "Based in Chennai. Available for hybrid or remote roles."
   },
-  "summary": "Implementation leader who owns SaaS implementations from discovery to go-live and builds the AI agents that make them repeatable. At Rocketlane, implements the platform and its Nitro agentic AI for customers, leads enterprise integrations with Salesforce, ServiceNow, and ADP, and built Atlas and the Nitro agents the implementation team runs on. At Facilio, led enterprise CMMS rollouts across the UK, US, and Middle East — $6M in total contract value and nearly $1M in implementation and expansion value.",
+  "summary": "Implementation leader who owns SaaS implementations from discovery to go-live and builds the AI agents that make them repeatable. At Rocketlane, implements the platform and its Nitro agentic AI for customers, leads enterprise integrations with Salesforce, ServiceNow, and ADP, and built Atlas and the Nitro agents the implementation team runs on. At Facilio, led the EU region and enterprise CMMS rollouts across the EU, UK, US, Middle East, and Australia — $6M in total contract value and nearly $1M in implementation and expansion value.",
   "footer": "Inbaraj B · Chennai, India · inbarajb91@gmail.com · +91 7200108575"
 }

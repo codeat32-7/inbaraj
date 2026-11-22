@@ -6,7 +6,7 @@
   },
   "hero": {
     "headline": "Enterprise Implementation Lead:<br><em>Discovery, Configuration, Integrations & Go-Live</em>",
-    "description": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead for enterprise SaaS. Engages customers to map current processes and requirements, designs the solution around their needs, draws out implementation plans and timelines, configures the platform, builds integrations through APIs and webhooks, and trains customer teams through go-live. Has delivered for enterprise customers in the UK, US, and Middle East and runs implementation projects independently, including complex multi-system integrations. Based in Chennai.",
+    "description": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead for enterprise SaaS. Engages customers to map current processes and requirements, designs the solution around their needs, draws out implementation plans and timelines, configures the platform, handles customer data uploads and data transformation in Excel, builds integrations through APIs and webhooks, and trains customer teams through go-live. Led the EU region at Facilio and has delivered for enterprise customers across the EU, UK, US (North America), Middle East, and Australia, with SQL data analysis from Amazon. Works independently on complex implementations. Based in Chennai.",
     "badges": [
       {
         "text": "Enterprise Implementation",
@@ -47,9 +47,9 @@
       "color": "cs"
     },
     {
-      "value": "UK · US · ME",
+      "value": "EU · UK · US",
       "label": "Enterprise customer regions",
-      "sub": "Facilio · on-site in Saudi Arabia and the UK (MHA)",
+      "sub": "Facilio · led the EU region; also Middle East and Australia",
       "color": "teal"
     }
   ],
@@ -60,10 +60,10 @@
       "badge": "PSA · SaaS",
       "title": "AI Implementation Manager",
       "bullets": [
-        "Own enterprise customer implementations end to end on Rocketlane’s professional services automation platform — discovery to map each customer’s requirements, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
+        "Own enterprise customer implementations end to end on Rocketlane’s professional services automation platform — discovery to map each customer’s requirements, solution design, configuration, integrations, data transformation in Excel, and go-live — as implementation manager, solution architect, and engagement manager.",
         "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
         "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
-        "Built the Nitro agents Rocketlane’s implementation team uses across handover, kickoff, workshops, solution design, and UAT, with standardised outputs and an estimated 20–30% less time per deliverable, as part of the Customer Zero team.",
+        "Built the Nitro agents Rocketlane’s implementation team uses across handover, kickoff, workshops, solution design, and UAT, as part of the Customer Zero team.",
         "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current."
       ],
       "highlights": [
@@ -81,7 +81,7 @@
           "label": "Atlas · AI Implementation Knowledge System",
           "color": "purple",
           "wide": true,
-          "text": "Problem: Implementation knowledge was scattered across team members, call transcripts, and unstructured documents, resulting in repeated problem-solving and limited reuse of previously developed solutions.\nSolution: An Anthropic-hosted agent analyzes Avoma call transcripts and Freshdesk tickets to identify customer use cases and capture solutions; Implementation Managers review, approve, or revise them before they are added to the reusable knowledge base; a backend agent built in Lovable uses Supermemory to retrieve relevant approved solutions and cross-checks them against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\nImpact: Reached 60–65% adoption across the Professional Services team, with approximately 10 queries per user per week and 70–80% reported usefulness."
+          "text": "Problem: Implementation knowledge was scattered across team members, call transcripts, and unstructured documents, resulting in repeated problem-solving.\nSolution: An Anthropic-hosted agent analyzes Avoma call transcripts and Freshdesk tickets to identify customer use cases and capture solutions; Implementation Managers review and approve them before they enter the knowledge base; a backend agent built in Lovable uses Supermemory to retrieve relevant approved solutions and validates them against current product and API documentation.\nImpact: Reached 60–65% adoption across the Professional Services team, with approximately 10 queries per user per week and 70–80% reported usefulness."
         }
       ]
     },
@@ -91,8 +91,8 @@
       "badge": "CMMS · SaaS",
       "title": "Lead, Product Implementation",
       "bullets": [
-        "Led enterprise CMMS implementations for mid-to-large clients across the UK, US, and Middle East — $6M in total contract value and nearly $1M in implementation and expansion value.",
-        "Ran discovery workshops with executives and operations teams to map current processes and requirements, turned them into BRDs, solution designs, and WBS-based plans with timelines, and configured and tested each rollout through go-live."
+        "Led the EU region and delivered enterprise CMMS implementations for mid-to-large clients across the EU, UK, US, Middle East, and Australia (Investa) — $6M in total contract value and nearly $1M in implementation and expansion value.",
+        "Ran discovery workshops with executives and operations teams to map current processes and requirements, turned them into BRDs, solution designs, and WBS-based plans with timelines, handled customer data uploads and data transformation in Excel, and configured and tested each rollout through go-live."
       ],
       "highlights": [
         {
@@ -119,7 +119,7 @@
           "label": "AI Config Assistant · Enterprise support tool",
           "color": "purple",
           "wide": true,
-          "text": "Problem: Implementation engineers spent about 3 hours a week each (2–6 hours) supporting the support team on issues, because configurations change constantly.\nSolution: An AI assistant using RAG and NLP over XML platform configurations, so support teams can ask configuration questions in natural language.\nImpact: Support teams get configuration answers themselves, removing their dependency on implementation engineers after go-live."
+          "text": "Problem: Implementation engineers spent about 3 hours a week each (2–6 hours) supporting the support team on issues.\nSolution: An AI assistant using RAG and NLP over XML platform configurations, so support teams can ask configuration questions in natural language.\nImpact: Support teams get configuration answers themselves, removing their dependency on implementation engineers after go-live."
         }
       ]
     },
@@ -129,7 +129,8 @@
       "badge": "E-Commerce · Ops",
       "title": "Senior Catalog Specialist",
       "bullets": [
-        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — yielding an estimated $230K in monthly savings.",
+        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — built as a SQL query and algorithm that ranks which tickets to work first — yielding an estimated $230K in monthly savings.",
+        "Used SQL to pull data and Excel to transform it for data analysis on catalog and procurement defects.",
         "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day.",
         "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now — directly improving operational efficiency."
       ],
@@ -157,6 +158,15 @@
         "Enterprise SaaS Integrations: Salesforce, HubSpot, Sage, SuccessFactors, ADP, ServiceNow, SatMetrix, and Fathom",
         "Facilities & Operations Systems: Xero, CorrigoPro, Equiem, Wooqer, Bill.com, and Facilio ecosystem integrations",
         "SaaS Configuration & Customization: Platform configuration, JavaScript-based UI scripting, and workflow automation"
+      ]
+    },
+    {
+      "title": "Data & Analysis",
+      "color": "teal",
+      "items": [
+        "Data transformation and customer data uploads in Excel",
+        "SQL data pulls and data analysis",
+        "Query-based prioritisation algorithms"
       ]
     },
     {
@@ -193,18 +203,15 @@
       ]
     }
   ],
-  "summary": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead who engages enterprise customers to map current processes, designs the solution, plans the implementation, configures the platform, integrates it through APIs, and trains customer teams through go-live. At Rocketlane, owns enterprise implementations end to end, is solution architect for an enterprise account integrating ADP, SatMetrix, ServiceNow, and Salesforce, and builds the AI agents the implementation team runs on. At Facilio, led enterprise CMMS rollouts across the UK, US, and Middle East — $6M in total contract value and nearly $1M in implementation and expansion value.",
+  "summary": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead who engages enterprise customers to map current processes, designs the solution, plans the implementation, configures the platform, integrates it through APIs, and trains customer teams through go-live. At Rocketlane, owns enterprise implementations end to end, is solution architect for an enterprise account integrating ADP, SatMetrix, ServiceNow, and Salesforce, and builds the AI agents the implementation team runs on. At Facilio, led the EU region and enterprise CMMS rollouts across the EU, UK, US, Middle East, and Australia — $6M in total contract value and nearly $1M in implementation and expansion value.",
   "customSections": [
     {
       "id": "enterprise-implementation",
       "title": "How I Run an Enterprise Implementation",
       "position": "after:skills",
       "items": [
-        "Map current processes: Run discovery workshops with executives and operations teams and gather requirements across departments (Facilio); lead discovery and solution design for enterprise customers (Rocketlane).",
-        "Regions: Enterprise customers in the US (North America), the UK, and the Middle East.",
-        "Solution, plans, and timelines: BRDs, solution designs, and WBS-based plans; complexity scoring and effort models so pre-sales can scope accurately and auto-calculate timelines.",
-        "Configuration and integrations: Configure and test each rollout through go-live; REST APIs, webhooks, and event-driven integrations across Salesforce, ADP, ServiceNow, SatMetrix, HubSpot, Sage, and SuccessFactors.",
-        "Onboarding and training: On-site workshops and go-live training in Saudi Arabia and the UK, UAT design, and change management."
+        "Data: Excel data transformation (Rocketlane, Facilio, Amazon), customer data uploads (Facilio), and SQL analysis (Amazon).",
+        "Configuration, integrations, and onboarding: Configure and test each rollout through go-live, build API, webhook, and event-driven integrations, and train customers on-site."
       ]
     }
   ]
