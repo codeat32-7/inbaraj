@@ -9,7 +9,7 @@
 - **Amazon prioritisation project** — involved building a query and an algorithm that prioritises which tickets to work first (the defect prioritisation framework behind the ~$230K monthly savings estimate).
 
 ## Regions (Facilio)
-- Inbaraj **led the EU region** at Facilio. *Exact EU countries not recorded; UK work (MHA) is listed separately.*
+- Inbaraj **led the EU-UK region** at Facilio, which covers **Britain (UK) and Ireland**. Use "EU-UK" (not "EU" alone): customers were in the UK and Ireland, not across the whole EU. UK work includes MHA (on-site). *Corrected 2026-11-22.*
 - **Australia:** one project, for **Investa**, implementing Facilio.
 - Also: UK, US, Middle East (incl. on-site in Saudi Arabia).
 

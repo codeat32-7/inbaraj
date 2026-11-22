@@ -6,7 +6,7 @@
   },
   "hero": {
     "headline": "Enterprise Implementation Lead:<br><em>Discovery, Configuration, Integrations & Go-Live</em>",
-    "description": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead for enterprise SaaS. Engages customers to map current processes and requirements, designs the solution around their needs, draws out implementation plans and timelines, configures the platform, transforms and uploads customers’ unstructured data from Excel and other systems, builds integrations through APIs and webhooks, and trains customer teams through go-live. Led the EU region at Facilio and has delivered for enterprise customers across the EU, UK, US (North America), Middle East, and Australia, with SQL data analysis from Amazon. Works independently on complex implementations. Based in Chennai.",
+    "description": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead for enterprise SaaS. Engages customers to map current processes and requirements, designs the solution around their needs, draws out implementation plans and timelines, configures the platform, transforms and uploads customers’ unstructured data from Excel and other systems, builds integrations through APIs and webhooks, and trains customer teams through go-live. Led the EU-UK region (UK and Ireland) at Facilio and has delivered for enterprise customers across the EU-UK, US (North America), Middle East, and Australia, with SQL data analysis from Amazon. Works independently on complex implementations. Based in Chennai.",
     "badges": [
       {
         "text": "Enterprise Implementation",
@@ -47,9 +47,9 @@
       "color": "cs"
     },
     {
-      "value": "EU · UK · US",
+      "value": "EU-UK · US",
       "label": "Enterprise customer regions",
-      "sub": "Facilio · led the EU region; also Middle East and Australia",
+      "sub": "Facilio · led the EU-UK region (UK and Ireland); also Middle East and Australia",
       "color": "teal"
     }
   ],
@@ -92,7 +92,7 @@
       "badge": "CMMS · SaaS",
       "title": "Lead, Product Implementation",
       "bullets": [
-        "Led the EU region and delivered enterprise CMMS implementations for mid-to-large clients across the EU, UK, US, Middle East, and Australia (Investa) — $6M in total contract value and nearly $1M in implementation and expansion value.",
+        "Led the EU-UK region (UK and Ireland) and delivered enterprise CMMS implementations for mid-to-large clients across the EU-UK, US, Middle East, and Australia (Investa) — $6M in total contract value and nearly $1M in implementation and expansion value.",
         "Ran discovery workshops with executives and operations teams to map current processes and requirements, turned them into BRDs, solution designs, and WBS-based plans with timelines, handled customer data uploads and data transformation in Excel, and configured and tested each rollout through go-live."
       ],
       "highlights": [
@@ -204,5 +204,5 @@
       ]
     }
   ],
-  "summary": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead who engages enterprise customers to map current processes, designs the solution, plans the implementation, configures the platform, integrates it through APIs, and trains customer teams through go-live. At Rocketlane, owns enterprise implementations end to end, is solution architect for an enterprise account integrating ADP, SatMetrix, ServiceNow, and Salesforce, and builds the AI agents the implementation team runs on. At Facilio, led the EU region and enterprise CMMS rollouts across the EU, UK, US, Middle East, and Australia — $6M in total contract value and nearly $1M in implementation and expansion value."
+  "summary": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead who engages enterprise customers to map current processes, designs the solution, plans the implementation, configures the platform, integrates it through APIs, and trains customer teams through go-live. At Rocketlane, owns enterprise implementations end to end, is solution architect for an enterprise account integrating ADP, SatMetrix, ServiceNow, and Salesforce, and builds the AI agents the implementation team runs on. At Facilio, led the EU-UK region (UK and Ireland) and enterprise CMMS rollouts across the EU-UK, US, Middle East, and Australia — $6M in total contract value and nearly $1M in implementation and expansion value."
 }
