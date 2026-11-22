@@ -114,6 +114,9 @@ Required in Vercel project settings (not team settings):
 
 ## Gotchas
 
+### Resume writing rules live in `.claude/skills/resume-craft/SKILL.md`
+The PDF's "Professional Summary" is `hero.description` (not `summary`): keep it to ≤340 characters / 3 lines, numbers-first, never mention the application or role. Run `node scripts/resume-lint.mjs <slug|base>` before shipping any page; it fails on summary length, banned phrasing, over-long bullets, "N years", and numbers not in the base resume.
+
 ### Theme: light is the default, dark is opt-in
 `app/globals.css` defines the light tokens on `:root` and the dark tokens on `[data-theme="dark"]` (no more `body.light`). `ThemeToggle` sets `html[data-theme="dark"]` and stores `localStorage.theme`; a `beforeInteractive` script in `app/layout.tsx` applies it before first paint. The admin Studio is built with hard-coded dark inline colours, so `app/admin/layout.tsx` wraps it in `data-theme="dark"` — keep that wrapper, or admin turns unreadable. Screen fonts are Fraunces / Inter / JetBrains Mono (CSS vars `--font-display/body/mono`); DM Mono, Spectral and DM Sans must stay in the font `<link>` because `ResumePrint.tsx` names them directly. The print block forces a white background and hides `body::before` — keep both or the PDF picks up the screen glow/dark background.
 

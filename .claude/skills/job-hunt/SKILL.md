@@ -42,6 +42,9 @@ Previous applications that worked as templates (see `data/profiles/registry.json
 6. **Publish nothing automatically.** Tailored pages go live only after Inbaraj reviews them in the interactive session.
 7. **Log.** Append every surfaced role to `data/jobs/tracker.json` and write the day's digest to `data/jobs/digests/YYYY-MM-DD.md` (see format). Commit on the feature branch, push, never to `main`, no PR unless asked.
 
+## Writing the tailored resume
+Follow `.claude/skills/resume-craft/SKILL.md` (summary ≤340 chars, no "applying for", bullets ≤2 lines, each tool once) and run `node scripts/resume-lint.mjs <slug>` before reporting a role as ready.
+
 ## Digest format
 ```
 # Opportunities — YYYY-MM-DD

@@ -6,7 +6,7 @@
   },
   "hero": {
     "headline": "Enterprise Implementation Lead:<br><em>Discovery, Configuration, Integrations & Go-Live</em>",
-    "description": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead for enterprise SaaS. Engages customers to map current processes and requirements, designs the solution around their needs, draws out implementation plans and timelines, configures the platform, transforms and uploads customers’ unstructured data from Excel and other systems, builds integrations through APIs and webhooks, and trains customer teams through go-live. Led the EU-UK region (UK and Ireland) at Facilio and has delivered for enterprise customers across the EU-UK, US (North America), Middle East, and Australia. Runs complex implementations independently, at two SaaS startups (Facilio and Rocketlane). Based in Chennai.",
+    "description": "Implementation lead at two SaaS startups for mid-market to enterprise customers: $6M contract value at Facilio (EU-UK, US, Middle East, Australia) and ~$2.1M ARR implemented at Rocketlane, including NICE’s integrations with ADP, SatMetrix, ServiceNow, and Salesforce. Builds the AI agents (Nitro, Atlas) that make delivery repeatable.",
     "badges": [
       {
         "text": "Enterprise Implementation",
@@ -60,7 +60,7 @@
       "badge": "PSA · SaaS startup",
       "title": "AI Implementation Manager",
       "bullets": [
-        "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery to map each customer’s requirements, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
+        "Own customer implementations end to end on Rocketlane’s PSA platform — mapping each customer’s current process, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
         "Transform customers’ complex, unstructured project data from spreadsheets and other systems into Rocketlane’s structure and upload it, as part of each customer’s adoption of the PSA platform.",
         "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
         "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
@@ -92,9 +92,9 @@
       "badge": "CMMS · SaaS startup",
       "title": "Lead, Product Implementation",
       "bullets": [
-        "Led the EU-UK region (UK and Ireland) and delivered enterprise CMMS implementations for mid-to-large clients across the EU-UK, US, Middle East, and Australia (Investa) — $6M in total contract value and nearly $1M in implementation and expansion value.",
+        "Led the EU-UK region (UK and Ireland) and delivered enterprise CMMS implementations for mid-market to enterprise customers across the EU-UK, US, Middle East, and Australia (Investa) — $6M in total contract value and nearly $1M in implementation and expansion value.",
         "Led complex implementations, typically 6 to 12 months across multiple business units and hundreds to thousands of employees.",
-        "Ran discovery workshops with executives and operations teams to map current processes and requirements, turned them into BRDs, solution designs, and WBS-based plans, handled customer data uploads and data transformation in Excel, and configured and tested each rollout through go-live."
+        "Ran discovery workshops with executives and operations teams to map current processes and requirements, wrote BRDs and solution designs, built WBS-based plans with timelines, and configured and tested each rollout through go-live."
       ],
       "highlights": [
         {
@@ -131,7 +131,7 @@
       "badge": "E-Commerce · Ops",
       "title": "Senior Catalog Specialist",
       "bullets": [
-        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — built as a SQL query and algorithm that ranks which tickets to work first — yielding an estimated $230K in monthly savings.",
+        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — built as a query and ranking algorithm that decides which tickets to work first — yielding an estimated $230K in monthly savings.",
         "Used SQL to pull data and Excel to transform it for data analysis on catalog and procurement defects.",
         "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day.",
         "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now — directly improving operational efficiency."
@@ -166,9 +166,9 @@
       "title": "Data & Analysis",
       "color": "teal",
       "items": [
-        "Customer data transformation and uploads from spreadsheets and other systems (Excel)",
-        "SQL data pulls and data analysis",
-        "Query-based prioritisation algorithms"
+        "Data transformation: restructure customers’ complex, unstructured project data from spreadsheets and other systems (Excel) into the platform’s structure (Rocketlane, Facilio)",
+        "Customer data uploads: load the transformed data into the platform as part of each implementation (Rocketlane, Facilio)",
+        "Data analysis: SQL and Excel to pull and analyse defect data, including a query and algorithm that ranks tickets (Amazon)"
       ]
     },
     {
@@ -205,5 +205,5 @@
       ]
     }
   ],
-  "summary": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Has worked at two SaaS startups, Facilio and Rocketlane. Customer-facing implementation lead who engages enterprise customers to map current processes, designs the solution, plans the implementation, configures the platform, integrates it through APIs, and trains customer teams through go-live. At Rocketlane, owns enterprise implementations end to end, is solution architect for an enterprise account integrating ADP, SatMetrix, ServiceNow, and Salesforce, and builds the AI agents the implementation team runs on. At Facilio, led the EU-UK region (UK and Ireland) and enterprise CMMS rollouts across the EU-UK, US, Middle East, and Australia — $6M in total contract value and nearly $1M in implementation and expansion value."
+  "summary": "Implementation lead at two SaaS startups for mid-market to enterprise customers: $6M contract value at Facilio (EU-UK, US, Middle East, Australia) and ~$2.1M ARR implemented at Rocketlane, including NICE’s integrations with ADP, SatMetrix, ServiceNow, and Salesforce. Builds the AI agents (Nitro, Atlas) that make delivery repeatable."
 }
