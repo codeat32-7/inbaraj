@@ -20,5 +20,5 @@
 ## Rules
 - Dollar amounts are attributed to the company they came from; keep the `~` on Rocketlane.
 - Do not combine the Facilio and Rocketlane figures into one total, and do not turn either into "N years" or aggregate-count phrasing.
-- `~$300K` and `~$150K` remain in `ground-truth.json` from the earlier ~$450K breakdown; they have not been re-confirmed against the new total. Do not use them in new copy until Inbaraj confirms.
+- `~$300K` and `~$150K` (parts of the old ~$450K breakdown) were **removed from `ground-truth.json` on 2026-11-22** because they no longer reconcile with the ~$2.1M total. Re-add them here and in the fact record only once Inbaraj confirms what each covers.
 - Profiles published before 2026-11-22 (`data/profiles/*.json`) may still show $4.1M+ / ~$450K until they are refreshed.
