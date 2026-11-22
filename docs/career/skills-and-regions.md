@@ -4,7 +4,7 @@
 
 ## Data work
 - **Excel — data transformation** is part of the job at **Rocketlane, Facilio, and Amazon**.
-- **Customer data uploads** (customers' data loaded into the platform, with transformation) — stated as something done regularly; confirmed for Facilio. *Whether it also applies at Rocketlane is unconfirmed; the resume attributes it to Facilio only.*
+- **Customer data uploads and transformation** — done across **Facilio and Rocketlane**, and especially at **Rocketlane**: customers adopting the PSA platform bring complex, unstructured project data (kept in spreadsheets and other systems) that has to be transformed into Rocketlane's structure before upload. Treated as a distinct, regular part of the job. (Provided 2026-11-22.)
 - **SQL at Amazon** — used to pull data and run data analysis for the catalog/procurement defect work.
 - **Amazon prioritisation project** — involved building a query and an algorithm that prioritises which tickets to work first (the defect prioritisation framework behind the ~$230K monthly savings estimate).
 

@@ -46,7 +46,7 @@
     "Enterprise SaaS Integrations: Salesforce, HubSpot, Sage, SuccessFactors, ADP, ServiceNow, SatMetrix, and Fathom",
     "Facilities & Operations Systems: Xero, CorrigoPro, Equiem, Wooqer, Bill.com, and Facilio ecosystem integrations",
     "SaaS Configuration & Customization: Platform configuration, JavaScript-based UI scripting, and workflow automation",
-    "Data transformation and customer data uploads in Excel",
+    "Customer data transformation and uploads from spreadsheets and other systems (Excel)",
     "SQL data pulls and data analysis",
     "Query-based prioritisation algorithms"
   ],
@@ -135,7 +135,7 @@
     "SQL"
   ],
   "bullets": [
-    "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager, including data transformation in Excel.",
+    "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
     "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
     "Built the Nitro agents Rocketlane’s implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
     "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
@@ -144,7 +144,8 @@
     "Ran discovery workshops with executives and operations teams, turned requirements into BRDs, solution designs, and WBS-based plans, handled customer data uploads and data transformation in Excel, and configured and tested each rollout through go-live.",
     "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now — directly improving operational efficiency.",
     "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — built as a SQL query and algorithm that ranks which tickets to work first — yielding an estimated $230K in monthly savings.",
-    "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day."
+    "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day.",
+    "Transform customers’ complex, unstructured project data from spreadsheets and other systems into Rocketlane’s structure and upload it, as part of each customer’s adoption of the PSA platform."
   ],
   "highlights": [
     "Agents: sales-to-implementation handover, kickoff decks, workshop planner (prep and recap), solution design documents, UAT scripts and cases, and form-to-Sheets reporting.\nContext built in: they run inside the Rocketlane project where documents, meetings and transcripts already live, so there’s less pulling from Avoma and other sources.\nEstimated 20–30% less time per deliverable.\nConsistent output: standardised formats replace individual templates, so results are clearer and repeatable.",

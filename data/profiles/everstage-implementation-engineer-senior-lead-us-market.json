@@ -6,7 +6,7 @@
   },
   "hero": {
     "headline": "Enterprise Implementation Lead:<br><em>Discovery, Configuration, Integrations & Go-Live</em>",
-    "description": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead for enterprise SaaS. Engages customers to map current processes and requirements, designs the solution around their needs, draws out implementation plans and timelines, configures the platform, handles customer data uploads and data transformation in Excel, builds integrations through APIs and webhooks, and trains customer teams through go-live. Led the EU region at Facilio and has delivered for enterprise customers across the EU, UK, US (North America), Middle East, and Australia, with SQL data analysis from Amazon. Works independently on complex implementations. Based in Chennai.",
+    "description": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead for enterprise SaaS. Engages customers to map current processes and requirements, designs the solution around their needs, draws out implementation plans and timelines, configures the platform, transforms and uploads customers’ unstructured data from Excel and other systems, builds integrations through APIs and webhooks, and trains customer teams through go-live. Led the EU region at Facilio and has delivered for enterprise customers across the EU, UK, US (North America), Middle East, and Australia, with SQL data analysis from Amazon. Works independently on complex implementations. Based in Chennai.",
     "badges": [
       {
         "text": "Enterprise Implementation",
@@ -60,11 +60,12 @@
       "badge": "PSA · SaaS",
       "title": "AI Implementation Manager",
       "bullets": [
-        "Own enterprise customer implementations end to end on Rocketlane’s professional services automation platform — discovery to map each customer’s requirements, solution design, configuration, integrations, data transformation in Excel, and go-live — as implementation manager, solution architect, and engagement manager.",
+        "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery to map each customer’s requirements, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
+        "Transform customers’ complex, unstructured project data from spreadsheets and other systems into Rocketlane’s structure and upload it, as part of each customer’s adoption of the PSA platform.",
         "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
         "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
         "Built the Nitro agents Rocketlane’s implementation team uses across handover, kickoff, workshops, solution design, and UAT, as part of the Customer Zero team.",
-        "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current."
+        "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get a current answer."
       ],
       "highlights": [
         {
@@ -164,7 +165,7 @@
       "title": "Data & Analysis",
       "color": "teal",
       "items": [
-        "Data transformation and customer data uploads in Excel",
+        "Customer data transformation and uploads from spreadsheets and other systems (Excel)",
         "SQL data pulls and data analysis",
         "Query-based prioritisation algorithms"
       ]
@@ -203,16 +204,5 @@
       ]
     }
   ],
-  "summary": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead who engages enterprise customers to map current processes, designs the solution, plans the implementation, configures the platform, integrates it through APIs, and trains customer teams through go-live. At Rocketlane, owns enterprise implementations end to end, is solution architect for an enterprise account integrating ADP, SatMetrix, ServiceNow, and Salesforce, and builds the AI agents the implementation team runs on. At Facilio, led the EU region and enterprise CMMS rollouts across the EU, UK, US, Middle East, and Australia — $6M in total contract value and nearly $1M in implementation and expansion value.",
-  "customSections": [
-    {
-      "id": "enterprise-implementation",
-      "title": "How I Run an Enterprise Implementation",
-      "position": "after:skills",
-      "items": [
-        "Data: Excel data transformation (Rocketlane, Facilio, Amazon), customer data uploads (Facilio), and SQL analysis (Amazon).",
-        "Configuration, integrations, and onboarding: Configure and test each rollout through go-live, build API, webhook, and event-driven integrations, and train customers on-site."
-      ]
-    }
-  ]
+  "summary": "Applying for the Implementation Engineer (Senior/Lead, US Market) role at Everstage. Customer-facing implementation lead who engages enterprise customers to map current processes, designs the solution, plans the implementation, configures the platform, integrates it through APIs, and trains customer teams through go-live. At Rocketlane, owns enterprise implementations end to end, is solution architect for an enterprise account integrating ADP, SatMetrix, ServiceNow, and Salesforce, and builds the AI agents the implementation team runs on. At Facilio, led the EU region and enterprise CMMS rollouts across the EU, UK, US, Middle East, and Australia — $6M in total contract value and nearly $1M in implementation and expansion value."
 }
