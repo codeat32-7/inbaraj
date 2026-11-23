@@ -14,7 +14,7 @@ The site serves two purposes:
 
 - **Framework**: Next.js 16.2.2 (App Router, React 19)
 - **Language**: TypeScript
-- **Styling**: Vanilla CSS (globals.css) — no Tailwind utilities used despite the dependency existing
+- **Styling**: Vanilla CSS (globals.css) — no Tailwind utilities used despite the dependency existing; light default + opt-in dark (see Gotchas)
 - **Fonts**: Google Fonts (DM Mono, Spectral, DM Sans) loaded via `next/font/google`
 - **AI**: Anthropic Claude API (`@anthropic-ai/sdk`) for resume tailoring
 - **Deployment**: Vercel (auto-deploys from `main`)
@@ -113,6 +113,13 @@ Required in Vercel project settings (not team settings):
 - **Git workflow** — Always push changes to a feature branch, never directly to main. Do not squash commits unless there is an error to fix. Wait for user to test before merging to main.
 
 ## Gotchas
+
+### Resume writing rules live in `.claude/skills/resume-craft/SKILL.md`
+Rules are evidence-tagged (OFFICIAL / STUDY / CONSENSUS / HOUSE); sources and unverified claims are in `.claude/skills/resume-craft/references/`. After rendering a PDF also run `node scripts/resume-parse-check.mjs <pdf> <slug>` (machine-readability: reading-order integrity, contact in body, headings, titles, dates, file size). Neither script proves a real ATS will pass the file; never promise that.
+The PDF's "Professional Summary" is `hero.description` (not `summary`): keep it to ≤430 characters / 3-4 lines: one sentence on how he works end to end, one of scope and proof; never mention the application or role. Run `node scripts/resume-lint.mjs <slug|base>` before shipping any page; it fails on summary length, banned phrasing, over-long bullets, "N years", and numbers not in the base resume.
+
+### Theme: light is the default, dark is opt-in
+`app/globals.css` defines the light tokens on `:root` and the dark tokens on `[data-theme="dark"]` (no more `body.light`). `ThemeToggle` sets `html[data-theme="dark"]` and stores `localStorage.theme`; a `beforeInteractive` script in `app/layout.tsx` applies it before first paint. The admin Studio is built with hard-coded dark inline colours, so `app/admin/layout.tsx` wraps it in `data-theme="dark"` — keep that wrapper, or admin turns unreadable. Screen fonts are Fraunces / Inter / JetBrains Mono (CSS vars `--font-display/body/mono`); DM Mono, Spectral and DM Sans must stay in the font `<link>` because `ResumePrint.tsx` names them directly. The print block forces a white background and hides `body::before` — keep both or the PDF picks up the screen glow/dark background.
 
 ### Cookie redirect in admin
 The middleware sets a `profile_lock` cookie when visiting `/r/[slug]`. This redirects `/` to the profile page. The admin's base resume iframe uses `/?view=base` to bypass this. If you change the middleware, make sure this bypass still works.
@@ -213,6 +220,8 @@ If you add a new one, wrap it: `{ __html: sanitizeInlineHtml(value) }`. Six exis
 `node scripts/hash-password.mjs "your-password"` outputs a `$2b$12$…` hash. Paste into the Vercel env var, redeploy. Plaintext-compat path stays in place so there's no outage during rotation. Never commit a plaintext admin password to the repo or paste it into chat.
 
 ### Career facts live in `docs/career/`
+`docs/career/skills-and-regions.md` records the Excel/SQL data work and the regions (EU-UK region led at Facilio — UK and Ireland — and one Australia project for Investa). `docs/career/metrics.md` holds the verified dollar figures (Facilio $6M TCV, Rocketlane ~$2.1M ARR) with their definitions and the date they were corrected. Check it before writing any number into resume copy.
+
 `docs/career/atlas.md` is the source of truth for the Atlas project (Rocketlane). When writing or editing resume copy about Atlas in `data/base.json`, keep it consistent with that doc and update `data/ground-truth.json` to match. Do not add anything listed under "Details Not Yet Specified" (embedding model, accuracy metrics, cache technology, etc.) unless Inbaraj provides it. Also: no aggregate implementation counts or "N years" phrasing in resume copy; use dollar amounts attributed to the company they came from.
 
 ### ATS scorer (`lib/ats.ts`, `/api/ats-score`)

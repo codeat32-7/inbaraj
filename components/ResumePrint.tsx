@@ -195,6 +195,9 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                     justifyContent: 'space-between',
                     alignItems: 'baseline',
                     marginBottom: '5px',
+                    breakAfter: 'avoid',
+                    pageBreakAfter: 'avoid',
+                    breakInside: 'avoid',
                   }}
                 >
                   <div>
@@ -209,7 +212,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                       {item.title}
                     </span>
                     <span style={{ fontSize: '9.5pt', color: '#4535d4', marginLeft: '8px' }}>
-                      · {item.company}
+                      · {item.legalName ?? item.company}
                     </span>
                     <span
                       style={{
@@ -247,6 +250,9 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                       paddingLeft: '12px',
                       position: 'relative',
                       marginBottom: j < item.bullets.length - 1 ? '3px' : 0,
+                      // keep a bullet whole on one page; keep the first bullet with its job header
+                      breakInside: 'avoid',
+                      pageBreakInside: 'avoid',
                     }}
                   >
                     <span style={{ position: 'absolute', left: 0, color: '#8a8884' }}>&mdash;</span>
