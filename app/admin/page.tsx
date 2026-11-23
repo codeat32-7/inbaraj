@@ -105,15 +105,15 @@ function WizardBreadcrumb({ phase }: { phase: WizardPhase }) {
         <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
           <span style={{
             fontSize: '0.68rem',
-            fontFamily: "'DM Mono', monospace",
+            fontFamily: 'var(--font-mono)',
             letterSpacing: '0.04em',
-            color: i < activeIndex ? '#2dd4a8' : i === activeIndex ? '#e8e8ec' : '#3a3a44',
+            color: i < activeIndex ? 'var(--teal)' : i === activeIndex ? 'var(--text)' : 'var(--text3)',
             transition: 'color 0.3s',
           }}>
             {i < activeIndex ? '\u2713 ' : ''}{label}
           </span>
           {i < WIZARD_LABELS.length - 1 && (
-            <span style={{ color: '#2a2a30', fontSize: '0.7rem', margin: '0 0.15rem' }}>&rsaquo;</span>
+            <span style={{ color: 'var(--border)', fontSize: '0.7rem', margin: '0 0.15rem' }}>&rsaquo;</span>
           )}
         </div>
       ))}
@@ -142,12 +142,12 @@ function ProcessingView({ onCancel }: { onCancel: () => void }) {
             alignItems: 'center',
             gap: '0.5rem',
             fontSize: '0.85rem',
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: 'var(--font-body)',
             opacity: i <= step ? 1 : 0.3,
-            color: i < step ? '#2dd4a8' : i === step ? '#e8e8ec' : '#70708a',
+            color: i < step ? 'var(--teal)' : i === step ? 'var(--text)' : 'var(--text3)',
             transition: 'opacity 0.3s, color 0.3s',
           }}>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '0.7rem', width: 16, textAlign: 'center' as const }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', width: 16, textAlign: 'center' as const }}>
               {i < step ? '\u2713' : i === step ? '\u25CF' : '\u25CB'}
             </span>
             {label}
@@ -169,15 +169,15 @@ function PublishedView({ url, isLive, onViewPage, onCreateAnother, onViewProfile
   return (
     <div style={wizardStyles.centeredCard}>
       {isLive ? (
-        <span style={{ fontSize: '2rem', color: '#2dd4a8', marginBottom: '0.5rem' }}>{'\u2713'}</span>
+        <span style={{ fontSize: '2rem', color: 'var(--teal)', marginBottom: '0.5rem' }}>{'\u2713'}</span>
       ) : (
         <div style={wizardStyles.spinner} />
       )}
       <h3 style={{
-        fontFamily: "'Spectral', serif",
+        fontFamily: 'var(--font-display)',
         fontSize: '1.3rem',
         fontWeight: 300,
-        color: '#e8e8ec',
+        color: 'var(--text)',
         margin: 0,
       }}>
         {isLive ? 'Your page is live!' : 'Publishing your page...'}
@@ -188,8 +188,8 @@ function PublishedView({ url, isLive, onViewPage, onCreateAnother, onViewProfile
         rel="noopener"
         style={{
           fontSize: '0.78rem',
-          fontFamily: "'DM Mono', monospace",
-          color: isLive ? '#2dd4a8' : '#70708a',
+          fontFamily: 'var(--font-mono)',
+          color: isLive ? 'var(--teal)' : 'var(--text3)',
           textDecoration: isLive ? 'underline' : 'none',
           marginTop: '0.25rem',
         }}
@@ -197,7 +197,7 @@ function PublishedView({ url, isLive, onViewPage, onCreateAnother, onViewProfile
         {url}
       </a>
       {!isLive && (
-        <p style={{ fontSize: '0.75rem', color: '#70708a', fontFamily: "'DM Mono', monospace", marginTop: '0.25rem' }}>
+        <p style={{ fontSize: '0.75rem', color: 'var(--text3)', fontFamily: 'var(--font-mono)', marginTop: '0.25rem' }}>
           This usually takes about a minute...
         </p>
       )}
@@ -556,6 +556,23 @@ export default function AdminPage() {
     setGenerated({ ...generated, overrides: newOverrides });
   }, [generated]);
 
+  // Receive improved overrides back from the ATS workbench tab (same slug only).
+  useEffect(() => {
+    let channel: BroadcastChannel | null = null;
+    try {
+      channel = new BroadcastChannel('resume-studio');
+    } catch {
+      return;
+    }
+    channel.onmessage = (e: MessageEvent) => {
+      const d = e.data as { type?: string; slug?: string; overrides?: Record<string, unknown> };
+      if (d?.type === 'workbench-overrides' && d.overrides && generated && d.slug === generated.slug) {
+        setGenerated({ ...generated, overrides: d.overrides });
+      }
+    };
+    return () => channel?.close();
+  }, [generated]);
+
   // --- Post-publish edit handlers ---
   const handleStartProfileEdit = useCallback(async (slug: string) => {
     try {
@@ -645,7 +662,7 @@ export default function AdminPage() {
             </button>
           </form>
           {message && (
-            <p style={{ ...styles.message, color: message.type === 'error' ? '#ef4444' : '#22c55e' }}>
+            <p style={{ ...styles.message, color: message.type === 'error' ? 'var(--danger)' : 'var(--teal)' }}>
               {message.text}
             </p>
           )}
@@ -662,7 +679,7 @@ export default function AdminPage() {
       <style>{`
         @media (max-width: 800px) {
           .studio-shell { flex-direction: column !important; }
-          .studio-sidebar { width: 100% !important; height: auto !important; max-height: 40vh; position: static !important; border-right: none !important; border-bottom: 1px solid #2a2a30; }
+          .studio-sidebar { width: 100% !important; height: auto !important; max-height: 40vh; position: static !important; border-right: none !important; border-bottom: 1px solid var(--border); }
         }
       `}</style>
       <ProfileSidebar
@@ -676,9 +693,9 @@ export default function AdminPage() {
         <div
           style={{
             ...styles.toast,
-            background: message.type === 'error' ? '#fef2f2' : '#f0fdf4',
-            borderColor: message.type === 'error' ? '#fca5a5' : '#86efac',
-            color: message.type === 'error' ? '#dc2626' : '#16a34a',
+            background: message.type === 'error' ? 'var(--danger-soft)' : 'var(--teal-soft)',
+            borderColor: message.type === 'error' ? 'var(--danger)' : 'var(--teal)',
+            color: message.type === 'error' ? 'var(--danger)' : 'var(--teal)',
           }}
         >
           {message.text}
@@ -690,17 +707,17 @@ export default function AdminPage() {
         <div style={{
           padding: '0.6rem 1rem',
           borderRadius: 8,
-          border: '1px solid #fcd34d',
-          background: '#fefce8',
-          color: '#a16207',
+          border: '1px solid var(--amber)',
+          background: 'var(--amber-soft)',
+          color: 'var(--amber)',
           marginBottom: '1rem',
           fontSize: '0.82rem',
-          fontFamily: "'DM Mono', monospace",
+          fontFamily: 'var(--font-mono)',
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
         }}>
-          <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#f59e0b', animation: 'pulse 1.5s infinite' }} />
+          <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: 'var(--amber)', animation: 'pulse 1.5s infinite' }} />
           Publishing your page... this usually takes about a minute
         </div>
       )}
@@ -708,18 +725,18 @@ export default function AdminPage() {
         <div style={{
           padding: '0.6rem 1rem',
           borderRadius: 8,
-          border: '1px solid #86efac',
-          background: '#f0fdf4',
-          color: '#16a34a',
+          border: '1px solid var(--teal)',
+          background: 'var(--teal-soft)',
+          color: 'var(--teal)',
           marginBottom: '1rem',
           fontSize: '0.82rem',
-          fontFamily: "'DM Mono', monospace",
+          fontFamily: 'var(--font-mono)',
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
         }}>
-          <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#22c55e' }} />
-          Your page is live! <a href={liveCheckUrl} target="_blank" rel="noopener" style={{ color: '#16a34a', textDecoration: 'underline' }}>{liveCheckUrl}</a>
+          <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: 'var(--teal)' }} />
+          Your page is live! <a href={liveCheckUrl} target="_blank" rel="noopener" style={{ color: 'var(--teal)', textDecoration: 'underline' }}>{liveCheckUrl}</a>
         </div>
       )}
 
@@ -819,6 +836,28 @@ export default function AdminPage() {
                       </p>
                     </div>
                     <div style={styles.generatedActions}>
+                      {adaptSource === null && intakeData.jobDescription.trim() && (
+                        <button
+                          onClick={() => {
+                            try {
+                              localStorage.setItem('workbench-handoff', JSON.stringify({
+                                company: generated.companyName,
+                                slug: generated.slug,
+                                jobDescription: intakeData.jobDescription,
+                                overrides: generated.overrides,
+                                at: Date.now(),
+                              }));
+                              window.open('/admin/workbench', '_blank');
+                            } catch {
+                              alert('Could not hand the resume to the workbench (browser storage is unavailable).');
+                            }
+                          }}
+                          style={styles.editBtn}
+                          title="Opens the ATS workbench in a new tab. Your generated resume stays here."
+                        >
+                          ATS workbench ↗
+                        </button>
+                      )}
                       <button
                         onClick={() => setEditMode(!editMode)}
                         style={editMode ? styles.editBtnActive : styles.editBtn}
@@ -1010,8 +1049,8 @@ const wizardStyles: Record<string, React.CSSProperties> = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    background: '#111113',
-    border: '1px solid #2a2a30',
+    background: 'var(--bg2)',
+    border: '1px solid var(--border)',
     borderRadius: 10,
     padding: '3rem 2rem',
     minHeight: 320,
@@ -1019,8 +1058,8 @@ const wizardStyles: Record<string, React.CSSProperties> = {
   spinner: {
     width: 32,
     height: 32,
-    border: '3px solid #2a2a30',
-    borderTopColor: '#7c6cfa',
+    border: '3px solid var(--border)',
+    borderTopColor: 'var(--accent)',
     borderRadius: '50%',
     animation: 'spin 1s linear infinite',
     marginBottom: '1.5rem',
@@ -1029,33 +1068,33 @@ const wizardStyles: Record<string, React.CSSProperties> = {
     marginTop: '1.5rem',
     padding: '0.4rem 1rem',
     background: 'transparent',
-    border: '1px solid #38383f',
-    color: '#70708a',
-    borderRadius: 6,
+    border: '1px solid var(--border2)',
+    color: 'var(--text3)',
+    borderRadius: 999,
     fontSize: '0.75rem',
     cursor: 'pointer',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   primaryBtn: {
     padding: '0.55rem 1.2rem',
-    background: '#2dd4a8',
-    color: '#0a0a0b',
+    background: 'var(--teal)',
+    color: 'var(--bg)',
     border: 'none',
-    borderRadius: 6,
+    borderRadius: 999,
     fontSize: '0.82rem',
     fontWeight: 500,
     cursor: 'pointer',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   secondaryBtn: {
     padding: '0.55rem 1rem',
     background: 'transparent',
-    border: '1px solid #38383f',
-    color: '#a8a8b8',
-    borderRadius: 6,
+    border: '1px solid var(--border2)',
+    color: 'var(--text2)',
+    borderRadius: 999,
     fontSize: '0.82rem',
     cursor: 'pointer',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
 };
 
@@ -1067,27 +1106,28 @@ const styles: Record<string, React.CSSProperties> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: '#0a0a0b',
-    fontFamily: "'DM Sans', sans-serif",
+    background: 'var(--bg)',
+    fontFamily: 'var(--font-body)',
   },
   loginBox: {
-    background: '#111113',
-    border: '1px solid #2a2a30',
-    borderRadius: 12,
+    background: 'var(--bg2)',
+    border: '1px solid var(--border)',
+    borderRadius: 14,
     padding: '3rem',
     width: '100%',
     maxWidth: 440,
+    boxShadow: 'var(--shadow)',
   },
   loginTitle: {
-    fontFamily: "'Spectral', serif",
+    fontFamily: 'var(--font-display)',
     fontSize: '1.6rem',
     fontWeight: 300,
-    color: '#e8e8ec',
+    color: 'var(--text)',
     marginBottom: '0.4rem',
   },
   loginSubtitle: {
     fontSize: '0.85rem',
-    color: '#70708a',
+    color: 'var(--text3)',
     marginBottom: '1.5rem',
   },
   loginForm: {
@@ -1097,30 +1137,30 @@ const styles: Record<string, React.CSSProperties> = {
   },
   input: {
     padding: '0.65rem 1rem',
-    background: '#18181c',
-    border: '1px solid #2a2a30',
+    background: 'var(--bg3)',
+    border: '1px solid var(--border)',
     borderRadius: 6,
-    color: '#e8e8ec',
+    color: 'var(--text)',
     fontSize: '0.9rem',
     outline: 'none',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   primaryBtn: {
     padding: '0.65rem 1.2rem',
-    background: '#7c6cfa',
+    background: 'var(--accent)',
     color: '#fff',
     border: 'none',
-    borderRadius: 6,
+    borderRadius: 999,
     fontSize: '0.85rem',
     cursor: 'pointer',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   shell: {
     display: 'flex',
     minHeight: '100vh',
-    background: '#0a0a0b',
-    color: '#e8e8ec',
-    fontFamily: "'DM Sans', sans-serif",
+    background: 'var(--bg)',
+    color: 'var(--text)',
+    fontFamily: 'var(--font-body)',
   },
   main: {
     flex: 1,
@@ -1133,7 +1173,7 @@ const styles: Record<string, React.CSSProperties> = {
     border: '1px solid',
     marginBottom: '0.75rem',
     fontSize: '0.85rem',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   content: {
     marginTop: 0,
@@ -1145,38 +1185,39 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: '0.75rem',
   },
   sectionTitle: {
-    fontFamily: "'Spectral', serif",
+    fontFamily: 'var(--font-display)',
     fontSize: '1.4rem',
     fontWeight: 300,
-    color: '#e8e8ec',
+    color: 'var(--text)',
   },
   profileMeta: {
     fontSize: '0.78rem',
-    color: '#70708a',
-    fontFamily: "'DM Mono', monospace",
+    color: 'var(--text3)',
+    fontFamily: 'var(--font-mono)',
     marginTop: '0.3rem',
   },
   linkBtn: {
     fontSize: '0.75rem',
-    color: '#7c6cfa',
+    color: 'var(--accent)',
     textDecoration: 'none',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   deleteBtn: {
     padding: '0.5rem 1rem',
     background: 'transparent',
-    border: '1px solid #ef4444',
-    color: '#ef4444',
-    borderRadius: 6,
+    border: '1px solid var(--danger)',
+    color: 'var(--danger)',
+    borderRadius: 999,
     fontSize: '0.78rem',
     cursor: 'pointer',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   generatedSection: {
-    background: '#111113',
-    border: '1px solid #2a2a30',
-    borderRadius: 10,
+    background: 'var(--bg2)',
+    border: '1px solid var(--border)',
+    borderRadius: 14,
     padding: '1.5rem',
+    boxShadow: 'var(--shadow)',
   },
   generatedHeader: {
     display: 'flex',
@@ -1185,15 +1226,15 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: '1rem',
   },
   generatedTitle: {
-    fontFamily: "'Spectral', serif",
+    fontFamily: 'var(--font-display)',
     fontSize: '1.1rem',
     fontWeight: 300,
-    color: '#2dd4a8',
+    color: 'var(--teal)',
   },
   generatedSlug: {
     fontSize: '0.75rem',
-    color: '#70708a',
-    fontFamily: "'DM Mono', monospace",
+    color: 'var(--text3)',
+    fontFamily: 'var(--font-mono)',
     marginTop: '0.25rem',
   },
   generatedActions: {
@@ -1202,66 +1243,66 @@ const styles: Record<string, React.CSSProperties> = {
   },
   publishBtn: {
     padding: '0.5rem 1.2rem',
-    background: '#2dd4a8',
-    color: '#0a0a0b',
+    background: 'var(--teal)',
+    color: 'var(--bg)',
     border: 'none',
-    borderRadius: 6,
+    borderRadius: 999,
     fontSize: '0.8rem',
     fontWeight: 500,
     cursor: 'pointer',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   publishBtnWarn: {
     padding: '0.5rem 1.2rem',
-    background: '#fbbf24',
-    color: '#0a0a0b',
+    background: 'var(--amber)',
+    color: 'var(--bg)',
     border: 'none',
-    borderRadius: 6,
+    borderRadius: 999,
     fontSize: '0.8rem',
     fontWeight: 500,
     cursor: 'pointer',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   editBtn: {
     padding: '0.5rem 1rem',
-    background: 'rgba(124,108,250,0.1)',
-    border: '1px solid rgba(124,108,250,0.3)',
-    color: '#7c6cfa',
-    borderRadius: 6,
+    background: 'color-mix(in srgb, var(--accent) 10%, transparent)',
+    border: '1px solid color-mix(in srgb, var(--accent) 30%, transparent)',
+    color: 'var(--accent)',
+    borderRadius: 999,
     fontSize: '0.8rem',
     cursor: 'pointer',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   editBtnActive: {
     padding: '0.5rem 1rem',
-    background: '#7c6cfa',
-    border: '1px solid #7c6cfa',
+    background: 'var(--accent)',
+    border: '1px solid var(--accent)',
     color: '#fff',
-    borderRadius: 6,
+    borderRadius: 999,
     fontSize: '0.8rem',
     cursor: 'pointer',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   saveBtnDisabled: {
     padding: '0.5rem 1.2rem',
-    background: '#2a2a30',
-    color: '#70708a',
+    background: 'var(--border)',
+    color: 'var(--text3)',
     border: 'none',
-    borderRadius: 6,
+    borderRadius: 999,
     fontSize: '0.8rem',
     fontWeight: 500,
     cursor: 'not-allowed',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   discardBtn: {
     padding: '0.5rem 1rem',
     background: 'transparent',
-    border: '1px solid #38383f',
-    color: '#a8a8b8',
-    borderRadius: 6,
+    border: '1px solid var(--border2)',
+    color: 'var(--text2)',
+    borderRadius: 999,
     fontSize: '0.8rem',
     cursor: 'pointer',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   message: {
     fontSize: '0.82rem',
@@ -1272,8 +1313,8 @@ const styles: Record<string, React.CSSProperties> = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    background: '#111113',
-    border: '1px solid #2a2a30',
+    background: 'var(--bg2)',
+    border: '1px solid var(--border)',
     borderRadius: 10,
     padding: '4rem 2rem',
     minHeight: 400,
@@ -1281,22 +1322,22 @@ const styles: Record<string, React.CSSProperties> = {
   deployingSpinner: {
     width: 32,
     height: 32,
-    border: '3px solid #2a2a30',
-    borderTopColor: '#7c6cfa',
+    border: '3px solid var(--border)',
+    borderTopColor: 'var(--accent)',
     borderRadius: '50%',
     animation: 'spin 1s linear infinite',
     marginBottom: '1.5rem',
   },
   deployingText: {
     fontSize: '1rem',
-    color: '#e8e8ec',
-    fontFamily: "'DM Sans', sans-serif",
+    color: 'var(--text)',
+    fontFamily: 'var(--font-body)',
     marginBottom: '0.4rem',
   },
   deployingSub: {
     fontSize: '0.78rem',
-    color: '#70708a',
-    fontFamily: "'DM Mono', monospace",
+    color: 'var(--text3)',
+    fontFamily: 'var(--font-mono)',
     textAlign: 'center',
   },
 };

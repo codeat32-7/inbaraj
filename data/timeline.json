@@ -1,0 +1,83 @@
+{
+  "chapters": [
+    {
+      "id": "amazon",
+      "company": "Amazon",
+      "role": "Senior Catalog Specialist",
+      "badge": "E-Commerce · Ops",
+      "period": "May 2016 — Oct 2021",
+      "from": "2016-05",
+      "to": "2021-10",
+      "color": "amber",
+      "headline": { "value": "$230K", "label": "estimated monthly savings" },
+      "work": [
+        "Resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now.",
+        "Pulled data with SQL and transformed it in Excel to see where the defects were.",
+        "Traced defects back to gaps in the SOPs."
+      ],
+      "learned": [
+        "Rank work by business value, not by arrival order.",
+        "Treat recurring defects as a process gap, not a case-by-case problem.",
+        "Use SQL and Excel as everyday tools for decisions."
+      ],
+      "achieved": [
+        "Built a defect prioritisation framework (forecasts, inventory value, glance views) as a query and ranking algorithm: an estimated $230K in monthly savings.",
+        "Cut invalid case assignments between support teams by ~50 per day."
+      ]
+    },
+    {
+      "id": "facilio",
+      "company": "Facilio",
+      "role": "Lead, Product Implementation",
+      "badge": "CMMS · SaaS startup",
+      "period": "Nov 2021 — May 2026",
+      "from": "2021-11",
+      "to": "2026-05",
+      "color": "purple",
+      "headline": { "value": "$6M", "label": "total contract value delivered" },
+      "work": [
+        "Led enterprise CMMS implementations for mid-market to enterprise customers, and led the EU-UK region (UK and Ireland).",
+        "Ran discovery workshops with executives and operations teams, then wrote BRDs, solution designs, and WBS-based plans.",
+        "Configured and tested each rollout through go-live, typically over 6 to 12 months across multiple business units."
+      ],
+      "learned": [
+        "How large implementations really run: many business units, many stakeholders, many months.",
+        "Scoping is a revenue discipline: unbilled change requests are lost money.",
+        "My first AI product: an assistant that lets support teams answer configuration questions themselves."
+      ],
+      "achieved": [
+        "$6M in total contract value, plus nearly $1M in implementation and expansion value.",
+        "Converted pilots into enterprise rollouts: $350K+ in expansion value.",
+        "On-site in Saudi Arabia (a half-million-dollar engagement) and the UK, running workshops and go-live training.",
+        "Built a complexity-scoring and effort model so pre-sales could scope accurately, and introduced pre-purchased Professional Services credits with Sales."
+      ]
+    },
+    {
+      "id": "rocketlane",
+      "company": "Rocketlane",
+      "role": "AI Implementation Manager",
+      "badge": "PSA · SaaS startup",
+      "period": "May 2026 — Present",
+      "from": "2026-05",
+      "to": "present",
+      "color": "teal",
+      "headline": { "value": "~$2.1M", "label": "customer ARR implemented" },
+      "work": [
+        "Own customer implementations end to end as implementation manager, solution architect, and engagement manager.",
+        "Implement Nitro, Rocketlane’s agentic AI platform, designing agents around each customer’s use cases.",
+        "Transform customers’ unstructured project data from spreadsheets and other systems into Rocketlane’s structure and upload it."
+      ],
+      "learned": [
+        "How to implement agentic AI for customers, not just use it.",
+        "How to turn scattered implementation knowledge into a reusable, validated system.",
+        "Standardised agents beat individual templates: delivery becomes repeatable."
+      ],
+      "achieved": [
+        "~$2.1M customer ARR implemented across current projects.",
+        "Solution architect for NICE Phase 2: ADP, SatMetrix, ServiceNow, and Salesforce integrations.",
+        "Built the Nitro agents the team runs on: an estimated 20–30% less time per deliverable.",
+        "Built Atlas: 60–65% adoption across the Professional Services team, with 70–80% of queries reported useful."
+      ]
+    }
+  ]
+}

@@ -29,6 +29,7 @@ const ExperienceHighlightSchema = z.object({
 const ExperienceItemSchema = z.object({
   period: z.string(),
   company: z.string(),
+  legalName: z.string().optional(),
   badge: z.string(),
   title: z.string(),
   bullets: z.array(z.string()),

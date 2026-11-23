@@ -60,10 +60,13 @@ components/                        # Resume display components
 ├── ResumePrint.tsx                # Hidden print-optimized resume
 ├── ResumeDownload.tsx             # Download CV buttons (client)
 ├── ScrollReveal.tsx               # Intersection observer animations
-└── ThemeToggle.tsx                # Dark/light toggle (client)
+├── ThemeToggle.tsx                # Dark/light toggle (client)
+├── TimelineButton.tsx             # Nav "Timeline" button; opens the overlay via a portal (client)
+└── CareerTimeline.tsx             # 60/40 career timeline overlay (client)
 
 data/
 ├── base.json                      # Base resume (source of truth)
+├── timeline.json                  # Career timeline chapters (work / learned / achieved)
 └── profiles/
     ├── registry.json              # Slug → company mapping
     └── <slug>.json                # Company-specific overrides
@@ -114,12 +117,18 @@ Required in Vercel project settings (not team settings):
 
 ## Gotchas
 
+### ATS workbench (`/admin/workbench`, `/api/ats-fix`)
+Interactive gap-closing screen. Jev (`/api/ats-score`, falling back visibly to Claude then the heuristic, with a red warning if only the heuristic ran) scores; Claude (`/api/ats-fix`, `lib/ats-fix.ts`) triages each gap as **reword / needs your fact / real gap** and proposes ONE edit at a time; the user accepts and Jev re-scores. **No database:** the working session lives in this browser's `localStorage` (`wb:v1:...`), accepted changes are saved with the existing `PATCH /api/profiles/[slug]` (a git commit + redeploy), and a draft from the Studio's review step arrives via `localStorage['workbench-handoff']` and returns via `BroadcastChannel('resume-studio')`. **Guards, all server-side and fail-closed:** edits are limited to an allow-list of paths (`lib/resume-edit.ts`); numbers must already exist in the verified facts; filler/application wording and over-length text are rejected; a Claude fact-check must pass; a new bullet can only be appended from a fact the user typed (it is treated as true and is also persisted to ground truth by the PATCH route). `KNOWN_GAPS` in `lib/ats-fix.ts` mirrors `docs/career/`; update both together. The page shows an honest ceiling ("rewording alone ≈ X, with your facts ≈ Y") and never promises 95. Offline test: `scripts/workbench-e2e/README.md` (mock Claude/Jev via `ANTHROPIC_BASE_URL` / `TYPESAFE_BASE_URL`). Gotcha: the global `section{padding:4rem 3rem;max-width:1400px;margin:0 auto}` rule leaks into any `<section>` you add; reset it on your class (see `.wb-summary`, `.tl-stage`).
+
+### Career timeline overlay (`data/timeline.json`)
+The nav "Timeline" button opens a full-screen 60/40 overlay: left, a horizontal timeline that animates from the first role to now (frame loop writes to the DOM via refs, not React state; it pauses at each chapter); right, chapters from the top with company + the actual work on the left and "learned / achieved" on the right. All copy lives in `data/timeline.json`. Rules: every number must exist in `data/base.json` (check before committing), no "N years" phrasing, and the "learned" lines are interpretations that belong to Inbaraj, so keep them modest and let him edit. The overlay is portaled to `body` with `z-index: 1200` (above the Download-CV button at 999) and must keep `padding:0; margin:0; max-width:none` on `.tl-stage`, because the global `section{}` rule would otherwise add margins. It respects `prefers-reduced-motion` (no autoplay, instant jumps) and Esc / arrow keys / space.
+
 ### Resume writing rules live in `.claude/skills/resume-craft/SKILL.md`
 Rules are evidence-tagged (OFFICIAL / STUDY / CONSENSUS / HOUSE); sources and unverified claims are in `.claude/skills/resume-craft/references/`. After rendering a PDF also run `node scripts/resume-parse-check.mjs <pdf> <slug>` (machine-readability: reading-order integrity, contact in body, headings, titles, dates, file size). Neither script proves a real ATS will pass the file; never promise that.
 The PDF's "Professional Summary" is `hero.description` (not `summary`): keep it to ≤430 characters / 3-4 lines: one sentence on how he works end to end, one of scope and proof; never mention the application or role. Run `node scripts/resume-lint.mjs <slug|base>` before shipping any page; it fails on summary length, banned phrasing, over-long bullets, "N years", and numbers not in the base resume.
 
 ### Theme: light is the default, dark is opt-in
-`app/globals.css` defines the light tokens on `:root` and the dark tokens on `[data-theme="dark"]` (no more `body.light`). `ThemeToggle` sets `html[data-theme="dark"]` and stores `localStorage.theme`; a `beforeInteractive` script in `app/layout.tsx` applies it before first paint. The admin Studio is built with hard-coded dark inline colours, so `app/admin/layout.tsx` wraps it in `data-theme="dark"` — keep that wrapper, or admin turns unreadable. Screen fonts are Fraunces / Inter / JetBrains Mono (CSS vars `--font-display/body/mono`); DM Mono, Spectral and DM Sans must stay in the font `<link>` because `ResumePrint.tsx` names them directly. The print block forces a white background and hides `body::before` — keep both or the PDF picks up the screen glow/dark background.
+`app/globals.css` defines the light tokens on `:root` and the dark tokens on `[data-theme="dark"]` (no more `body.light`). `ThemeToggle` sets `html[data-theme="dark"]` and stores `localStorage.theme`; a `beforeInteractive` script in `app/layout.tsx` applies it before first paint. The admin Studio now follows the same theme (light default; the toggle is in the Studio sidebar). Its inline styles use only theme tokens (`var(--bg|bg2|bg3|border|border2|text|text2|text3|accent|teal|amber|danger|…-soft)`) and `color-mix(in srgb, var(--x) N%, transparent)` for translucent tints, never hex or `rgba()`, so new admin UI must do the same or it will break in one of the two themes. Action buttons are pills (`borderRadius: 999`) and cards use `borderRadius: 14` + `boxShadow: 'var(--shadow)'`. Don't mix a `border` shorthand with `borderLeft`/`borderLeftColor` in one inline style object (React warns and can leave stale borders); use longhands. Screen fonts are Fraunces / Inter / JetBrains Mono (CSS vars `--font-display/body/mono`); DM Mono, Spectral and DM Sans must stay in the font `<link>` because `ResumePrint.tsx` names them directly. The print block forces a white background and hides `body::before` — keep both or the PDF picks up the screen glow/dark background.
 
 ### Cookie redirect in admin
 The middleware sets a `profile_lock` cookie when visiting `/r/[slug]`. This redirects `/` to the profile page. The admin's base resume iframe uses `/?view=base` to bypass this. If you change the middleware, make sure this bypass still works.
