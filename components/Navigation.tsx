@@ -1,4 +1,5 @@
 import ThemeToggle from '@/components/ThemeToggle';
+import TimelineButton from '@/components/TimelineButton';
 import { NavDownloadButton } from '@/components/ResumeDownload';
 
 interface NavigationProps {
@@ -21,6 +22,7 @@ export default function Navigation({ isolated }: NavigationProps) {
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div className="nav-right">
+        <TimelineButton />
         <ThemeToggle />
         <NavDownloadButton />
         <a

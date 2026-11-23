@@ -60,10 +60,13 @@ components/                        # Resume display components
 ├── ResumePrint.tsx                # Hidden print-optimized resume
 ├── ResumeDownload.tsx             # Download CV buttons (client)
 ├── ScrollReveal.tsx               # Intersection observer animations
-└── ThemeToggle.tsx                # Dark/light toggle (client)
+├── ThemeToggle.tsx                # Dark/light toggle (client)
+├── TimelineButton.tsx             # Nav "Timeline" button; opens the overlay via a portal (client)
+└── CareerTimeline.tsx             # 60/40 career timeline overlay (client)
 
 data/
 ├── base.json                      # Base resume (source of truth)
+├── timeline.json                  # Career timeline chapters (work / learned / achieved)
 └── profiles/
     ├── registry.json              # Slug → company mapping
     └── <slug>.json                # Company-specific overrides
@@ -113,6 +116,9 @@ Required in Vercel project settings (not team settings):
 - **Git workflow** — Always push changes to a feature branch, never directly to main. Do not squash commits unless there is an error to fix. Wait for user to test before merging to main.
 
 ## Gotchas
+
+### Career timeline overlay (`data/timeline.json`)
+The nav "Timeline" button opens a full-screen 60/40 overlay: left, a horizontal timeline that animates from the first role to now (frame loop writes to the DOM via refs, not React state; it pauses at each chapter); right, chapters from the top with company + the actual work on the left and "learned / achieved" on the right. All copy lives in `data/timeline.json`. Rules: every number must exist in `data/base.json` (check before committing), no "N years" phrasing, and the "learned" lines are interpretations that belong to Inbaraj, so keep them modest and let him edit. The overlay is portaled to `body` with `z-index: 1200` (above the Download-CV button at 999) and must keep `padding:0; margin:0; max-width:none` on `.tl-stage`, because the global `section{}` rule would otherwise add margins. It respects `prefers-reduced-motion` (no autoplay, instant jumps) and Esc / arrow keys / space.
 
 ### Resume writing rules live in `.claude/skills/resume-craft/SKILL.md`
 Rules are evidence-tagged (OFFICIAL / STUDY / CONSENSUS / HOUSE); sources and unverified claims are in `.claude/skills/resume-craft/references/`. After rendering a PDF also run `node scripts/resume-parse-check.mjs <pdf> <slug>` (machine-readability: reading-order integrity, contact in body, headings, titles, dates, file size). Neither script proves a real ATS will pass the file; never promise that.
