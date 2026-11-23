@@ -41,7 +41,7 @@ Full source notes, what was *not* verified, and the ATS mechanics: `references/e
 
 ## Summary
 15. A short, specific, quantified, job-aligned summary is common advice (2–5 sentences, often ≤100 words); generic ones get skipped. No rigorous study compares resumes with vs without one. [CONSENSUS]
-16. **[HOUSE]** Inbaraj's rule is stricter: **≤3 lines on the PDF (≤340 characters, ≤55 words); numbers-first; never mention the application, role or company; no location (contact line has it); no year counts.** In our PDF the "Professional Summary" is `hero.description`, not `summary`.
+16. **[HOUSE]** Inbaraj's rule is stricter than the guides: **≤430 characters / ≤65 words (3–4 lines on the PDF); never mention the application, role or company; no location (contact line has it); no year counts.** The shape he chose (2026-11-23, Studio-generated, kept over my shorter numbers-first draft): **one sentence on how he works end to end ("owns enterprise SaaS rollouts independently, from discovery workshops and process mapping through solution design, configuration, integrations, UAT, and go-live training") + one sentence of scope and proof (segment, regions, the headline figure, the signature rollout).** Lead with what he does, then the evidence. My own earlier version (a cold run of figures) was rejected. In our PDF the "Professional Summary" is `hero.description`, not `summary`.
 
 ## Keywords and ATS matching
 17. **Mirror the posting's own terms where they are true** — recruiters search and filters match on exact strings; synonyms are not reliably matched. Write acronyms with the full term once, e.g. "professional services automation (PSA)". [CONSENSUS]
