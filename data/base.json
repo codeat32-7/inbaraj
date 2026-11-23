@@ -1,7 +1,7 @@
 {
   "personal": {
     "name": "Inbaraj B",
-    "title": "AI Implementation Manager",
+    "title": "Enterprise SaaS Implementation | AI-Enabled Delivery | Data & Integrations",
     "location": "Chennai, India",
     "email": "inbarajb91@gmail.com",
     "phone": "+91 7200108575",
@@ -14,7 +14,7 @@
   "hero": {
     "tag": "Open to opportunities · Chennai, India",
     "headline": "Bridging Enterprise SaaS Implementation and<br><em>AI-Driven Automation</em>",
-    "description": "Implementation leader for mid-market to enterprise SaaS: $6M contract value delivered at Facilio across the EU-UK, US, Middle East, and Australia, and ~$2.1M ARR implemented at Rocketlane. Builds the AI agents (Nitro, Atlas) that make implementations repeatable and integrates Salesforce, ServiceNow, ADP, and SatMetrix.",
+    "description": "Enterprise SaaS implementation professional with 10+ years of experience spanning customer-facing delivery, business process analysis and operational data. Leads complex implementations from discovery and process mapping through solution design, platform configuration, data transformation, integrations, UAT and go-live. Combines hands-on SQL, Excel and API integration experience with the ability to translate business requirements into scalable platform solutions. Also builds AI-enabled workflows and knowledge systems that improve implementation delivery and team productivity.",
     "badges": [
       {
         "text": "AI Implementation",
@@ -38,25 +38,25 @@
     {
       "value": "~$2.1M",
       "label": "Customer ARR implemented",
-      "sub": "Rocketlane · across current projects, incl. NICE enterprise rollout",
+      "sub": "Rocketlane",
       "color": "teal"
     },
     {
       "value": "$6M",
       "label": "Total contract value delivered",
-      "sub": "Facilio · plus nearly $1M in implementation & expansion",
+      "sub": "Facilio",
       "color": "purple"
     },
     {
-      "value": "Atlas",
-      "label": "AI knowledge system for implementation teams",
-      "sub": "60–65% PS team adoption · 70–80% of queries reported useful",
+      "value": "$350K+",
+      "label": "Pilot-to-enterprise expansion value",
+      "sub": "Facilio",
       "color": "cs"
     },
     {
-      "value": "Nitro",
-      "label": "AI agents across the implementation lifecycle",
-      "sub": "Est. 20–30% less time per deliverable · standardised outputs",
+      "value": "EU–UK · US",
+      "label": "Enterprise delivery regions",
+      "sub": "Facilio",
       "color": "teal"
     }
   ],
@@ -67,29 +67,35 @@
       "badge": "PSA · SaaS startup",
       "title": "AI Implementation Manager",
       "bullets": [
-        "Own customer implementations end to end on Rocketlane’s professional services automation platform — discovery, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
-        "Transform customers’ complex, unstructured project data from spreadsheets and other systems into Rocketlane’s structure and upload it, as part of each customer’s adoption of the PSA platform.",
-        "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
-        "Built the Nitro agents Rocketlane’s implementation team now uses across the project lifecycle, as part of the Customer Zero team that adopts every Nitro release first and feeds back to product.",
-        "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get an answer that is still current.",
-        "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce."
+        "Own enterprise customer implementations on Rocketlane’s Professional Services Automation (PSA) platform, leading discovery, process mapping, solution design, configuration, integrations, data migration and go-live.",
+        "Prepare complex customer data for platform onboarding by mapping source fields to Rocketlane’s data model, cleansing and validating records, resolving duplicates, and transforming multi-year project data from spreadsheets and other systems.",
+        "Lead solution design and implementation for enterprise integrations, coordinating data flows and requirements across customer systems and Rocketlane; currently serving as solution architect and implementation manager for Phase 2 of NICE.",
+        "Implement Nitro, Rocketlane’s agentic AI platform, by translating customer use cases into purpose-built agents and workflow automations.",
+        "Built internal AI agents as part of the Customer Zero team to support implementation handovers, kickoff preparation, workshops, solution design and UAT.",
+        "Built Atlas, an AI-powered implementation knowledge system that captures previously solved customer use cases and makes approved solutions searchable across the Professional Services team."
       ],
       "highlights": [
         {
-          "label": "Nitro · Agents the team runs on",
+          "label": "Nitro · Implementation agents",
           "color": "purple",
-          "text": "Agents: sales-to-implementation handover, kickoff decks, workshop planner (prep and recap), solution design documents, UAT scripts and cases, and form-to-Sheets reporting.\nContext built in: they run inside the Rocketlane project where documents, meetings and transcripts already live, so there’s less pulling from Avoma and other sources.\nEstimated 20–30% less time per deliverable.\nConsistent output: standardised formats replace individual templates, so results are clearer and repeatable."
+          "text": "Use cases: Sales-to-implementation handovers, kickoff decks, workshop preparation and recaps, solution design documents, UAT scripts and form-to-Sheets reporting.\nApproach: Uses project context—including documents, meetings and transcripts—already available in Rocketlane to reduce manual context gathering.\nEstimated impact: 20–30% less time per deliverable, with more consistent outputs."
         },
         {
           "label": "Nitro · Configuration agent (POC)",
           "color": "green",
-          "text": "Problem: Native settings, notifications, and automations were configured manually after every design document.\nSolution: Built a Nitro Workforce agent that reads design documents and determines the required configuration.\nBrowser Automation: Uses Browserbase to navigate Rocketlane, configure settings, and create automations.\nValidation: Proof of concept subsequently validated by the product team."
+          "text": "Problem: Platform settings, notifications and automations were configured manually after design approval.\nSolution: Designed a Nitro Workforce agent to interpret solution design documents and identify required configuration.\nAutomation: Used Browserbase to navigate Rocketlane and configure settings and automations; the product team subsequently validated the proof of concept."
         },
         {
-          "label": "Atlas · AI Implementation Knowledge System",
+          "label": "Atlas · AI implementation knowledge system",
           "color": "purple",
           "wide": true,
-          "text": "Problem: Implementation knowledge was scattered across team members, call transcripts, and unstructured documents, resulting in repeated problem-solving and limited reuse of previously developed solutions.\nSolution:\n- Use-Case Extraction & Solution Generation: An Anthropic-hosted agent analyzes Avoma call transcripts and Freshdesk tickets to identify customer use cases and capture solutions discussed. When no solution was discussed, it proposes one using product documentation.\n- Human Review: Implementation Managers review, approve, or revise generated use cases and solutions before they are added to the reusable knowledge base.\n- Intelligent Retrieval: A backend agent built in Lovable, powered by custom skills, uses Supermemory to retrieve relevant approved solutions and answer implementation questions without loading the entire documentation corpus into the LLM.\n- Current-State Validation: Cross-checks historical solutions against Notion, Slack, Rocketlane projects, and product and API documentation to identify retired features and outdated approaches.\n- Feedback & Continuous Improvement: Caches repeat answers at 95%+ relevance, captures user ratings, and routes incorrect answers through a validator agent for classification and admin review.\nImpact: Reached 60–65% adoption across the Professional Services team, with approximately 10 queries per user per week and 70–80% reported usefulness. Helps Implementation Managers find answers independently rather than spending time tracking down colleagues."
+          "text": "Problem: Implementation knowledge was fragmented across team members, call transcripts and documents, leading to repeated problem-solving.\nSolution: Built an AI-assisted workflow to extract use cases and solutions from Avoma transcripts and Freshdesk tickets, with Implementation Manager review before publishing. A Lovable backend agent uses Supermemory to retrieve approved solutions and validate them against current product and API documentation.\nImpact: 60–65% team adoption, approximately 10 queries per user per week and 70–80% reported usefulness."
+        },
+        {
+          "label": "Implementation data work",
+          "color": "green",
+          "wide": true,
+          "text": "Selected implementation data work includes source-to-target mapping, cleansing, validation and transformation of thousands of records, including multi-year project histories migrated from spreadsheets and other systems."
         }
       ],
       "legalName": "Rocketlane Technologies Private Limited"
@@ -100,36 +106,38 @@
       "badge": "CMMS · SaaS startup",
       "title": "Lead, Product Implementation",
       "bullets": [
-        "Led the EU-UK region (UK and Ireland) and delivered enterprise CMMS implementations for mid-market to enterprise customers across the EU-UK, US, Middle East, and Australia (Investa) — $6M in total contract value and nearly $1M in implementation and expansion value.",
-        "Led complex enterprise implementations that typically run 6 to 12 months, spanning multiple business units and workforces of hundreds to thousands of employees.",
-        "Ran discovery workshops with executives and operations teams to map processes and requirements, wrote BRDs, solution designs, and WBS-based plans, and configured and tested each rollout through go-live."
+        "Led enterprise CMMS implementations across the UK, Ireland, US, Middle East and Australia, delivering engagements representing $6M in total contract value and nearly $1M in implementation and expansion value.",
+        "Directed complex implementations typically spanning 6–12 months, multiple business units and hundreds to thousands of employees.",
+        "Facilitated executive and operational discovery workshops, mapped business processes, documented requirements in BRDs and solution designs, developed WBS-based implementation plans, and led configuration, testing, UAT and go-live.",
+        "Mapped customer source data to platform structures and managed large-scale data preparation, cleansing, transformation, validation and migration using Excel and customer-system exports.",
+        "Worked on financial and invoice-related implementations, understanding customer billing structures and configuring the exchange of financial data with external systems. Supported revenue-recognition requirements, including a customer-specific application to track recognition based on task completion rather than hours or milestone completion."
       ],
       "highlights": [
         {
-          "label": "Global delivery",
+          "label": "Global enterprise delivery",
           "color": "purple",
-          "text": "On-site in Saudi Arabia for a half-million-dollar engagement and in the UK for MHA — requirement gathering, stakeholder workshops, and go-live training."
+          "text": "Delivered on-site engagements in Saudi Arabia for a half-million-dollar project and in the UK for MHA, covering requirements gathering, stakeholder workshops and go-live training."
         },
         {
-          "label": "Pilot → Enterprise conversions",
+          "label": "Pilot-to-enterprise expansion",
           "color": "green",
-          "text": "Converted pilots into full-scale enterprise rollouts through structured discovery and early value demonstration — $350K+ in expansion value."
+          "text": "Converted customer pilots into full-scale enterprise rollouts through structured discovery and early value demonstration, contributing more than $350K in expansion value."
         },
         {
-          "label": "Key initiative",
+          "label": "Implementation framework",
           "color": "purple",
-          "text": "Built a use-case-driven implementation framework with complexity scoring and effort models — so pre-sales could scope accurately, auto-calculate timelines, and cut BRD and UAT ambiguity."
+          "text": "Built a use-case-driven implementation framework with complexity scoring and effort models. Helped pre-sales scope work more accurately, estimate timelines and reduce ambiguity in BRDs and UAT."
         },
         {
-          "label": "Revenue impact",
+          "label": "Revenue impact & scope governance",
           "color": "green",
-          "text": "Spotted unbilled scope changes, built a way to track them, and worked with Sales to introduce pre-purchased Professional Services credits — turning informal changes into billable work."
+          "text": "Identified unbilled scope changes and introduced a structured, manual estimation and tracking process with Sales. Distinguished short-duration changes from scope creep requiring formal change management, and introduced pre-purchased Professional Services credits. The process was implemented for one customer."
         },
         {
-          "label": "AI Config Assistant · Enterprise support tool",
+          "label": "AI configuration assistant",
           "color": "purple",
           "wide": true,
-          "text": "Problem: Implementation engineers spent about 3 hours a week each (2–6 hours) supporting the support team on issues, even with a solution document in place. The platform is fully customizable and implementations run 6 months to a year, so configurations change constantly.\nSolution: An AI assistant using RAG and NLP over XML platform configurations, so support teams can ask configuration questions in natural language.\nImpact: Support teams get configuration answers themselves, removing their dependency on implementation engineers after go-live – aimed at the roughly 3 hours a week (2–6) each implementation resource spent."
+          "text": "Developed a retrieval-augmented AI assistant over XML platform configurations, enabling support teams to answer configuration questions in natural language and reducing their reliance on implementation engineers after go-live. The support team had previously required approximately 2–6 hours of engineering assistance per week."
         }
       ],
       "legalName": "Facilio Technology Solutions Private Limited"
@@ -140,10 +148,9 @@
       "badge": "E-Commerce · Ops",
       "title": "Senior Catalog Specialist",
       "bullets": [
-        "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now — directly improving operational efficiency.",
-        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — built as a query and ranking algorithm that decides which tickets to work first — yielding an estimated $230K in monthly savings.",
-        "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day.",
-        "Used SQL to pull data and Excel to transform it for data analysis on catalog and procurement defects."
+        "Designed a data-driven defect prioritisation framework using product forecasts, inventory value and glance-view signals. Built SQL-driven queries and a ranking algorithm to focus teams on high-impact tickets, delivering an estimated $230K in monthly savings.",
+        "Independently queried operational data using SQL and analysed catalog and procurement defects in Excel to identify recurring patterns and SOP gaps, reducing invalid case assignments between support teams by approximately 50 per day.",
+        "Resolved catalog and procurement defects across Amazon Fresh, Amazon Pantry and Prime Now, improving operational efficiency."
       ],
       "highlights": []
     }
@@ -218,64 +225,67 @@
       "title": "Implementation & Delivery",
       "color": "accent",
       "items": [
-        "End-to-end SaaS implementation",
-        "Discovery & solution design",
-        "Project planning & WBS",
-        "UAT design & go-live support",
-        "SOP development & standardisation"
+        "End-to-end enterprise SaaS implementation",
+        "Discovery and process mapping",
+        "Solution design",
+        "Project planning and WBS",
+        "Platform configuration",
+        "UAT and go-live",
+        "Change management",
+        "Customer onboarding and training"
       ]
     },
     {
-      "title": "Business Analysis",
+      "title": "Data Transformation & Analysis",
       "color": "teal",
       "items": [
-        "Requirements gathering (BRD)",
-        "Stakeholder workshop facilitation",
-        "Complexity scoring & effort models",
-        "Process improvement & gap analysis",
-        "Domains: CMMS / facilities · PSA"
-      ]
-    },
-    {
-      "title": "Client & Account Management",
-      "color": "amber",
-      "items": [
-        "Executive stakeholder engagement",
-        "Cross-functional team leadership",
-        "Change management & adoption",
-        "Revenue tracking & PS billing",
-        "Post-go-live relationship management"
+        "SQL querying and data extraction",
+        "Advanced Excel-based analysis and transformation",
+        "Source-to-target data mapping",
+        "Data cleansing, deduplication and validation",
+        "Large-scale customer data migration",
+        "Operational and defect analysis"
       ]
     },
     {
       "title": "Integrations & Technical",
       "color": "accent",
       "items": [
-        "Integration Architecture: REST APIs, webhooks, and event-driven integrations",
-        "Integration Platforms: iPaaS tools such as Workato and Zapier for custom integrations and workflow automation",
-        "Enterprise SaaS Integrations: Salesforce, HubSpot, Sage, SuccessFactors, ADP, ServiceNow, SatMetrix, and Fathom",
-        "Facilities & Operations Systems: Xero, CorrigoPro, Equiem, Wooqer, Bill.com, and Facilio ecosystem integrations",
-        "SaaS Configuration & Customization: Platform configuration, JavaScript-based UI scripting, and workflow automation"
+        "REST APIs",
+        "Webhooks",
+        "Event-driven integrations",
+        "iPaaS and workflow automation (Workato, Zapier)",
+        "Enterprise SaaS integrations including Salesforce, HubSpot, ADP, SuccessFactors, ServiceNow and Satmetrix",
+        "JavaScript-based UI customisation"
       ]
     },
     {
-      "title": "AI & Tooling",
+      "title": "Business & Financial Analysis",
+      "color": "amber",
+      "items": [
+        "Requirements gathering and BRDs",
+        "Stakeholder workshops",
+        "Process and gap analysis",
+        "Complexity scoring and effort estimation",
+        "Scope and change tracking",
+        "Billing and invoice data workflows",
+        "Revenue-recognition configuration"
+      ]
+    },
+    {
+      "title": "AI & Automation",
       "color": "teal",
       "items": [
-        "AI agents & skills (Claude, Nitro)",
-        "Knowledge bases & RAG (Supermemory)",
-        "Browser automation (Browserbase)",
+        "Agentic AI workflows",
+        "RAG-based knowledge systems",
+        "AI-assisted implementation documentation",
         "Prompt engineering",
-        "Lovable · Vercel · GitHub"
-      ]
-    },
-    {
-      "title": "Data & Analysis",
-      "color": "teal",
-      "items": [
-        "Data transformation: restructure customers’ complex, unstructured project data from spreadsheets and other systems (Excel) into the platform’s structure (Rocketlane, Facilio)",
-        "Customer data uploads: load the transformed data into the platform as part of each implementation (Rocketlane, Facilio)",
-        "Data analysis: SQL and Excel to pull and analyse defect data, including a query and algorithm that ranks tickets (Amazon)"
+        "Browser automation (Browserbase)",
+        "Nitro",
+        "Supermemory",
+        "Lovable",
+        "Vercel",
+        "GitHub"
       ]
     }
   ],
@@ -312,6 +322,6 @@
     "description": "Targeting roles in AI-enabled implementation, solutions consulting, business analysis, or account management — ideally at a company where enterprise depth meets product thinking.",
     "subtext": "Based in Chennai. Available for hybrid or remote roles."
   },
-  "summary": "Implementation leader for mid-market to enterprise SaaS: $6M contract value delivered at Facilio across the EU-UK, US, Middle East, and Australia, and ~$2.1M ARR implemented at Rocketlane. Builds the AI agents (Nitro, Atlas) that make implementations repeatable and integrates Salesforce, ServiceNow, ADP, and SatMetrix.",
+  "summary": "Enterprise SaaS implementation professional with 10+ years of experience spanning customer-facing delivery, business process analysis and operational data. Leads complex implementations from discovery and process mapping through solution design, platform configuration, data transformation, integrations, UAT and go-live. Combines hands-on SQL, Excel and API integration experience with the ability to translate business requirements into scalable platform solutions. Also builds AI-enabled workflows and knowledge systems that improve implementation delivery and team productivity.",
   "footer": "Inbaraj B · Chennai, India · inbarajb91@gmail.com · +91 7200108575"
 }
