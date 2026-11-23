@@ -6,7 +6,7 @@
   },
   "hero": {
     "headline": "Enterprise Implementation Lead:<br><em>Discovery, Configuration, Integrations & Go-Live</em>",
-    "description": "Implementation lead at two SaaS startups for mid-market to enterprise customers: $6M contract value at Facilio (EU-UK, US, Middle East, Australia) and ~$2.1M ARR implemented at Rocketlane, including NICE’s integrations with ADP, SatMetrix, ServiceNow, and Salesforce. Builds the AI agents (Nitro, Atlas) that make delivery repeatable.",
+    "description": "Implementation lead who owns enterprise SaaS rollouts independently, from discovery workshops and process mapping through solution design, configuration, integrations, UAT, and go-live training. Has delivered for mid-market to enterprise clients across the EU-UK, US, and Middle East, including $6M in total contract value at Facilio and an enterprise integration rollout (ADP, SatMetrix, ServiceNow, Salesforce) at Rocketlane.",
     "badges": [
       {
         "text": "Enterprise Implementation",
@@ -207,5 +207,5 @@
       ]
     }
   ],
-  "summary": "Implementation lead at two SaaS startups for mid-market to enterprise customers: $6M contract value at Facilio (EU-UK, US, Middle East, Australia) and ~$2.1M ARR implemented at Rocketlane, including NICE’s integrations with ADP, SatMetrix, ServiceNow, and Salesforce. Builds the AI agents (Nitro, Atlas) that make delivery repeatable."
+  "summary": "Implementation lead who owns enterprise SaaS rollouts independently, from discovery workshops and process mapping through solution design, configuration, integrations, UAT, and go-live training. Has delivered for mid-market to enterprise clients across the EU-UK, US, and Middle East, including $6M in total contract value at Facilio and an enterprise integration rollout (ADP, SatMetrix, ServiceNow, Salesforce) at Rocketlane."
 }
