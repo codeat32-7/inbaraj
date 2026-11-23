@@ -31,3 +31,11 @@ Greenhouse lists "company names that don't include identifying words such as Inc
 - **Facilio Technology Solutions Private Limited** — Chennai-registered, CIN U72900TN2017PTC116800, incorporated 26 May 2017 (third-party registry: registrationwala.com). Parent: Facilio Inc.
 - **Amazon** — not determined. Amazon operates several Indian entities; use the exact name on Inbaraj's offer/relieving letter, then add `legalName`.
 - **Caveat:** these came from public third-party registry listings, not from Inbaraj's own employment documents. The employer of record on his offer letter/payslip is authoritative; if it differs, change `legalName` (employer verification uses that name).
+
+## Added 2026-11-23 (Inbaraj approved a revised Everstage draft)
+Inbaraj reviewed a revised draft of the Everstage resume and approved its wording ("no other change" apart from NICE capitalisation and an Amazon change still to come). These claims are now treated as his, even though they were not in earlier notes; `data/ground-truth.json` was updated to match.
+- **Data work:** source-to-target mapping, cleansing, validation, deduplication and transformation of thousands of records, including multi-year project histories migrated from spreadsheets and other systems (Rocketlane); data preparation and migration with Excel and customer-system exports (Facilio).
+- **Facilio finance work:** financial and invoice-related implementations (customer billing structures, exchange of financial data with external systems) and revenue-recognition support, including a customer-specific application tracking recognition by task completion rather than hours or milestones.
+- **Scope governance:** short-duration changes distinguished from scope creep needing formal change management; the process was implemented for one customer.
+- **"10+ years"** appears in the approved summary. It breaks the "no N years" rule above; it is Inbaraj's explicit choice for this page and must not be copied to other pages without asking.
+- Company name styling: **NICE** (not "NiCE").

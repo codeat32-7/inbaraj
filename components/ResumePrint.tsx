@@ -265,8 +265,8 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                     style={{
                       display: 'grid',
                       gridTemplateColumns: '1fr 1fr',
-                      gap: '8px',
-                      marginTop: '10px',
+                      gap: '6px',
+                      marginTop: '8px',
                     }}
                   >
                     {[...item.highlights.filter((h) => !h.wide), ...item.highlights.filter((h) => h.wide)].map((hl, j) => {
@@ -282,7 +282,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                           style={{
                             background: hlColor.bg,
                             borderRadius: '4px',
-                            padding: '8px 10px',
+                            padding: '6px 10px',
                             borderLeft: `3px solid ${hlColor.border}`,
                             gridColumn: hl.wide ? '1 / -1' : undefined,
                             breakInside: hl.wide ? 'auto' : 'avoid',
@@ -473,7 +473,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
             <div style={{ border: '1px solid #dedad4', borderRadius: '4px', overflow: 'hidden' }}>
               {skills.map((group, i) => {
                 const accent = colorMap[group.color] || '#4535d4';
-                const wide = group.items.some((s) => s.length > 48);
+                const wide = group.items.some((s) => s.length > 110);
                 return (
                   <div
                     key={i}
@@ -488,7 +488,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                     <div
                       style={{
                         flex: '0 0 22%',
-                        padding: '7px 10px',
+                        padding: '5px 10px',
                         borderRight: '1px solid #dedad4',
                         borderLeft: `3px solid ${accent}`,
                         fontFamily: "'DM Mono', monospace",
@@ -505,7 +505,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                     <div
                       style={{
                         flex: 1,
-                        padding: '7px 10px',
+                        padding: '5px 10px',
                         display: wide ? 'grid' : 'block',
                         gridTemplateColumns: '1fr',
                         rowGap: '2px',
@@ -597,7 +597,7 @@ export default function ResumePrint({ data, profileSlug }: ResumePrintProps) {
                 key={i}
                 style={{
                   flex: 1,
-                  padding: '9px 12px',
+                  padding: '6px 12px',
                   border: '1px solid #dedad4',
                   borderRadius: '4px',
                   borderLeft: '3px solid #4535d4',

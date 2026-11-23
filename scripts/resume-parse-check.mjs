@@ -25,6 +25,7 @@ const base = read('data/base.json');
 const over = slug === 'base' ? {} : read(`data/profiles/${slug}.json`);
 const r = { ...base, ...Object.fromEntries(Object.entries(over).filter(([k]) => k !== 'meta')) };
 if (over.hero) r.hero = { ...base.hero, ...over.hero };
+if (over.personal) r.personal = { ...base.personal, ...over.personal };
 
 const fails = [];
 const warns = [];
