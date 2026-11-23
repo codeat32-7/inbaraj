@@ -115,7 +115,7 @@ export default function DiffView({ base, overrides }: DiffViewProps) {
           {overExperience.map((exp, i) => {
             const baseExp = baseExperience[i];
             return (
-              <div key={i} style={i > 0 ? { marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid #2a2a30' } : {}}>
+              <div key={i} style={i > 0 ? { marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid var(--border)' } : {}}>
                 <div style={styles.expTitle}>
                   {exp.title} {exp.company && <span style={styles.expCompany}>· {exp.company}</span>}
                 </div>
@@ -216,9 +216,9 @@ export default function DiffView({ base, overrides }: DiffViewProps) {
                 <div key={i} style={styles.skillGroupCard}>
                   {titleChanged ? (
                     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.4rem' }}>
-                      <span style={{ ...styles.skillGroupTitle, color: '#ef4444', textDecoration: 'line-through' }}>{baseGroup?.title}</span>
+                      <span style={{ ...styles.skillGroupTitle, color: 'var(--danger)', textDecoration: 'line-through' }}>{baseGroup?.title}</span>
                       <span style={styles.arrow}>→</span>
-                      <span style={{ ...styles.skillGroupTitle, color: '#2dd4a8' }}>{group.title}</span>
+                      <span style={{ ...styles.skillGroupTitle, color: 'var(--teal)' }}>{group.title}</span>
                     </div>
                   ) : (
                     <div style={styles.skillGroupTitle}>{group.title}</div>
@@ -229,7 +229,7 @@ export default function DiffView({ base, overrides }: DiffViewProps) {
                       {baseItems.map((item, j) => (
                         <div key={j} style={{
                           ...styles.skillItem,
-                          ...(newItems.includes(item) ? {} : { color: '#ef4444', textDecoration: 'line-through' }),
+                          ...(newItems.includes(item) ? {} : { color: 'var(--danger)', textDecoration: 'line-through' }),
                         }}>
                           · {item}
                         </div>
@@ -240,7 +240,7 @@ export default function DiffView({ base, overrides }: DiffViewProps) {
                       {newItems.map((item, j) => (
                         <div key={j} style={{
                           ...styles.skillItem,
-                          ...(!baseSet.has(item) ? { color: '#2dd4a8' } : {}),
+                          ...(!baseSet.has(item) ? { color: 'var(--teal)' } : {}),
                         }}>
                           · {item}
                           {!baseSet.has(item) && <span style={styles.newBadge}>added</span>}
@@ -257,13 +257,13 @@ export default function DiffView({ base, overrides }: DiffViewProps) {
 
       {/* Custom Sections (always new) */}
       {overCustomSections && overCustomSections.length > 0 && (
-        <DiffCard borderColor="rgba(45,212,168,0.3)">
+        <DiffCard borderColor="color-mix(in srgb, var(--teal) 30%, transparent)">
           <SectionLabel>New Sections</SectionLabel>
           {overCustomSections.map((section, i) => (
             <div key={i} style={i > 0 ? { marginTop: '0.75rem' } : {}}>
               <div style={styles.skillGroupTitle}>{section.title}</div>
               {section.items?.map((item, j) => (
-                <div key={j} style={{ ...styles.skillItem, color: '#2dd4a8' }}>· {item}</div>
+                <div key={j} style={{ ...styles.skillItem, color: 'var(--teal)' }}>· {item}</div>
               ))}
             </div>
           ))}
@@ -272,21 +272,21 @@ export default function DiffView({ base, overrides }: DiffViewProps) {
 
       {/* Hidden sections */}
       {overrides.projects === false && (
-        <DiffCard borderColor="rgba(239,68,68,0.3)">
+        <DiffCard borderColor="color-mix(in srgb, var(--danger) 30%, transparent)">
           <SectionLabel>Projects</SectionLabel>
-          <p style={{ ...styles.noChanges, color: '#ef4444' }}>This section is hidden for this version</p>
+          <p style={{ ...styles.noChanges, color: 'var(--danger)' }}>This section is hidden for this version</p>
         </DiffCard>
       )}
       {overrides.experience === false && (
-        <DiffCard borderColor="rgba(239,68,68,0.3)">
+        <DiffCard borderColor="color-mix(in srgb, var(--danger) 30%, transparent)">
           <SectionLabel>Experience</SectionLabel>
-          <p style={{ ...styles.noChanges, color: '#ef4444' }}>This section is hidden for this version</p>
+          <p style={{ ...styles.noChanges, color: 'var(--danger)' }}>This section is hidden for this version</p>
         </DiffCard>
       )}
       {overrides.skills === false && (
-        <DiffCard borderColor="rgba(239,68,68,0.3)">
+        <DiffCard borderColor="color-mix(in srgb, var(--danger) 30%, transparent)">
           <SectionLabel>Skills</SectionLabel>
-          <p style={{ ...styles.noChanges, color: '#ef4444' }}>This section is hidden for this version</p>
+          <p style={{ ...styles.noChanges, color: 'var(--danger)' }}>This section is hidden for this version</p>
         </DiffCard>
       )}
     </div>
@@ -299,23 +299,24 @@ function stripHtml(str: string): string {
 
 const styles: Record<string, React.CSSProperties> = {
   card: {
-    background: '#18181c',
-    border: '1px solid #2a2a30',
-    borderRadius: 8,
+    background: 'var(--bg3)',
+    border: '1px solid var(--border)',
+    borderRadius: 14,
     padding: '1rem',
+    boxShadow: 'var(--shadow)',
   },
   sectionLabel: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.68rem',
-    color: '#2dd4a8',
+    color: 'var(--teal)',
     letterSpacing: '0.1em',
     textTransform: 'uppercase' as const,
     marginBottom: '0.6rem',
   },
   fieldLabel: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.64rem',
-    color: '#70708a',
+    color: 'var(--text3)',
     letterSpacing: '0.08em',
     marginBottom: '0.25rem',
   },
@@ -325,37 +326,37 @@ const styles: Record<string, React.CSSProperties> = {
   },
   oldBlock: {
     flex: 1,
-    background: 'rgba(239,68,68,0.06)',
-    border: '1px solid rgba(239,68,68,0.15)',
+    background: 'color-mix(in srgb, var(--danger) 6%, transparent)',
+    border: '1px solid color-mix(in srgb, var(--danger) 15%, transparent)',
     borderRadius: 6,
     padding: '0.5rem 0.65rem',
   },
   newBlock: {
     flex: 1,
-    background: 'rgba(45,212,168,0.06)',
-    border: '1px solid rgba(45,212,168,0.15)',
+    background: 'color-mix(in srgb, var(--teal) 6%, transparent)',
+    border: '1px solid color-mix(in srgb, var(--teal) 15%, transparent)',
     borderRadius: 6,
     padding: '0.5rem 0.65rem',
   },
   unchangedBlock: {
-    background: 'rgba(255,255,255,0.02)',
-    border: '1px solid #1e1e22',
+    background: 'color-mix(in srgb, var(--text) 2%, transparent)',
+    border: '1px solid var(--border)',
     borderRadius: 6,
     padding: '0.5rem 0.65rem',
   },
   blockLabel: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.58rem',
-    color: '#ef4444',
+    color: 'var(--danger)',
     letterSpacing: '0.08em',
     textTransform: 'uppercase' as const,
     marginBottom: '0.2rem',
     opacity: 0.7,
   },
   blockLabelNew: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.58rem',
-    color: '#2dd4a8',
+    color: 'var(--teal)',
     letterSpacing: '0.08em',
     textTransform: 'uppercase' as const,
     marginBottom: '0.2rem',
@@ -363,64 +364,64 @@ const styles: Record<string, React.CSSProperties> = {
   },
   blockText: {
     fontSize: '0.8rem',
-    color: '#c8c8d0',
+    color: 'var(--text2)',
     lineHeight: 1.6,
     margin: 0,
   },
   noChanges: {
     fontSize: '0.84rem',
-    color: '#70708a',
+    color: 'var(--text3)',
     fontStyle: 'italic',
   },
   expTitle: {
-    fontFamily: "'Spectral', serif",
+    fontFamily: 'var(--font-display)',
     fontSize: '1rem',
     fontWeight: 300,
-    color: '#e8e8ec',
+    color: 'var(--text)',
     marginBottom: '0.5rem',
   },
   expCompany: {
     fontSize: '0.85rem',
-    color: '#7c6cfa',
+    color: 'var(--accent)',
   },
   highlightLabel: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.64rem',
-    color: '#7c6cfa',
+    color: 'var(--accent)',
     letterSpacing: '0.08em',
     textTransform: 'uppercase' as const,
     marginBottom: '0.25rem',
   },
   skillGroupCard: {
-    background: 'rgba(255,255,255,0.02)',
-    border: '1px solid #1e1e22',
+    background: 'color-mix(in srgb, var(--text) 2%, transparent)',
+    border: '1px solid var(--border)',
     borderRadius: 6,
     padding: '0.6rem 0.75rem',
   },
   skillGroupTitle: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.68rem',
-    color: '#2dd4a8',
+    color: 'var(--teal)',
     letterSpacing: '0.08em',
     marginBottom: '0.3rem',
   },
   arrow: {
-    color: '#70708a',
+    color: 'var(--text3)',
     fontSize: '0.75rem',
   },
   miniLabel: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.56rem',
-    color: '#ef4444',
+    color: 'var(--danger)',
     letterSpacing: '0.08em',
     textTransform: 'uppercase' as const,
     marginBottom: '0.2rem',
     opacity: 0.6,
   },
   miniLabelNew: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.56rem',
-    color: '#2dd4a8',
+    color: 'var(--teal)',
     letterSpacing: '0.08em',
     textTransform: 'uppercase' as const,
     marginBottom: '0.2rem',
@@ -428,13 +429,13 @@ const styles: Record<string, React.CSSProperties> = {
   },
   skillItem: {
     fontSize: '0.8rem',
-    color: '#a8a8b8',
+    color: 'var(--text2)',
     lineHeight: 1.5,
   },
   newBadge: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.58rem',
-    color: '#2dd4a8',
+    color: 'var(--teal)',
     marginLeft: '0.4rem',
     textTransform: 'uppercase' as const,
     letterSpacing: '0.05em',

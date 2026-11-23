@@ -121,15 +121,15 @@ export default function GeneratedPreview({
           style={{
             ...styles.validationBanner,
             background: validation.valid
-              ? 'rgba(45,212,168,0.08)'
+              ? 'color-mix(in srgb, var(--teal) 8%, transparent)'
               : unresolvedCount === 0
-                ? 'rgba(45,212,168,0.08)'
-                : 'rgba(251,191,36,0.08)',
+                ? 'color-mix(in srgb, var(--teal) 8%, transparent)'
+                : 'color-mix(in srgb, var(--amber) 8%, transparent)',
             borderColor: validation.valid
-              ? 'rgba(45,212,168,0.3)'
+              ? 'color-mix(in srgb, var(--teal) 30%, transparent)'
               : unresolvedCount === 0
-                ? 'rgba(45,212,168,0.3)'
-                : 'rgba(251,191,36,0.3)',
+                ? 'color-mix(in srgb, var(--teal) 30%, transparent)'
+                : 'color-mix(in srgb, var(--amber) 30%, transparent)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -140,10 +140,10 @@ export default function GeneratedPreview({
                   width: 8,
                   height: 8,
                   borderRadius: '50%',
-                  background: validation.valid || unresolvedCount === 0 ? '#2dd4a8' : '#fbbf24',
+                  background: validation.valid || unresolvedCount === 0 ? 'var(--teal)' : 'var(--amber)',
                 }}
               />
-              <span style={{ color: validation.valid || unresolvedCount === 0 ? '#2dd4a8' : '#fbbf24', fontSize: '0.8rem' }}>
+              <span style={{ color: validation.valid || unresolvedCount === 0 ? 'var(--teal)' : 'var(--amber)', fontSize: '0.8rem' }}>
                 {validation.valid
                   ? 'Everything looks accurate!'
                   : unresolvedCount === 0
@@ -181,11 +181,11 @@ export default function GeneratedPreview({
                           {isResolved && (
                             <span style={{
                               fontSize: '0.62rem',
-                              color: decision.action === 'keep' ? '#2dd4a8' : '#ef4444',
+                              color: decision.action === 'keep' ? 'var(--teal)' : 'var(--danger)',
                               textTransform: 'uppercase' as const,
                               letterSpacing: '0.08em',
-                              fontFamily: "'DM Mono', monospace",
-                              background: decision.action === 'keep' ? 'rgba(45,212,168,0.15)' : 'rgba(239,68,68,0.15)',
+                              fontFamily: 'var(--font-mono)',
+                              background: decision.action === 'keep' ? 'color-mix(in srgb, var(--teal) 15%, transparent)' : 'color-mix(in srgb, var(--danger) 15%, transparent)',
                               padding: '1px 6px',
                               borderRadius: 3,
                             }}>
@@ -303,7 +303,7 @@ export default function GeneratedPreview({
             <div style={styles.card}>
               <div style={styles.sectionLabel}>Experience</div>
               {experience.map((exp, i) => (
-                <div key={i} style={i > 0 ? { marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #2a2a30' } : {}}>
+                <div key={i} style={i > 0 ? { marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border)' } : {}}>
                   <div style={styles.expTitle}>
                     {exp.title} {exp.company && <span style={styles.expCompany}>· {exp.company}</span>}
                   </div>
@@ -360,7 +360,7 @@ export default function GeneratedPreview({
           )}
 
           {overrides.projects === false && (
-            <div style={{ ...styles.card, borderColor: '#44403c' }}>
+            <div style={{ ...styles.card, borderColor: 'var(--border2)' }}>
               <div style={styles.sectionLabel}>Projects</div>
               <p style={{ ...styles.text, fontStyle: 'italic' }}>Hidden for this profile</p>
             </div>
@@ -377,15 +377,15 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: 8,
     border: '1px solid',
     marginBottom: '0.75rem',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   toggleViolationsBtn: {
     fontSize: '0.68rem',
-    color: '#fbbf24',
+    color: 'var(--amber)',
     background: 'transparent',
     border: 'none',
     cursor: 'pointer',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     textDecoration: 'underline',
   },
   violationsList: {
@@ -395,7 +395,7 @@ const styles: Record<string, React.CSSProperties> = {
     gap: '0.5rem',
   },
   violationItem: {
-    background: 'rgba(0,0,0,0.2)',
+    background: 'color-mix(in srgb, var(--text) 12%, transparent)',
     borderRadius: 6,
     padding: '0.6rem 0.75rem',
   },
@@ -407,28 +407,28 @@ const styles: Record<string, React.CSSProperties> = {
   },
   violationSection: {
     fontSize: '0.64rem',
-    color: '#7c6cfa',
+    color: 'var(--accent)',
     textTransform: 'uppercase' as const,
     letterSpacing: '0.08em',
   },
   violationIssue: {
     fontSize: '0.68rem',
-    color: '#fbbf24',
+    color: 'var(--amber)',
     fontStyle: 'italic',
   },
   violationGenerated: {
     fontSize: '0.78rem',
-    color: '#ef4444',
+    color: 'var(--danger)',
     fontStyle: 'italic',
     marginBottom: '0.2rem',
   },
   violationSuggestion: {
     fontSize: '0.74rem',
-    color: '#a8a8b8',
+    color: 'var(--text2)',
   },
   violationReason: {
     fontSize: '0.7rem',
-    color: '#70708a',
+    color: 'var(--text3)',
     fontStyle: 'italic',
     marginTop: '0.25rem',
   },
@@ -440,23 +440,23 @@ const styles: Record<string, React.CSSProperties> = {
   },
   keepBtn: {
     fontSize: '0.68rem',
-    color: '#2dd4a8',
-    background: 'rgba(45,212,168,0.1)',
-    border: '1px solid rgba(45,212,168,0.3)',
-    borderRadius: 4,
+    color: 'var(--teal)',
+    background: 'color-mix(in srgb, var(--teal) 10%, transparent)',
+    border: '1px solid color-mix(in srgb, var(--teal) 30%, transparent)',
+    borderRadius: 999,
     padding: '0.25rem 0.6rem',
     cursor: 'pointer',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   removeBtn: {
     fontSize: '0.68rem',
-    color: '#ef4444',
-    background: 'rgba(239,68,68,0.1)',
-    border: '1px solid rgba(239,68,68,0.3)',
-    borderRadius: 4,
+    color: 'var(--danger)',
+    background: 'color-mix(in srgb, var(--danger) 10%, transparent)',
+    border: '1px solid color-mix(in srgb, var(--danger) 30%, transparent)',
+    borderRadius: 999,
     padding: '0.25rem 0.6rem',
     cursor: 'pointer',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   reasonInputWrap: {
     display: 'flex',
@@ -467,102 +467,103 @@ const styles: Record<string, React.CSSProperties> = {
   reasonInput: {
     flex: 1,
     fontSize: '0.74rem',
-    color: '#e8e8ec',
-    background: '#111113',
-    border: '1px solid #38383f',
+    color: 'var(--text)',
+    background: 'var(--bg2)',
+    border: '1px solid var(--border2)',
     borderRadius: 4,
     padding: '0.3rem 0.6rem',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     outline: 'none',
   },
   reasonSubmitBtn: {
     fontSize: '0.66rem',
-    color: '#2dd4a8',
+    color: 'var(--teal)',
     background: 'transparent',
-    border: '1px solid rgba(45,212,168,0.3)',
-    borderRadius: 4,
+    border: '1px solid color-mix(in srgb, var(--teal) 30%, transparent)',
+    borderRadius: 999,
     padding: '0.25rem 0.5rem',
     cursor: 'pointer',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   reasonCancelBtn: {
     fontSize: '0.66rem',
-    color: '#70708a',
+    color: 'var(--text3)',
     background: 'transparent',
-    border: '1px solid #2a2a30',
-    borderRadius: 4,
+    border: '1px solid var(--border)',
+    borderRadius: 999,
     padding: '0.25rem 0.5rem',
     cursor: 'pointer',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   toggleBtn: {
     fontSize: '0.7rem',
-    color: '#70708a',
+    color: 'var(--text3)',
     background: 'transparent',
-    border: '1px solid #2a2a30',
-    borderRadius: 4,
+    border: '1px solid var(--border)',
+    borderRadius: 999,
     padding: '0.3rem 0.7rem',
     cursor: 'pointer',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   toggleBtnActive: {
     fontSize: '0.7rem',
-    color: '#e8e8ec',
-    background: '#2a2a30',
-    border: '1px solid #38383f',
-    borderRadius: 4,
+    color: 'var(--text)',
+    background: 'var(--border)',
+    border: '1px solid var(--border2)',
+    borderRadius: 999,
     padding: '0.3rem 0.7rem',
     cursor: 'pointer',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
   },
   json: {
-    background: '#18181c',
-    border: '1px solid #2a2a30',
+    background: 'var(--bg3)',
+    border: '1px solid var(--border)',
     borderRadius: 8,
     padding: '1rem',
     fontSize: '0.75rem',
-    color: '#a8a8b8',
-    fontFamily: "'DM Mono', monospace",
+    color: 'var(--text2)',
+    fontFamily: 'var(--font-mono)',
     overflow: 'auto',
     maxHeight: 400,
     lineHeight: 1.5,
   },
   card: {
-    background: '#18181c',
-    border: '1px solid #2a2a30',
-    borderRadius: 8,
+    background: 'var(--bg3)',
+    border: '1px solid var(--border)',
+    borderRadius: 14,
     padding: '1rem',
+    boxShadow: 'var(--shadow)',
   },
   sectionLabel: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.68rem',
-    color: '#2dd4a8',
+    color: 'var(--teal)',
     letterSpacing: '0.1em',
     textTransform: 'uppercase' as const,
     marginBottom: '0.6rem',
   },
   headline: {
-    fontFamily: "'Spectral', serif",
+    fontFamily: 'var(--font-display)',
     fontSize: '1.2rem',
     fontWeight: 300,
-    color: '#e8e8ec',
+    color: 'var(--text)',
     marginBottom: '0.4rem',
   },
   text: {
     fontSize: '0.84rem',
-    color: '#a8a8b8',
+    color: 'var(--text2)',
     lineHeight: 1.65,
   },
   expTitle: {
-    fontFamily: "'Spectral', serif",
+    fontFamily: 'var(--font-display)',
     fontSize: '1rem',
     fontWeight: 300,
-    color: '#e8e8ec',
+    color: 'var(--text)',
     marginBottom: '0.4rem',
   },
   expCompany: {
     fontSize: '0.85rem',
-    color: '#7c6cfa',
+    color: 'var(--accent)',
   },
   bulletList: {
     listStyle: 'none',
@@ -573,41 +574,41 @@ const styles: Record<string, React.CSSProperties> = {
   },
   bullet: {
     fontSize: '0.82rem',
-    color: '#a8a8b8',
+    color: 'var(--text2)',
     lineHeight: 1.6,
     paddingLeft: '1rem',
     position: 'relative' as const,
   },
   highlight: {
     flex: '1 1 calc(50% - 0.25rem)',
-    background: 'rgba(124,108,250,0.06)',
-    border: '1px solid rgba(124,108,250,0.15)',
+    background: 'color-mix(in srgb, var(--accent) 6%, transparent)',
+    border: '1px solid color-mix(in srgb, var(--accent) 15%, transparent)',
     borderRadius: 6,
     padding: '0.6rem 0.75rem',
   },
   highlightLabel: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.64rem',
-    color: '#7c6cfa',
+    color: 'var(--accent)',
     letterSpacing: '0.08em',
     textTransform: 'uppercase' as const,
     marginBottom: '0.25rem',
   },
   highlightText: {
     fontSize: '0.78rem',
-    color: '#a8a8b8',
+    color: 'var(--text2)',
     lineHeight: 1.5,
   },
   skillGroupTitle: {
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     fontSize: '0.68rem',
-    color: '#2dd4a8',
+    color: 'var(--teal)',
     letterSpacing: '0.08em',
     marginBottom: '0.3rem',
   },
   skillItem: {
     fontSize: '0.8rem',
-    color: '#a8a8b8',
+    color: 'var(--text2)',
     lineHeight: 1.5,
   },
 };

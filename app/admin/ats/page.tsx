@@ -37,10 +37,10 @@ interface RegistryEntry {
   active: boolean;
 }
 
-const COLORS = { covered: '#4ade80', partial: '#fbbf24', missing: '#f87171' } as const;
+const COLORS = { covered: 'var(--teal)', partial: 'var(--amber)', missing: 'var(--danger)' } as const;
 
 const fmt = (ms: number) => (ms >= 1000 ? `${(ms / 1000).toFixed(2)}s` : `${Math.round(ms)}ms`);
-const scoreColor = (n: number) => (n >= 75 ? '#4ade80' : n >= 50 ? '#fbbf24' : '#f87171');
+const scoreColor = (n: number) => (n >= 75 ? 'var(--teal)' : n >= 50 ? 'var(--amber)' : 'var(--danger)');
 
 export default function AtsValidatorPage() {
   // null on the server/first paint, then the session password ('' if not logged in).
@@ -211,16 +211,16 @@ function Block({ title, subtitle, state, now }: { title: string; subtitle: strin
           <div style={s.muted}>{subtitle}</div>
         </div>
         <div style={s.clock}>
-          {state.status === 'running' && <span style={{ color: '#fbbf24' }}>{fmt(elapsed)}</span>}
-          {state.status === 'done' && <span style={{ color: '#2dd4a8' }}>{fmt(state.clientMs)}</span>}
-          {state.status === 'error' && <span style={{ color: '#f87171' }}>{fmt(state.clientMs)}</span>}
-          {state.status === 'idle' && <span style={{ color: '#4a4a58' }}>—</span>}
+          {state.status === 'running' && <span style={{ color: 'var(--amber)' }}>{fmt(elapsed)}</span>}
+          {state.status === 'done' && <span style={{ color: 'var(--teal)' }}>{fmt(state.clientMs)}</span>}
+          {state.status === 'error' && <span style={{ color: 'var(--danger)' }}>{fmt(state.clientMs)}</span>}
+          {state.status === 'idle' && <span style={{ color: 'var(--text3)' }}>—</span>}
         </div>
       </header>
 
       {state.status === 'idle' && <p style={s.muted}>Waiting to run.</p>}
       {state.status === 'running' && <p style={s.muted}>Judging requirements…</p>}
-      {state.status === 'error' && <p style={{ color: '#f87171', fontSize: 13 }}>{state.message}</p>}
+      {state.status === 'error' && <p style={{ color: 'var(--danger)', fontSize: 13 }}>{state.message}</p>}
       {state.status === 'done' && <Result report={state.report} clientMs={state.clientMs} />}
     </section>
   );
@@ -251,12 +251,12 @@ function Result({ report, clientMs }: { report: Report; clientMs: number }) {
       </div>
       <p style={s.muted}>Calls run 5 at a time, so judging time is less than calls × average.</p>
 
-      {report.errors > 0 && <p style={{ color: '#f87171', fontSize: 13 }}>{report.errors} call(s) failed and are excluded from the score.</p>}
+      {report.errors > 0 && <p style={{ color: 'var(--danger)', fontSize: 13 }}>{report.errors} call(s) failed and are excluded from the score.</p>}
 
       <div style={s.reqList}>
         {report.requirements.map((r, i) => (
           <div key={i} style={s.req}>
-            <span style={{ ...s.dot, background: r.verdict ? COLORS[r.verdict] : '#4a4a58' }} title={r.verdict ?? 'error'} />
+            <span style={{ ...s.dot, background: r.verdict ? COLORS[r.verdict] : 'var(--text3)' }} title={r.verdict ?? 'error'} />
             <div style={{ flex: 1 }}>
               <div style={s.reqText}>{r.requirement}</div>
               <div style={s.reqMeta}>
@@ -327,33 +327,33 @@ function Comparison({ jev, claude, jevClient, claudeClient }: { jev: Report; cla
 }
 
 const s: Record<string, React.CSSProperties> = {
-  page: { minHeight: '100vh', background: '#0a0a0b', color: '#e8e8ec', fontFamily: "'DM Sans', sans-serif" },
+  page: { minHeight: '100vh', background: 'var(--bg)', color: 'var(--text)', fontFamily: 'var(--font-body)' },
   shell: { maxWidth: 1180, margin: '0 auto', padding: '2rem 1.25rem 4rem' },
-  h1: { fontFamily: "'Spectral', serif", fontWeight: 300, fontSize: '2rem', margin: '0.6rem 0 0.4rem' },
-  muted: { color: '#8a8aa0', fontSize: 13, lineHeight: 1.5 },
-  link: { color: '#2dd4a8', fontSize: 13, textDecoration: 'none' },
-  form: { display: 'flex', flexDirection: 'column', gap: 14, margin: '1.25rem 0', padding: 16, border: '1px solid #2a2a30', borderRadius: 10, background: '#0e0e10' },
+  h1: { fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: '2rem', margin: '0.6rem 0 0.4rem' },
+  muted: { color: 'var(--text3)', fontSize: 13, lineHeight: 1.5 },
+  link: { color: 'var(--teal)', fontSize: 13, textDecoration: 'none' },
+  form: { display: 'flex', flexDirection: 'column', gap: 14, margin: '1.25rem 0', padding: 16, border: '1px solid var(--border)', borderRadius: 14, background: 'var(--bg2)' , boxShadow: 'var(--shadow)' },
   formRow: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 14 },
-  label: { display: 'flex', flexDirection: 'column', gap: 6, fontSize: 12, color: '#8a8aa0' },
-  input: { background: '#141418', color: '#e8e8ec', border: '1px solid #2a2a30', borderRadius: 8, padding: '9px 11px', fontSize: 13 },
-  run: { background: '#2dd4a8', color: '#0a0a0b', border: 'none', borderRadius: 8, padding: '10px 18px', fontWeight: 600, cursor: 'pointer', fontSize: 13 },
+  label: { display: 'flex', flexDirection: 'column', gap: 6, fontSize: 12, color: 'var(--text3)' },
+  input: { background: 'var(--bg3)', color: 'var(--text)', border: '1px solid var(--border)', borderRadius: 8, padding: '9px 11px', fontSize: 13 },
+  run: { background: 'var(--teal)', color: 'var(--bg)', border: 'none', borderRadius: 8, padding: '10px 18px', fontWeight: 600, cursor: 'pointer', fontSize: 13 },
   blocks: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(420px, 100%), 1fr))', gap: 16, alignItems: 'start' },
-  block: { border: '1px solid #2a2a30', borderRadius: 10, padding: 16, background: '#0e0e10', minWidth: 0, width: '100%', boxSizing: 'border-box' },
+  block: { border: '1px solid var(--border)', borderRadius: 14, padding: 16, background: 'var(--bg2)', minWidth: 0, width: '100%', boxSizing: 'border-box' , boxShadow: 'var(--shadow)' },
   blockHead: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 12 },
   blockTitle: { fontSize: 15, fontWeight: 600 },
-  clock: { fontFamily: "'DM Mono', monospace", fontSize: 22 },
+  clock: { fontFamily: 'var(--font-mono)', fontSize: 22 },
   scoreRow: { display: 'flex', gap: 32, marginBottom: 12 },
-  bigLabel: { fontSize: 11, textTransform: 'uppercase', letterSpacing: 0.5, color: '#8a8aa0' },
+  bigLabel: { fontSize: 11, textTransform: 'uppercase', letterSpacing: 0.5, color: 'var(--text3)' },
   big: { fontSize: 40, fontWeight: 700, lineHeight: 1.1 },
   stats: { display: 'flex', flexWrap: 'wrap', gap: 10, margin: '8px 0' },
-  stat: { background: '#141418', border: '1px solid #2a2a30', borderRadius: 8, padding: '8px 12px', minWidth: 92 },
-  statValue: { fontFamily: "'DM Mono', monospace", fontSize: 15 },
-  statLabel: { fontSize: 11, color: '#8a8aa0', marginTop: 2 },
+  stat: { background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 8, padding: '8px 12px', minWidth: 92 },
+  statValue: { fontFamily: 'var(--font-mono)', fontSize: 15 },
+  statLabel: { fontSize: 11, color: 'var(--text3)', marginTop: 2 },
   reqList: { display: 'flex', flexDirection: 'column', gap: 10, marginTop: 12 },
   req: { display: 'flex', gap: 10, alignItems: 'flex-start' },
   dot: { width: 8, height: 8, borderRadius: '50%', marginTop: 6, flexShrink: 0 },
   reqText: { fontSize: 13 },
-  reqMeta: { fontSize: 12, color: '#8a8aa0', marginTop: 2 },
-  compare: { marginTop: 16, border: '1px solid #2a2a30', borderRadius: 10, padding: 16, background: '#0e0e10' },
-  diff: { padding: '8px 0', borderTop: '1px solid #1d1d22' },
+  reqMeta: { fontSize: 12, color: 'var(--text3)', marginTop: 2 },
+  compare: { marginTop: 16, border: '1px solid var(--border)', borderRadius: 14, padding: 16, background: 'var(--bg2)' , boxShadow: 'var(--shadow)' },
+  diff: { padding: '8px 0', borderTop: '1px solid var(--border)' },
 };

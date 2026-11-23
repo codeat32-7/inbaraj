@@ -25,10 +25,10 @@ interface AtsScoreProps {
   password: string;
 }
 
-const VERDICT_COLOR = { covered: '#4ade80', partial: '#fbbf24', missing: '#f87171' } as const;
+const VERDICT_COLOR = { covered: 'var(--teal)', partial: 'var(--amber)', missing: 'var(--danger)' } as const;
 
 function scoreColor(n: number): string {
-  return n >= 75 ? '#4ade80' : n >= 50 ? '#fbbf24' : '#f87171';
+  return n >= 75 ? 'var(--teal)' : n >= 50 ? 'var(--amber)' : 'var(--danger)';
 }
 
 export default function AtsScore({ jobDescription, overrides, password }: AtsScoreProps) {
@@ -139,7 +139,7 @@ export default function AtsScore({ jobDescription, overrides, password }: AtsSco
             <div style={s.blockTitle}>Parse-ability</div>
             {report.checks.map((c) => (
               <div key={c.label} style={s.check}>
-                <span style={{ color: c.passed ? '#4ade80' : '#f87171' }}>{c.passed ? '✓' : '✗'}</span> {c.label}
+                <span style={{ color: c.passed ? 'var(--teal)' : 'var(--danger)' }}>{c.passed ? '✓' : '✗'}</span> {c.label}
               </div>
             ))}
           </div>
@@ -150,27 +150,27 @@ export default function AtsScore({ jobDescription, overrides, password }: AtsSco
 }
 
 const s: Record<string, React.CSSProperties> = {
-  wrap: { border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: 16, marginBottom: 16 },
+  wrap: { border: '1px solid color-mix(in srgb, var(--text) 10%, transparent)', borderRadius: 10, padding: 16, marginBottom: 16 },
   row: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' },
   title: { fontWeight: 600, fontSize: 14 },
   sub: { fontSize: 12, opacity: 0.6, marginTop: 2 },
   actions: { display: 'flex', alignItems: 'center', gap: 10 },
   score: { fontSize: 28, fontWeight: 700, minWidth: 44, textAlign: 'right' },
-  btn: { padding: '8px 14px', borderRadius: 8, border: 'none', background: '#7c6af7', color: '#fff', cursor: 'pointer', fontSize: 13 },
-  btnGhost: { padding: '8px 12px', borderRadius: 8, border: '1px solid rgba(255,255,255,0.2)', background: 'transparent', color: 'inherit', cursor: 'pointer', fontSize: 13 },
-  error: { marginTop: 10, color: '#f87171', fontSize: 13 },
+  btn: { padding: '8px 14px', borderRadius: 8, border: 'none', background: 'var(--accent)', color: '#fff', cursor: 'pointer', fontSize: 13 },
+  btnGhost: { padding: '8px 12px', borderRadius: 8, border: '1px solid color-mix(in srgb, var(--text) 20%, transparent)', background: 'transparent', color: 'inherit', cursor: 'pointer', fontSize: 13 },
+  error: { marginTop: 10, color: 'var(--danger)', fontSize: 13 },
   body: { marginTop: 14, display: 'flex', flexDirection: 'column', gap: 14 },
   bars: { display: 'flex', flexDirection: 'column', gap: 6 },
   barRow: { display: 'flex', alignItems: 'center', gap: 10, fontSize: 12 },
   barLabel: { width: 100, opacity: 0.8 },
-  barTrack: { flex: 1, height: 6, borderRadius: 3, background: 'rgba(255,255,255,0.08)', overflow: 'hidden' },
+  barTrack: { flex: 1, height: 6, borderRadius: 3, background: 'color-mix(in srgb, var(--text) 8%, transparent)', overflow: 'hidden' },
   barFill: { height: '100%' },
   barVal: { width: 28, textAlign: 'right' },
   note: { fontSize: 12, opacity: 0.6 },
   block: { display: 'flex', flexDirection: 'column', gap: 6 },
   blockTitle: { fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: 0.5, opacity: 0.7 },
   chips: { display: 'flex', flexWrap: 'wrap', gap: 6 },
-  chipMissing: { fontSize: 12, padding: '3px 8px', borderRadius: 999, background: 'rgba(248,113,113,0.12)', color: '#f87171' },
+  chipMissing: { fontSize: 12, padding: '3px 8px', borderRadius: 999, background: 'color-mix(in srgb, var(--danger) 12%, transparent)', color: 'var(--danger)' },
   hint: { fontSize: 12, opacity: 0.6 },
   req: { display: 'flex', gap: 10, alignItems: 'flex-start' },
   dot: { width: 8, height: 8, borderRadius: '50%', marginTop: 6, flexShrink: 0 },

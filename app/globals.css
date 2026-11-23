@@ -26,6 +26,8 @@
   --amber-line:rgba(160,98,0,0.22);
   --pink-soft:rgba(192,66,110,0.08);
   --pink-line:rgba(192,66,110,0.22);
+  --danger:#c0392b;
+  --danger-soft:rgba(192,57,43,0.09);
   --nav-bg:rgba(255,255,255,0.82);
   --glow-a:rgba(69,53,212,0.11);
   --glow-b:rgba(10,122,92,0.09);
@@ -58,6 +60,8 @@
   --amber-line:rgba(240,168,39,0.26);
   --pink-soft:rgba(238,106,154,0.1);
   --pink-line:rgba(238,106,154,0.26);
+  --danger:#f87171;
+  --danger-soft:rgba(248,113,113,0.12);
   --nav-bg:rgba(11,11,16,0.82);
   --glow-a:rgba(124,108,250,0.16);
   --glow-b:rgba(45,212,168,0.08);

@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 interface RegistryEntry {
   company: string;
@@ -14,25 +15,31 @@ interface ProfileSidebarProps {
   onTabChange: (tab: string) => void;
 }
 
+const SIDEBAR_EVENT = 'studio-sidebar-change';
+const subscribeSidebar = (onChange: () => void) => {
+  window.addEventListener(SIDEBAR_EVENT, onChange);
+  window.addEventListener('storage', onChange);
+  return () => {
+    window.removeEventListener(SIDEBAR_EVENT, onChange);
+    window.removeEventListener('storage', onChange);
+  };
+};
+const readSidebarCollapsed = () => {
+  try { return localStorage.getItem('studio-sidebar') !== 'open'; } catch { return true; }
+};
+
 export default function ProfileSidebar({ registry, activeTab, onTabChange }: ProfileSidebarProps) {
   // Most recent first
   const profileEntries = Object.entries(registry).sort(
     ([, a], [, b]) => (b.created || '').localeCompare(a.created || '')
   );
 
-  const [collapsed, setCollapsed] = useState(true);
-
-  useEffect(() => {
-    try {
-      if (localStorage.getItem('studio-sidebar') === 'open') setCollapsed(false);
-    } catch {}
-  }, []);
+  // Collapsed by default; "open" is remembered in this browser (no setState-in-effect, no hydration mismatch).
+  const collapsed = useSyncExternalStore(subscribeSidebar, readSidebarCollapsed, () => true);
 
   const toggle = () => {
-    setCollapsed((c) => {
-      try { localStorage.setItem('studio-sidebar', c ? 'open' : 'closed'); } catch {}
-      return !c;
-    });
+    try { localStorage.setItem('studio-sidebar', collapsed ? 'open' : 'closed'); } catch {}
+    window.dispatchEvent(new Event(SIDEBAR_EVENT));
   };
 
   if (collapsed) {
@@ -50,9 +57,9 @@ export default function ProfileSidebar({ registry, activeTab, onTabChange }: Pro
           aria-label="New resume"
           style={{
             ...styles.iconBtn,
-            color: activeTab === 'create' ? '#0a0a0b' : '#2dd4a8',
-            background: activeTab === 'create' ? '#2dd4a8' : 'transparent',
-            border: '1px solid #2dd4a8',
+            color: activeTab === 'create' ? 'var(--bg)' : 'var(--teal)',
+            background: activeTab === 'create' ? 'var(--teal)' : 'transparent',
+            border: '1px solid var(--teal)',
           }}
         >
           +
@@ -65,9 +72,13 @@ export default function ProfileSidebar({ registry, activeTab, onTabChange }: Pro
         >
           B
         </button>
+        <a href="/admin/workbench" title="ATS workbench" aria-label="ATS workbench" style={{ ...styles.iconBtn, textDecoration: 'none' }}>
+          W
+        </a>
         <a href="/admin/ats" title="ATS validator" aria-label="ATS validator" style={{ ...styles.iconBtn, textDecoration: 'none' }}>
           A
         </a>
+        <ThemeToggle />
         <div style={styles.stripList}>
           {profileEntries.map(([slug, entry]) => (
             <button
@@ -92,9 +103,12 @@ export default function ProfileSidebar({ registry, activeTab, onTabChange }: Pro
           <div style={styles.brandName}>Resume Studio</div>
           <div style={styles.brandSub}>Tailored resumes</div>
         </div>
-        <button onClick={toggle} title="Collapse sidebar" aria-label="Collapse sidebar" style={styles.collapseBtn}>
-          «
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+          <ThemeToggle />
+          <button onClick={toggle} title="Collapse sidebar" aria-label="Collapse sidebar" style={styles.collapseBtn}>
+            «
+          </button>
+        </div>
       </div>
 
       <button
@@ -156,8 +170,8 @@ const styles: Record<string, React.CSSProperties> = {
     flexDirection: 'column',
     gap: '1rem',
     padding: '1.1rem 0.9rem',
-    background: '#0e0e10',
-    borderRight: '1px solid #2a2a30',
+    background: 'var(--bg2)',
+    borderRight: '1px solid var(--border)',
     height: '100vh',
     position: 'sticky',
     top: 0,
@@ -167,7 +181,7 @@ const styles: Record<string, React.CSSProperties> = {
   collapseBtn: {
     background: 'transparent',
     border: 'none',
-    color: '#70708a',
+    color: 'var(--text3)',
     fontSize: '1.1rem',
     cursor: 'pointer',
     padding: '0 0.3rem',
@@ -182,12 +196,12 @@ const styles: Record<string, React.CSSProperties> = {
     background: 'transparent',
     border: '1px solid transparent',
     borderRadius: 8,
-    color: '#b0b0c0',
+    color: 'var(--text2)',
     fontSize: '0.9rem',
-    fontFamily: "'DM Mono', monospace",
+    fontFamily: 'var(--font-mono)',
     cursor: 'pointer',
   },
-  iconActive: { background: '#1a1a1f', borderColor: '#7c6cfa', color: '#e8e8ec' },
+  iconActive: { background: 'var(--bg3)', borderColor: 'var(--accent)', color: 'var(--text)' },
   stripList: {
     display: 'flex',
     flexDirection: 'column',
@@ -198,18 +212,18 @@ const styles: Record<string, React.CSSProperties> = {
     width: '100%',
     marginTop: 6,
     paddingTop: 10,
-    borderTop: '1px solid #2a2a30',
+    borderTop: '1px solid var(--border)',
   },
   brandName: {
-    fontFamily: "'Spectral', serif",
+    fontFamily: 'var(--font-display)',
     fontSize: '1.2rem',
     fontWeight: 300,
-    color: '#e8e8ec',
+    color: 'var(--text)',
   },
   brandSub: {
     fontSize: '0.72rem',
-    color: '#70708a',
-    fontFamily: "'DM Mono', monospace",
+    color: 'var(--text3)',
+    fontFamily: 'var(--font-mono)',
     marginTop: 2,
   },
   newBtn: {
@@ -219,22 +233,22 @@ const styles: Record<string, React.CSSProperties> = {
     gap: '0.4rem',
     padding: '0.6rem 0.8rem',
     background: 'transparent',
-    border: '1px solid #2dd4a8',
-    borderRadius: 6,
-    color: '#2dd4a8',
+    border: '1px solid var(--teal)',
+    borderRadius: 999,
+    color: 'var(--teal)',
     fontSize: '0.82rem',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
     cursor: 'pointer',
   },
-  newBtnActive: { background: '#2dd4a8', color: '#0a0a0b' },
+  newBtnActive: { background: 'var(--teal)', color: 'var(--bg)' },
   nav: { display: 'flex', flexDirection: 'column', minHeight: 0, flex: 1 },
   sectionLabel: {
     padding: '0 0.5rem 0.35rem',
     fontSize: '0.68rem',
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
-    color: '#70708a',
-    fontFamily: "'DM Mono', monospace",
+    color: 'var(--text3)',
+    fontFamily: 'var(--font-mono)',
   },
   list: { display: 'flex', flexDirection: 'column', gap: 2, overflowY: 'auto', minHeight: 0 },
   item: {
@@ -244,19 +258,21 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 1,
     padding: '0.5rem 0.6rem',
     background: 'transparent',
-    border: 'none',
+    borderTop: 'none',
+    borderRight: 'none',
+    borderBottom: 'none',
     borderLeft: '2px solid transparent',
     borderRadius: 4,
-    color: '#b0b0c0',
+    color: 'var(--text2)',
     textAlign: 'left',
     cursor: 'pointer',
     width: '100%',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: 'var(--font-body)',
   },
   itemActive: {
-    background: '#1a1a1f',
-    borderLeftColor: '#7c6cfa',
-    color: '#e8e8ec',
+    background: 'var(--bg3)',
+    borderLeft: '2px solid var(--accent)',
+    color: 'var(--text)',
   },
   itemName: {
     fontSize: '0.84rem',
@@ -265,6 +281,6 @@ const styles: Record<string, React.CSSProperties> = {
     whiteSpace: 'nowrap',
     maxWidth: '100%',
   },
-  itemDate: { fontSize: '0.68rem', color: '#70708a', fontFamily: "'DM Mono', monospace" },
-  empty: { padding: '0.5rem 0.6rem', fontSize: '0.78rem', color: '#70708a' },
+  itemDate: { fontSize: '0.68rem', color: 'var(--text3)', fontFamily: 'var(--font-mono)' },
+  empty: { padding: '0.5rem 0.6rem', fontSize: '0.78rem', color: 'var(--text3)' },
 };
