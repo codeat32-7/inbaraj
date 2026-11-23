@@ -6,7 +6,7 @@
   },
   "hero": {
     "headline": "Enterprise Implementation Lead:<br><em>Discovery, Configuration, Integrations & Go-Live</em>",
-    "description": "Implementation lead who owns enterprise SaaS rollouts independently, from discovery workshops and process mapping through solution design, configuration, integrations, UAT, and go-live training. Has delivered for mid-market to enterprise clients across the EU-UK, US, and Middle East, including $6M in total contract value at Facilio and an enterprise integration rollout (ADP, SatMetrix, ServiceNow, Salesforce) at Rocketlane.",
+    "description": "Implementation lead who owns enterprise SaaS rollouts independently, from discovery workshops and process mapping through solution design, configuration, integrations, UAT, and go-live training. Delivered ~$2.1M in customer ARR at Rocketlane and $6M in total contract value at Facilio, for mid-market to enterprise clients across the EU-UK, US, Middle East, and Australia.",
     "badges": [
       {
         "text": "Enterprise Implementation",
@@ -29,16 +29,16 @@
   },
   "stats": [
     {
-      "value": "$6M",
-      "label": "Total contract value delivered",
-      "sub": "Facilio · plus nearly $1M in implementation & expansion value",
-      "color": "purple"
-    },
-    {
       "value": "~$2.1M",
       "label": "Customer ARR implemented",
       "sub": "Rocketlane · across current projects, incl. NICE enterprise rollout",
       "color": "teal"
+    },
+    {
+      "value": "$6M",
+      "label": "Total contract value delivered",
+      "sub": "Facilio · plus nearly $1M in implementation & expansion value",
+      "color": "purple"
     },
     {
       "value": "$350K+",
@@ -62,7 +62,7 @@
       "bullets": [
         "Own customer implementations end to end on Rocketlane’s PSA platform — mapping each customer’s current process, solution design, configuration, integrations, and go-live — as implementation manager, solution architect, and engagement manager.",
         "Transform customers’ complex, unstructured project data from spreadsheets and other systems into Rocketlane’s structure and upload it, as part of each customer’s adoption of the PSA platform.",
-        "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with ADP, SatMetrix, ServiceNow, and Salesforce.",
+        "Solution architect and implementation manager for Phase 2 of NICE, an enterprise account, integrating Rocketlane with the customer’s enterprise systems.",
         "Implement Nitro, Rocketlane’s agentic AI platform, for customers — designing and deploying agents around each customer’s own use cases.",
         "Built the Nitro agents Rocketlane’s implementation team uses across handover, kickoff, workshops, solution design, and UAT, as part of the Customer Zero team.",
         "Built Atlas, an AI knowledge system that records how each customer’s use cases were solved, so any implementation manager can ask how a problem was handled before and get a current answer."
@@ -133,10 +133,9 @@
       "badge": "E-Commerce · Ops",
       "title": "Senior Catalog Specialist",
       "bullets": [
-        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views — built as a query and ranking algorithm that decides which tickets to work first — yielding an estimated $230K in monthly savings.",
-        "Used SQL to pull data and Excel to transform it for data analysis on catalog and procurement defects.",
-        "Streamlined defect reduction by identifying SOP gaps, reducing invalid case assignments between support teams by ~50 per day.",
-        "Managed and resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now — directly improving operational efficiency."
+        "Designed a defect prioritisation framework using product forecasts, inventory value, and glance views, built as a query and ranking algorithm that decides which tickets to work first, yielding an estimated $230K in monthly savings.",
+        "Ran the data analysis behind the catalog and procurement defect work: pulled data with SQL, transformed it in Excel, and traced recurring defects back to SOP gaps, cutting invalid case assignments between support teams by ~50 per day.",
+        "Resolved catalog and procurement defects for Amazon Fresh, Amazon Pantry, and Prime Now, improving operational efficiency."
       ],
       "highlights": []
     }
@@ -170,7 +169,7 @@
       "items": [
         "Data transformation: restructure customers’ complex, unstructured project data from spreadsheets and other systems (Excel) into the platform’s structure (Rocketlane, Facilio)",
         "Customer data uploads: load the transformed data into the platform as part of each implementation (Rocketlane, Facilio)",
-        "Data analysis: SQL and Excel to pull and analyse defect data, including a query and algorithm that ranks tickets (Amazon)"
+        "Data analysis: SQL to pull defect data and Excel to transform and analyse it, plus a query and ranking algorithm that prioritises tickets by forecasts, inventory value, and glance views (Amazon)"
       ]
     },
     {
