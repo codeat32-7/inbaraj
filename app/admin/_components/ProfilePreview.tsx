@@ -44,7 +44,7 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '0.35rem 0.7rem',
     background: 'color-mix(in srgb, var(--bg2) 85%, transparent)',
     border: '1px solid var(--border)',
-    borderRadius: 999,
+    borderRadius: 6,
     fontSize: '0.7rem',
     color: 'var(--accent)',
     textDecoration: 'none',

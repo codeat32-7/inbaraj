@@ -234,7 +234,7 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '0.6rem 0.8rem',
     background: 'transparent',
     border: '1px solid var(--teal)',
-    borderRadius: 999,
+    borderRadius: 6,
     color: 'var(--teal)',
     fontSize: '0.82rem',
     fontFamily: 'var(--font-body)',

@@ -13,12 +13,11 @@ export const metadata: Metadata = {
 const THEME_INIT =
   "try{if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}";
 
-// Screen fonts: Fraunces (display), Inter (body), JetBrains Mono (labels).
+// Screen fonts: Inter (display and body), JetBrains Mono (labels).
 // DM Mono / Spectral / DM Sans stay loaded because the print/PDF layout (ResumePrint) names them directly.
 const FONTS =
   'https://fonts.googleapis.com/css2' +
-  '?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600' +
-  '&family=Inter:wght@400;500;600' +
+  '?family=Inter:wght@400;500;600' +
   '&family=JetBrains+Mono:wght@400;500' +
   '&family=DM+Mono:wght@400;500' +
   '&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400' +
