@@ -16,6 +16,7 @@ const JUDGES: JudgeKind[] = ['auto', 'jev', 'claude', 'heuristic'];
  * POST { jobDescription, overrides? | slug?, judge?, model? }
  *  - `overrides`: an unsaved/generated override object (review step).
  *  - `slug`: 'base' or a published profile slug (ATS validator page).
+ *  - `exclude`: phrases for things the candidate is not claiming; JD lines containing one are left out of the score.
  *  - `judge`: 'auto' (default; Jev if configured, else heuristic), or force 'jev' / 'claude' / 'heuristic'.
  */
 export async function POST(request: NextRequest) {
@@ -28,6 +29,9 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { jobDescription, overrides, slug, judge = 'auto', model } = body ?? {};
+    const exclude: string[] = Array.isArray(body?.exclude)
+      ? body.exclude.filter((x: unknown): x is string => typeof x === 'string' && x.trim().length > 0).map((x: string) => x.trim().slice(0, 120)).slice(0, 20)
+      : [];
 
     if (typeof jobDescription !== 'string' || jobDescription.trim().length === 0) {
       return NextResponse.json({ error: 'jobDescription is required' }, { status: 400 });
@@ -71,6 +75,7 @@ export async function POST(request: NextRequest) {
     const report = await scoreAts(loadBase(), resolved, jobDescription, {
       judge,
       model: resolveModel(model),
+      exclude,
     });
     return NextResponse.json(report);
   } catch (error) {

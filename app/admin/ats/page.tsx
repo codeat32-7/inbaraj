@@ -52,6 +52,7 @@ export default function AtsValidatorPage() {
   const [registry, setRegistry] = useState<Record<string, RegistryEntry>>({});
   const [slug, setSlug] = useState('base');
   const [jd, setJd] = useState('');
+  const [excludeText, setExcludeText] = useState('');
   const [modelChoice, setModelChoice] = useState<string | null>(null);
   const storedModel = useSyncExternalStore(
     () => () => {},
@@ -94,7 +95,7 @@ export default function AtsValidatorPage() {
         const res = await fetch('/api/ats-score', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-admin-password': password ?? '' },
-          body: JSON.stringify({ jobDescription: jd, slug, judge, model }),
+          body: JSON.stringify({ jobDescription: jd, slug, judge, model, exclude: excludeText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean) }),
         });
         const data = await res.json();
         const clientMs = performance.now() - startedAt;
@@ -104,7 +105,7 @@ export default function AtsValidatorPage() {
         set({ status: 'error', message: e instanceof Error ? e.message : 'Request failed', clientMs: performance.now() - startedAt });
       }
     },
-    [password, jd, slug, model]
+    [password, jd, slug, model, excludeText]
   );
 
   const runBoth = () => {
@@ -167,6 +168,16 @@ export default function AtsValidatorPage() {
               onChange={(e) => setJd(e.target.value)}
               rows={9}
               placeholder="Paste the job description here…"
+              style={{ ...s.input, resize: 'vertical', fontFamily: 'inherit' }}
+            />
+          </label>
+          <label style={s.label}>
+            Not claiming (left out of both scores, one phrase per line)
+            <textarea
+              value={excludeText}
+              onChange={(e) => setExcludeText(e.target.value)}
+              rows={3}
+              placeholder={'e.g. variable compensation\nwork from office'}
               style={{ ...s.input, resize: 'vertical', fontFamily: 'inherit' }}
             />
           </label>

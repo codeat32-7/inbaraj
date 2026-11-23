@@ -51,12 +51,30 @@ export interface AtsReport {
   timing: AtsTiming;
   /** Judge calls that failed (forced jev/claude only). */
   errors: number;
+  /** JD lines left out of the score because the candidate is not claiming them. */
+  excluded?: string[];
   jevError?: string;
 }
 
 export interface ScoreOptions {
   judge?: JudgeKind;
   model?: string;
+  /** Phrases for things the candidate is deliberately not claiming. JD lines containing one are left out of the score. */
+  exclude?: string[];
+}
+
+/** Lines of the JD that contain an excluded phrase (case-insensitive), and the JD with those lines removed. */
+export function applyExclusions(jd: string, exclude: string[] = []): { kept: string; excludedLines: string[] } {
+  const phrases = exclude.map((e) => e.trim().toLowerCase()).filter(Boolean);
+  if (!phrases.length) return { kept: jd, excludedLines: [] };
+  const keptLines: string[] = [];
+  const excludedLines: string[] = [];
+  for (const line of jd.split(/\r?\n/)) {
+    const l = line.toLowerCase();
+    if (phrases.some((p) => l.includes(p))) excludedLines.push(line.replace(/^[\s\-*•·▪●◦–—]+/, '').trim());
+    else keptLines.push(line);
+  }
+  return { kept: keptLines.join('\n'), excludedLines: excludedLines.filter(Boolean) };
 }
 
 const WEIGHTS = { keywords: 0.35, requirements: 0.5, format: 0.15 };
@@ -294,17 +312,18 @@ export async function scoreAts(
   base: ResumeData,
   overrides: Record<string, unknown>,
   jobDescription: string,
-  { judge = 'auto', model }: ScoreOptions = {}
+  { judge = 'auto', model, exclude }: ScoreOptions = {}
 ): Promise<AtsReport> {
+  const { kept: scoredJd, excludedLines } = applyExclusions(jobDescription, exclude);
   const merged = mergeResume(base, { meta: { company: '', created: '', active: true }, ...overrides } as ProfileOverride);
   const snippets = resumeSnippets(merged);
   const resumeText = snippets.join('\n');
 
-  const kw = keywordCoverage(extractKeywords(jobDescription), resumeText);
+  const kw = keywordCoverage(extractKeywords(scoredJd), resumeText);
   const checks = formatChecks(merged);
   const formatScore = checks.filter((c) => c.passed).length / checks.length;
 
-  const reqs = extractRequirements(jobDescription);
+  const reqs = extractRequirements(scoredJd);
   const claudeModel = model || DEFAULT_MODEL;
 
   // 'auto' prefers Jev and quietly degrades to the heuristic; forced modes never degrade.
@@ -392,6 +411,7 @@ export async function scoreAts(
     ...(method === 'claude' ? { model: claudeModel } : {}),
     timing,
     errors: results.filter((r) => r.error).length,
+    ...(excludedLines.length ? { excluded: excludedLines } : {}),
     ...(jevError ? { jevError } : {}),
   };
 }

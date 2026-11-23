@@ -31,6 +31,7 @@ interface Report {
   model?: string;
   errors: number;
   timing: { judgeMs: number; calls: number };
+  excluded?: string[];
 }
 interface Triage { kind: Kind; reason: string; question?: string | null }
 interface FactCheck { passed: boolean; issues: string[]; checkedWith: string }
@@ -49,10 +50,12 @@ interface Stored {
   triage: Record<string, Triage>;
   facts: AddedFact[];
   kwSupport: KwSupport | null;
+  exclude?: string[];
 }
 interface Handoff { company: string; slug: string; jobDescription: string; overrides: Overrides; at: number }
 
 const TARGET = 95;
+const parseExclude = (text: string) => text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
 const KEYWORDS_ID = '__keywords__';
 const JUDGE_LABEL: Record<Judge, string> = { jev: 'Jev', claude: 'Claude', heuristic: 'keyword heuristic' };
 const KIND_LABEL: Record<Kind, string> = { rephrase: 'Reword', 'needs-fact': 'Needs your fact', 'true-gap': 'Real gap' };
@@ -125,6 +128,8 @@ export default function WorkbenchPage() {
   const [registry, setRegistry] = useState<Record<string, RegistryEntry>>({});
   const [formSlug, setFormSlug] = useState('base');
   const [formJd, setFormJd] = useState('');
+  const [formExclude, setFormExclude] = useState('');
+  const [exclude, setExclude] = useState<string[]>([]);
 
   const [session, setSession] = useState<Session | null>(null);
   const [jd, setJd] = useState('');
@@ -171,13 +176,13 @@ export default function WorkbenchPage() {
   // Persist the working session in this browser (no database): survives refreshes.
   useEffect(() => {
     if (!session || !report) return;
-    const stored: Stored = { jd, overrides, history, decisions, triage, facts, kwSupport };
+    const stored: Stored = { jd, overrides, history, decisions, triage, facts, kwSupport, exclude };
     try {
       localStorage.setItem(session.key, JSON.stringify(stored));
     } catch {
       /* storage unavailable: the session just won't survive a refresh */
     }
-  }, [session, report, jd, overrides, history, decisions, triage, facts, kwSupport]);
+  }, [session, report, jd, overrides, history, decisions, triage, facts, kwSupport, exclude]);
 
   const call = useCallback(
     async (path: string, method: 'GET' | 'POST' | 'PATCH', body?: unknown) => {
@@ -194,13 +199,13 @@ export default function WorkbenchPage() {
 
   /** Score with Jev first, falling back (visibly) to Claude, then the keyword heuristic. */
   const score = useCallback(
-    async (ov: Overrides, jdText: string): Promise<Report> => {
+    async (ov: Overrides, jdText: string, excl: string[]): Promise<Report> => {
       const order: Judge[] = judgePref.current ? [judgePref.current, 'jev', 'claude', 'heuristic'] : ['jev', 'claude', 'heuristic'];
       const tried = new Set<Judge>();
       for (const j of order) {
         if (tried.has(j)) continue;
         tried.add(j);
-        const r = await call('/api/ats-score', 'POST', { jobDescription: jdText, overrides: ov, judge: j, model });
+        const r = await call('/api/ats-score', 'POST', { jobDescription: jdText, overrides: ov, judge: j, model, exclude: excl });
         if (r.ok) {
           judgePref.current = j;
           return r.data as unknown as Report;
@@ -218,7 +223,7 @@ export default function WorkbenchPage() {
   // ───────── session start ─────────
 
   const start = useCallback(
-    async (opts: { slug: string; label: string; mode: Session['mode']; jdText: string; initial?: Overrides }) => {
+    async (opts: { slug: string; label: string; mode: Session['mode']; jdText: string; exclude?: string[]; initial?: Overrides }) => {
       if (!opts.jdText.trim()) return flash('err', 'Paste the job description first.');
       setBusy((b) => ({ ...b, start: true }));
       setMsg(null);
@@ -247,11 +252,13 @@ export default function WorkbenchPage() {
         const useRestored = Boolean(restored && restored.jd === opts.jdText && confirm(`Resume your previous workbench session for ${opts.label}?`));
 
         const working = useRestored && restored ? restored.overrides : ov;
-        const rep = await score(working, opts.jdText);
+        const excl = useRestored && restored?.exclude ? restored.exclude : opts.exclude ?? [];
+        const rep = await score(working, opts.jdText, excl);
 
         setBaseData(base);
         setSession({ key, slug: opts.slug, label: opts.label, mode: opts.mode });
         setJd(opts.jdText);
+        setExclude(excl);
         setOverrides(working);
         setReport(rep);
         setHistory(useRestored && restored?.history.length ? restored.history : [{ score: rep.score, label: 'Start', method: rep.method, at: Date.now() }]);
@@ -318,7 +325,7 @@ export default function WorkbenchPage() {
     if (!session) return;
     setBusy((b) => ({ ...b, validate: true }));
     try {
-      const rep = await score(overrides, jd);
+      const rep = await score(overrides, jd, exclude);
       setReport(rep);
       setHistory((h) => [...h, { score: rep.score, label: 'Re-validated', method: rep.method, at: Date.now() }]);
       flash('ok', `${JUDGE_LABEL[rep.method]} score: ${Math.round(rep.score)}.`);
@@ -401,7 +408,7 @@ export default function WorkbenchPage() {
     const newOv = applyTextEdit(baseData, overrides, p.edit.path, p.edit.after);
     setBusy((b) => ({ ...b, validate: true }));
     try {
-      const rep = await score(newOv, jd);
+      const rep = await score(newOv, jd, exclude);
       setUndoStack((u) => [...u, { overrides, report: before, history: prevHistory }]);
       setOverrides(newOv);
       setReport(rep);
@@ -542,6 +549,9 @@ export default function WorkbenchPage() {
             </select>
             <label className="wb-label" htmlFor="wb-jd">Job description</label>
             <textarea id="wb-jd" className="wb-input wb-textarea" rows={10} value={formJd} onChange={(e) => setFormJd(e.target.value)} placeholder="Paste the job description (requirements, responsibilities, nice-to-haves)." />
+            <label className="wb-label" htmlFor="wb-exclude">Not claiming (left out of the score)</label>
+            <textarea id="wb-exclude" className="wb-input" rows={3} value={formExclude} onChange={(e) => setFormExclude(e.target.value)} placeholder={'One phrase per line. Any job-description line containing it is not scored, e.g.\nvariable compensation\nwork from office'} />
+            <p className="wb-muted wb-small wb-mt">The score then reflects what you are willing to claim, not the whole posting. It is listed on the next screen so the number is never misread.</p>
             <div className="wb-row">
               <select className="wb-input wb-select-sm" value={model} onChange={(e) => setModelChoice(e.target.value)} aria-label="Claude model">
                 {CLAUDE_MODELS.map((m) => (<option key={m.id} value={m.id}>{m.label}</option>))}
@@ -551,7 +561,7 @@ export default function WorkbenchPage() {
                 disabled={busy.start || !formJd.trim()}
                 onClick={() => {
                   const label = formSlug === 'base' ? 'Base resume' : registry[formSlug]?.company ?? formSlug;
-                  void start({ slug: formSlug, label, mode: formSlug === 'base' ? 'base' : 'profile', jdText: formJd });
+                  void start({ slug: formSlug, label, mode: formSlug === 'base' ? 'base' : 'profile', jdText: formJd, exclude: parseExclude(formExclude) });
                 }}
               >
                 {busy.start ? 'Scoring…' : 'Score and open'}
@@ -612,6 +622,15 @@ export default function WorkbenchPage() {
           </div>
         )}
 
+        {report.excluded?.length ? (
+          <div className="wb-msg wb-msg-info">
+            <strong>Not scored, because you are not claiming it:</strong>
+            <ul style={{ margin: '0.3rem 0 0 1.1rem' }}>
+              {report.excluded.map((l) => (<li key={l}>{l}</li>))}
+            </ul>
+            <span className="wb-muted wb-small">This score is against the rest of the posting, not the whole job description.</span>
+          </div>
+        ) : null}
         <section className="wb-summary">
           <div className="wb-card wb-score">
             <Gauge score={report.score} />
