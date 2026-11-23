@@ -556,6 +556,23 @@ export default function AdminPage() {
     setGenerated({ ...generated, overrides: newOverrides });
   }, [generated]);
 
+  // Receive improved overrides back from the ATS workbench tab (same slug only).
+  useEffect(() => {
+    let channel: BroadcastChannel | null = null;
+    try {
+      channel = new BroadcastChannel('resume-studio');
+    } catch {
+      return;
+    }
+    channel.onmessage = (e: MessageEvent) => {
+      const d = e.data as { type?: string; slug?: string; overrides?: Record<string, unknown> };
+      if (d?.type === 'workbench-overrides' && d.overrides && generated && d.slug === generated.slug) {
+        setGenerated({ ...generated, overrides: d.overrides });
+      }
+    };
+    return () => channel?.close();
+  }, [generated]);
+
   // --- Post-publish edit handlers ---
   const handleStartProfileEdit = useCallback(async (slug: string) => {
     try {
@@ -819,6 +836,28 @@ export default function AdminPage() {
                       </p>
                     </div>
                     <div style={styles.generatedActions}>
+                      {adaptSource === null && intakeData.jobDescription.trim() && (
+                        <button
+                          onClick={() => {
+                            try {
+                              localStorage.setItem('workbench-handoff', JSON.stringify({
+                                company: generated.companyName,
+                                slug: generated.slug,
+                                jobDescription: intakeData.jobDescription,
+                                overrides: generated.overrides,
+                                at: Date.now(),
+                              }));
+                              window.open('/admin/workbench', '_blank');
+                            } catch {
+                              alert('Could not hand the resume to the workbench (browser storage is unavailable).');
+                            }
+                          }}
+                          style={styles.editBtn}
+                          title="Opens the ATS workbench in a new tab. Your generated resume stays here."
+                        >
+                          ATS workbench ↗
+                        </button>
+                      )}
                       <button
                         onClick={() => setEditMode(!editMode)}
                         style={editMode ? styles.editBtnActive : styles.editBtn}

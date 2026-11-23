@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Plain-Node offline test harness, not app code.
+    "scripts/workbench-e2e/**",
   ]),
 ]);
 

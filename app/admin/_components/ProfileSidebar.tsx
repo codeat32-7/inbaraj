@@ -117,6 +117,10 @@ export default function ProfileSidebar({ registry, activeTab, onTabChange }: Pro
         </button>
 
         <div style={{ ...styles.sectionLabel, marginTop: '1rem' }}>Tools</div>
+        <a href="/admin/workbench" style={{ ...styles.item, textDecoration: 'none' }}>
+          <span style={styles.itemName}>ATS workbench</span>
+          <span style={styles.itemDate}>Fix gaps with Claude + Jev</span>
+        </a>
         <a href="/admin/ats" style={{ ...styles.item, textDecoration: 'none' }}>
           <span style={styles.itemName}>ATS validator</span>
           <span style={styles.itemDate}>Jev vs Claude</span>
